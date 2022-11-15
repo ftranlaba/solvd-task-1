@@ -10,8 +10,8 @@ public class Gardener extends CleaningStaff{
         System.out.println("Gardener is tending to flowers");
     }
 
-    public Gardener(double salary, int hours, String tool, int totalFlowersTended) {
-        super(salary, hours, tool);
+    public Gardener(String firstName, String lastName, double salary, int hours, String tool, int totalFlowersTended) {
+        super(firstName, lastName, salary, hours, tool);
         this.totalFlowersTended = totalFlowersTended;
     }
 

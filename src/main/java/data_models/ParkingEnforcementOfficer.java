@@ -10,8 +10,8 @@ public class ParkingEnforcementOfficer extends EnforcementStaff{
         System.out.println("Parking Enforcement Officer is patrolling the parking lot.");
     }
 
-    public ParkingEnforcementOfficer(String firstName, String lastName, String car, int totalTicketsGivenOut) {
-        super(firstName, lastName, car);
+    public ParkingEnforcementOfficer(String firstName, String lastName, double salary, int hours, String car, int totalTicketsGivenOut) {
+        super(firstName, lastName, salary, hours, car);
         this.totalTicketsGivenOut = totalTicketsGivenOut;
     }
 

@@ -6,8 +6,8 @@ public abstract class EnforcementStaff extends Staff{
         this.car = "";
     }
 
-    public EnforcementStaff(String firstName, String lastName, String car) {
-        super(firstName, lastName);
+    public EnforcementStaff(String firstName, String lastName, double salary, int hours, String car) {
+        super(firstName, lastName, salary, hours);
         this.car = car;
     }
 

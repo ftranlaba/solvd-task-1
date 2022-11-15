@@ -11,9 +11,10 @@ public class PoliceOfficer extends EnforcementStaff{
         System.out.println("Police officer is patrolling campus");
     }
 
-    public PoliceOfficer(String firstName, String lastName, String car, String badgeId) {
-        super(firstName, lastName, car);
+    public PoliceOfficer(String firstName, String lastName, double salary, int hours, String car, String badgeId, String weapon) {
+        super(firstName, lastName, salary, hours, car);
         this.badgeId = badgeId;
+        this.weapon = weapon;
     }
 
     public String getBadgeId() {

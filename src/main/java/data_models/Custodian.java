@@ -10,8 +10,8 @@ public class Custodian extends CleaningStaff{
         System.out.println("Custodian is cleaning the classroom");
     }
 
-    public Custodian(double salary, int hours, String tool, int totalFacilitiesCleaned) {
-        super(salary, hours, tool);
+    public Custodian(String firstName, String lastName, double salary, int hours, String tool, int totalFacilitiesCleaned) {
+        super(firstName, lastName, salary, hours, tool);
         this.totalFacilitiesCleaned = totalFacilitiesCleaned;
     }
 

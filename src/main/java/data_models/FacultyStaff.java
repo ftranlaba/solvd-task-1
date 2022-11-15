@@ -6,8 +6,8 @@ public abstract class FacultyStaff extends Staff{
         this.bookUsed = "";
     }
 
-    public FacultyStaff(String firstName, String lastName, String bookUsed) {
-        super(firstName, lastName);
+    public FacultyStaff(String firstName, String lastName, double salary, int hours, String bookUsed) {
+        super(firstName, lastName, salary, hours);
         this.bookUsed = bookUsed;
     }
 

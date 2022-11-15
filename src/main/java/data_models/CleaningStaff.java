@@ -6,8 +6,8 @@ public abstract class CleaningStaff extends Staff{
         this.tool = "";
     }
 
-    public CleaningStaff(double salary, int hours, String tool) {
-        super(salary, hours);
+    public CleaningStaff(String firstName, String lastName, double salary, int hours, String tool) {
+        super(firstName, lastName, salary, hours);
         this.tool = tool;
     }
 

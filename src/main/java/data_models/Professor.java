@@ -9,8 +9,8 @@ public class Professor extends FacultyStaff{
     public void doWork(){
         System.out.println("Professor is lecturing the class");
     }
-    public Professor(String firstName, String lastName, String bookUsed, String someData) {
-        super(firstName, lastName, bookUsed);
+    public Professor(String firstName, String lastName, double salary, int hours, String bookUsed, String someData) {
+        super(firstName, lastName, salary, hours, bookUsed);
         this.someData = someData;
     }
 
