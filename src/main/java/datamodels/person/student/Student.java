@@ -1,14 +1,18 @@
 package person.student;
 
+import java.util.Set;
+import java.util.HashSet;
+
 import person.Person;
 
 public abstract class Student extends Person {
     private String studentId;
-    
+    private Set<String> schedule;
 
     public Student() {
         super();
         this.studentId = "";
+        schedule = new HashSet<>();
     }
 
     public Student(String firstName, String lastName, String studentId) {
@@ -22,6 +26,14 @@ public abstract class Student extends Person {
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
+    }
+
+    public Set<String> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Set<String> schedule) {
+        this.schedule = schedule;
     }
 
     @java.lang.Override
