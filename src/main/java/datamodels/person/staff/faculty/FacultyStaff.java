@@ -1,3 +1,7 @@
+package person.staff.faculty;
+
+import person.staff.Staff;
+
 public abstract class FacultyStaff extends Staff{
     private String bookUsed;
 

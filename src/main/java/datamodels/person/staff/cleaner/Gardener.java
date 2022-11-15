@@ -1,3 +1,4 @@
+package person.staff.cleaner;
 public class Gardener extends CleaningStaff{
     private int totalFlowersTended;
 

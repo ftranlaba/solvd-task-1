@@ -1,3 +1,7 @@
+package person.staff;
+
+import person.Person;
+
 public abstract class Staff extends Person{
     private double salary;
     private int hours;

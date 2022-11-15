@@ -1,3 +1,4 @@
+package person.staff.enforcement;
 public class ParkingEnforcementOfficer extends EnforcementStaff{
     private int totalTicketsGivenOut;
 

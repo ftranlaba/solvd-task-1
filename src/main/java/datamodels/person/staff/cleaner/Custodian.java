@@ -1,3 +1,4 @@
+package person.staff.cleaner;
 public class Custodian extends CleaningStaff{
     private int totalFacilitiesCleaned;
 

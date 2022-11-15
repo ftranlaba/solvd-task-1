@@ -1,3 +1,4 @@
+package person.student;
 public class UndergraduateStudent extends Student{
     private int internshipAmount;
 

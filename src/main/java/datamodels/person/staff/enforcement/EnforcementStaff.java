@@ -1,3 +1,7 @@
+package person.staff.enforcement;
+
+import person.staff.Staff;
+
 public abstract class EnforcementStaff extends Staff{
     private String car;
 

@@ -1,3 +1,4 @@
+package person.staff.faculty;
 public class Professor extends FacultyStaff{
     private String someData;
 

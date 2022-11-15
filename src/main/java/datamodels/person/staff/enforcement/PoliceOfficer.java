@@ -1,3 +1,4 @@
+package person.staff.enforcement;
 public class PoliceOfficer extends EnforcementStaff{
     private String badgeId;
     private String weapon;

@@ -1,5 +1,10 @@
+package person.student;
+
+import person.Person;
+
 public abstract class Student extends Person {
     private String studentId;
+    
 
     public Student() {
         super();

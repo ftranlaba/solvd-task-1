@@ -1,3 +1,4 @@
+package person.student;
 public class GraduateStudent extends Student{
     private int researchPaperAmount;
 

@@ -2,6 +2,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import entity.*;
+import person.*;
+import person.student.*;
+import person.staff.cleaner.*;
+import person.staff.enforcement.*;
+import person.staff.faculty.*;
+
 public final class Test{
 
     public final static void print(Object o){

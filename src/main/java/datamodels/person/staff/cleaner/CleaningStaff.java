@@ -1,3 +1,7 @@
+package person.staff.cleaner;
+
+import person.staff.Staff;
+
 public abstract class CleaningStaff extends Staff{
     private String tool;
 
