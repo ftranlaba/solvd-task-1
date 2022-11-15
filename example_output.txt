@@ -1,0 +1,118 @@
+Example usage of static block here.
+University Interaction Terminal Menu
+No one is attending this university.
+1) Create person object
+2) Modify person object
+3) Delete person object
+4) Test doWork() on every person object
+5) Exit program
+1
+Input first name:
+francis
+Input last name:
+tran
+Would you like to polymorph this person? Y/N
+n
+francis tran was sucessfully created!  
+University Interaction Terminal Menu   
+francis tran - UndergraduateStudent    
+1) Create person object
+2) Modify person object
+3) Delete person object
+4) Test doWork() on every person object
+5) Exit program
+1
+Input first name:
+john
+Input last name:
+smith
+Would you like to polymorph this person? Y/N
+y
+1) Custodian
+2) Gardener
+3) Police Officer
+4) Parking Enforcement Officer
+5) Professor
+6) Undergraduate Student
+7) Graduate Student
+3
+john smith was sucessfully created!
+University Interaction Terminal Menu
+francis tran - UndergraduateStudent
+john smith - PoliceOfficer
+1) Create person object
+2) Modify person object
+3) Delete person object
+4) Test doWork() on every person object
+5) Exit program
+1
+Input first name:
+chris
+Input last name:
+smith
+Would you like to polymorph this person? Y/N
+y
+1) Custodian
+2) Gardener
+3) Police Officer
+4) Parking Enforcement Officer
+5) Professor
+6) Undergraduate Student
+7) Graduate Student
+1
+chris smith was sucessfully created!
+University Interaction Terminal Menu
+francis tran - UndergraduateStudent
+john smith - PoliceOfficer
+chris smith - Custodian
+1) Create person object
+2) Modify person object
+3) Delete person object
+4) Test doWork() on every person object
+5) Exit program
+2
+0) UndergraduateStudent{internshipAmount=0}
+1) PoliceOfficer{badgeId='POC123', weapon='Pistol'}
+2) Custodian{totalFacilitiesCleaned=0}
+Who would you like to modify?
+2
+For simple purposes, let's just modify the person's first name. Please input desired first name
+evan
+Successfully modified!
+University Interaction Terminal Menu
+francis tran - UndergraduateStudent
+john smith - PoliceOfficer
+evan smith - Custodian
+1) Create person object
+2) Modify person object
+3) Delete person object
+4) Test doWork() on every person object
+5) Exit program
+3
+0) UndergraduateStudent{internshipAmount=0}
+1) PoliceOfficer{badgeId='POC123', weapon='Pistol'}
+2) Custodian{totalFacilitiesCleaned=0}
+Who would you like to delete?
+1
+Successfully deleted!
+University Interaction Terminal Menu
+francis tran - UndergraduateStudent
+evan smith - Custodian
+1) Create person object
+2) Modify person object
+3) Delete person object
+4) Test doWork() on every person object
+5) Exit program
+4
+Undergraduate Student is studying for 20 hours
+Custodian is cleaning the classroom
+University Interaction Terminal Menu
+francis tran - UndergraduateStudent
+evan smith - Custodian
+1) Create person object
+2) Modify person object
+3) Delete person object
+4) Test doWork() on every person object
+5) Exit program
+5
+Exited successfully
