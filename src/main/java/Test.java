@@ -127,7 +127,8 @@ public final class Test{
 
     public final static void modifyPerson(University o, Scanner scan){
         for(int i = 0; i < o.getPersonList().size(); i++){
-            print(i + ") " + o.getPersonList().get(i));
+            Person p = o.getPersonList().get(i);
+            print(i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
         }
         print("Who would you like to modify?");
         infiniteloop: while(true) {
