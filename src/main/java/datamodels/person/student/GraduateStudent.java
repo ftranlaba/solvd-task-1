@@ -30,4 +30,16 @@ public class GraduateStudent extends Student{
                 "researchPaperAmount=" + researchPaperAmount +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        GraduateStudent that = (GraduateStudent) object;
+        return researchPaperAmount == that.researchPaperAmount;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), researchPaperAmount);
+    }
 }

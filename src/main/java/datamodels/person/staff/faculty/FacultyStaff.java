@@ -29,4 +29,16 @@ public abstract class FacultyStaff extends Staff{
                 "bookUsed='" + bookUsed + '\'' +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        FacultyStaff that = (FacultyStaff) object;
+        return bookUsed.equals(that.bookUsed);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), bookUsed);
+    }
 }

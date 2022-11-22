@@ -41,4 +41,16 @@ public abstract class Staff extends Person{
                 ", hours=" + hours +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Staff staff = (Staff) object;
+        return java.lang.Double.compare(staff.salary, salary) == 0 && hours == staff.hours;
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), salary, hours);
+    }
 }

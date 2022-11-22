@@ -53,4 +53,16 @@ public class University {
                 ", personList=" + personList +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        University that = (University) object;
+        return yearFounded == that.yearFounded && name.equals(that.name) && personList.equals(that.personList);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, yearFounded, personList);
+    }
 }

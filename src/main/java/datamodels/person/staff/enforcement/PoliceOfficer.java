@@ -41,4 +41,16 @@ public class PoliceOfficer extends EnforcementStaff{
                 ", weapon='" + weapon + '\'' +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PoliceOfficer that = (PoliceOfficer) object;
+        return badgeId.equals(that.badgeId) && weapon.equals(that.weapon);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), badgeId, weapon);
+    }
 }

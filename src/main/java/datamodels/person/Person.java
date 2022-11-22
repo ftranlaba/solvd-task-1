@@ -39,4 +39,16 @@ public abstract class Person {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Person person = (Person) object;
+        return firstName.equals(person.firstName) && lastName.equals(person.lastName);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), firstName, lastName);
+    }
 }

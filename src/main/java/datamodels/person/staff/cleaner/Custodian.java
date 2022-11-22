@@ -30,4 +30,16 @@ public class Custodian extends CleaningStaff{
                 "totalFacilitiesCleaned=" + totalFacilitiesCleaned +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Custodian custodian = (Custodian) object;
+        return totalFacilitiesCleaned == custodian.totalFacilitiesCleaned;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), totalFacilitiesCleaned);
+    }
 }

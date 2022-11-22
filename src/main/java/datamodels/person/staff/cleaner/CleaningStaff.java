@@ -29,4 +29,16 @@ public abstract class CleaningStaff extends Staff{
                 "tool='" + tool + '\'' +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        CleaningStaff that = (CleaningStaff) object;
+        return tool.equals(that.tool);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), tool);
+    }
 }
