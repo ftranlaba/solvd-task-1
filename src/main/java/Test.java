@@ -21,7 +21,6 @@ public final class Test{
 
     public final static void main(String[] args){
         Scanner scan = new Scanner(System.in);
-
         List<Person> personList = new ArrayList<>();
         University uni = new University("CSULB", 1967, personList);
         infiniteloop: while(true) {
@@ -151,7 +150,8 @@ public final class Test{
     // LinkedList would perform better than ArrayList here
     public final static void deletePerson(University o, Scanner scan){
         for(int i = 0; i < o.getPersonList().size(); i++){
-            print(i + ") " + o.getPersonList().get(i));
+            Person p = o.getPersonList().get(i);
+            print(i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
         }
         print("Who would you like to delete?");
         infiniteloop: while(true) {
