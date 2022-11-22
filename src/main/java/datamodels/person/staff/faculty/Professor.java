@@ -1,4 +1,5 @@
 package person.staff.faculty;
+import java.util.Objects;
 public class Professor extends FacultyStaff{
     private String someData;
 

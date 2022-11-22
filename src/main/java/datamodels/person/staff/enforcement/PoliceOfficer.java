@@ -1,4 +1,5 @@
 package person.staff.enforcement;
+import java.util.Objects;
 public class PoliceOfficer extends EnforcementStaff{
     private String badgeId;
     private String weapon;

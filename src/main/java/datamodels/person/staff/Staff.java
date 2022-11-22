@@ -1,7 +1,7 @@
 package person.staff;
 
 import person.Person;
-
+import java.util.Objects;
 public abstract class Staff extends Person{
     private double salary;
     private int hours;

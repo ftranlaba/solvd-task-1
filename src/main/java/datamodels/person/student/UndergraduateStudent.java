@@ -1,4 +1,5 @@
 package person.student;
+import java.util.Objects;
 public class UndergraduateStudent extends Student{
     private int internshipAmount;
 

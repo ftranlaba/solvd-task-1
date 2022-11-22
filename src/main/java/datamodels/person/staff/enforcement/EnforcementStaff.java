@@ -1,7 +1,7 @@
 package person.staff.enforcement;
 
 import person.staff.Staff;
-
+import java.util.Objects;
 public abstract class EnforcementStaff extends Staff{
     private String car;
 

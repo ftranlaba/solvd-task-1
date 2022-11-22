@@ -1,4 +1,5 @@
 package person.student;
+import java.util.Objects;
 public class GraduateStudent extends Student{
     private int researchPaperAmount;
 

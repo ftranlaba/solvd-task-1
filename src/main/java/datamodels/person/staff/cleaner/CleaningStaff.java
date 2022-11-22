@@ -1,7 +1,7 @@
 package person.staff.cleaner;
 
 import person.staff.Staff;
-
+import java.util.Objects;
 public abstract class CleaningStaff extends Staff{
     private String tool;
 

@@ -1,7 +1,7 @@
 package person.staff.faculty;
 
 import person.staff.Staff;
-
+import java.util.Objects;
 public abstract class FacultyStaff extends Staff{
     private String bookUsed;
 
