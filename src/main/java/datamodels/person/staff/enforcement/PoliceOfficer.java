@@ -10,7 +10,7 @@ public class PoliceOfficer extends EnforcementStaff{
     }
     @Override
     public void doWork(){
-        System.out.println("Police officer is patrolling campus");
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is patrolling campus");
     }
 
     public PoliceOfficer(String firstName, String lastName, double salary, int hours, String car, String badgeId, String weapon) {

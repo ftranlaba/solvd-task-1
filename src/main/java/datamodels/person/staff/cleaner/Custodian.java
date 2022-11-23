@@ -9,7 +9,7 @@ public class Custodian extends CleaningStaff{
     }
     @Override
     public void doWork(){
-        System.out.println("Custodian is cleaning the classroom");
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is cleaning the classroom");
     }
 
     public Custodian(String firstName, String lastName, double salary, int hours, String tool, int totalFacilitiesCleaned) {

@@ -1,5 +1,8 @@
 package person.student;
 import java.util.Objects;
+import java.util.Set;
+
+import entity.Course;
 public class UndergraduateStudent extends Student{
     private int internshipAmount;
 
@@ -9,11 +12,11 @@ public class UndergraduateStudent extends Student{
     }
     @Override
     public void doWork(){
-        System.out.println("Undergraduate Student is studying for 20 hours");
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is studying for 20 hours");
     }
 
-    public UndergraduateStudent(String firstName, String lastName, String studentId, int internshipAmount) {
-        super(firstName, lastName, studentId);
+    public UndergraduateStudent(String firstName, String lastName, String studentId, Set<Course> schedule, int internshipAmount) {
+        super(firstName, lastName, studentId, schedule);
         this.internshipAmount = internshipAmount;
     }
 

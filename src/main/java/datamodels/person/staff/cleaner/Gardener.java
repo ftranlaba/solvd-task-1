@@ -9,7 +9,7 @@ public class Gardener extends CleaningStaff{
     }
     @Override
     public void doWork(){
-        System.out.println("Gardener is tending to flowers");
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is tending to flowers");
     }
 
     public Gardener(String firstName, String lastName, double salary, int hours, String tool, int totalFlowersTended) {

@@ -9,7 +9,7 @@ public class Professor extends FacultyStaff{
     }
     @Override
     public void doWork(){
-        System.out.println("Professor is lecturing the class");
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is lecturing the class");
     }
     public Professor(String firstName, String lastName, double salary, int hours, String bookUsed, String someData) {
         super(firstName, lastName, salary, hours, bookUsed);

@@ -1,5 +1,6 @@
 package person;
 import java.util.Objects;
+
 public abstract class Person {
     private String firstName;
     private String lastName;
