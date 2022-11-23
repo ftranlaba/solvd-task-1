@@ -1,8 +1,10 @@
 package person.staff;
 
 import person.Person;
+
 import java.util.Objects;
-public abstract class Staff extends Person{
+
+public abstract class Staff extends Person {
     private double salary;
     private int hours;
 
@@ -41,6 +43,7 @@ public abstract class Staff extends Person{
                 ", hours=" + hours +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;

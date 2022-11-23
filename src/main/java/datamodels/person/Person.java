@@ -1,13 +1,12 @@
 package person;
+
 import java.util.Objects;
 
 public abstract class Person {
     private String firstName;
     private String lastName;
 
-    public abstract void doWork();
-
-    public Person(){
+    public Person() {
         super();
         firstName = "";
         lastName = "";
@@ -17,6 +16,8 @@ public abstract class Person {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public abstract void doWork();
 
     public String getFirstName() {
         return firstName;
@@ -41,6 +42,7 @@ public abstract class Person {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -49,6 +51,7 @@ public abstract class Person {
         Person person = (Person) object;
         return firstName.equals(person.firstName) && lastName.equals(person.lastName);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), firstName, lastName);

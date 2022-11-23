@@ -1,23 +1,26 @@
 package person.student;
+
 import java.util.Objects;
 import java.util.Set;
 
 import entity.Course;
-public class GraduateStudent extends Student{
+
+public class GraduateStudent extends Student {
     private int researchPaperAmount;
 
     public GraduateStudent() {
         super();
         this.researchPaperAmount = 0;
     }
-    @Override
-    public void doWork(){
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is studying for 30 hours");
-    }
 
     public GraduateStudent(String firstName, String lastName, String studentId, Set<Course> schedule, int researchPaperAmount) {
         super(firstName, lastName, studentId, schedule);
         this.researchPaperAmount = researchPaperAmount;
+    }
+
+    @Override
+    public void doWork() {
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is studying for 30 hours");
     }
 
     public int getResearchPaperAmount() {
@@ -34,6 +37,7 @@ public class GraduateStudent extends Student{
                 "researchPaperAmount=" + researchPaperAmount +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -42,6 +46,7 @@ public class GraduateStudent extends Student{
         GraduateStudent that = (GraduateStudent) object;
         return researchPaperAmount == that.researchPaperAmount;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), researchPaperAmount);

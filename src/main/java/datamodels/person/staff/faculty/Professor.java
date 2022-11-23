@@ -1,19 +1,23 @@
 package person.staff.faculty;
+
 import java.util.Objects;
-public class Professor extends FacultyStaff{
+
+public class Professor extends FacultyStaff {
     private String someData;
 
     public Professor() {
         super();
         this.someData = "";
     }
-    @Override
-    public void doWork(){
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is lecturing the class");
-    }
+
     public Professor(String firstName, String lastName, double salary, int hours, String bookUsed, String someData) {
         super(firstName, lastName, salary, hours, bookUsed);
         this.someData = someData;
+    }
+
+    @Override
+    public void doWork() {
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is lecturing the class");
     }
 
     public String getSomeData() {
@@ -30,6 +34,7 @@ public class Professor extends FacultyStaff{
                 "someData='" + someData + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -38,6 +43,7 @@ public class Professor extends FacultyStaff{
         Professor professor = (Professor) object;
         return someData.equals(professor.someData);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), someData);

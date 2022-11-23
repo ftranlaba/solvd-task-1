@@ -1,8 +1,10 @@
 package person.staff.enforcement;
 
 import person.staff.Staff;
+
 import java.util.Objects;
-public abstract class EnforcementStaff extends Staff{
+
+public abstract class EnforcementStaff extends Staff {
     private String car;
 
     public EnforcementStaff() {
@@ -29,6 +31,7 @@ public abstract class EnforcementStaff extends Staff{
                 "car='" + car + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -37,6 +40,7 @@ public abstract class EnforcementStaff extends Staff{
         EnforcementStaff that = (EnforcementStaff) object;
         return car.equals(that.car);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), car);

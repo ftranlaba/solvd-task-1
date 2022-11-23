@@ -1,8 +1,10 @@
 package person.staff.cleaner;
 
 import person.staff.Staff;
+
 import java.util.Objects;
-public abstract class CleaningStaff extends Staff{
+
+public abstract class CleaningStaff extends Staff {
     private String tool;
 
     public CleaningStaff() {
@@ -29,6 +31,7 @@ public abstract class CleaningStaff extends Staff{
                 "tool='" + tool + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -37,6 +40,7 @@ public abstract class CleaningStaff extends Staff{
         CleaningStaff that = (CleaningStaff) object;
         return tool.equals(that.tool);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), tool);

@@ -1,20 +1,23 @@
 package person.staff.cleaner;
+
 import java.util.Objects;
-public class Gardener extends CleaningStaff{
+
+public class Gardener extends CleaningStaff {
     private int totalFlowersTended;
 
     public Gardener() {
         super();
         this.totalFlowersTended = 0;
     }
-    @Override
-    public void doWork(){
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is tending to flowers");
-    }
 
     public Gardener(String firstName, String lastName, double salary, int hours, String tool, int totalFlowersTended) {
         super(firstName, lastName, salary, hours, tool);
         this.totalFlowersTended = totalFlowersTended;
+    }
+
+    @Override
+    public void doWork() {
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is tending to flowers");
     }
 
     public int getTotalFlowersTended() {
@@ -31,6 +34,7 @@ public class Gardener extends CleaningStaff{
                 "totalFlowersTended=" + totalFlowersTended +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -39,6 +43,7 @@ public class Gardener extends CleaningStaff{
         Gardener gardener = (Gardener) object;
         return totalFlowersTended == gardener.totalFlowersTended;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), totalFlowersTended);

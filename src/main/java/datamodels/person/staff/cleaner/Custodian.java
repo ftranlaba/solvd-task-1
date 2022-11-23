@@ -1,20 +1,23 @@
 package person.staff.cleaner;
+
 import java.util.Objects;
-public class Custodian extends CleaningStaff{
+
+public class Custodian extends CleaningStaff {
     private int totalFacilitiesCleaned;
 
-    public Custodian(){
+    public Custodian() {
         super();
         totalFacilitiesCleaned = 0;
-    }
-    @Override
-    public void doWork(){
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is cleaning the classroom");
     }
 
     public Custodian(String firstName, String lastName, double salary, int hours, String tool, int totalFacilitiesCleaned) {
         super(firstName, lastName, salary, hours, tool);
         this.totalFacilitiesCleaned = totalFacilitiesCleaned;
+    }
+
+    @Override
+    public void doWork() {
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is cleaning the classroom");
     }
 
     public int getTotalFacilitiesCleaned() {
@@ -31,6 +34,7 @@ public class Custodian extends CleaningStaff{
                 "totalFacilitiesCleaned=" + totalFacilitiesCleaned +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -39,6 +43,7 @@ public class Custodian extends CleaningStaff{
         Custodian custodian = (Custodian) object;
         return totalFacilitiesCleaned == custodian.totalFacilitiesCleaned;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), totalFacilitiesCleaned);

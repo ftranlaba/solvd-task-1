@@ -1,23 +1,26 @@
 package person.student;
+
 import java.util.Objects;
 import java.util.Set;
 
 import entity.Course;
-public class UndergraduateStudent extends Student{
+
+public class UndergraduateStudent extends Student {
     private int internshipAmount;
 
     public UndergraduateStudent() {
         super();
         this.internshipAmount = 0;
     }
-    @Override
-    public void doWork(){
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is studying for 20 hours");
-    }
 
     public UndergraduateStudent(String firstName, String lastName, String studentId, Set<Course> schedule, int internshipAmount) {
         super(firstName, lastName, studentId, schedule);
         this.internshipAmount = internshipAmount;
+    }
+
+    @Override
+    public void doWork() {
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is studying for 20 hours");
     }
 
     public int getInternshipAmount() {
@@ -34,6 +37,7 @@ public class UndergraduateStudent extends Student{
                 "internshipAmount=" + internshipAmount +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -42,6 +46,7 @@ public class UndergraduateStudent extends Student{
         UndergraduateStudent that = (UndergraduateStudent) object;
         return internshipAmount == that.internshipAmount;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), internshipAmount);

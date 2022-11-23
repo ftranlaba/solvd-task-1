@@ -9,15 +9,16 @@ import entity.University;
 import person.student.*;;
 
 public final class Seeder {
-    private Seeder(){}
-
-    public static void seedDefaultData(University o){
-        o.getPersonList().addAll(Seeder.seedStudent());
-        o.getCourseSet().addAll(Seeder.seedCourse());
-        
+    private Seeder() {
     }
 
-    public static List<Student> seedStudent(){
+    public static void seedDefaultData(University o) {
+        o.getPersonList().addAll(Seeder.seedStudent());
+        o.getCourseSet().addAll(Seeder.seedCourse());
+
+    }
+
+    public static List<Student> seedStudent() {
         List<Student> output = new ArrayList<>();
         output.add(new UndergraduateStudent("John", "Smith", "1640298", new HashSet<>(), 0));
         output.add(new UndergraduateStudent("Adam", "Smith", "2440298", new HashSet<>(), 0));
@@ -30,7 +31,7 @@ public final class Seeder {
         return output;
     }
 
-    public static Set<Course> seedCourse(){
+    public static Set<Course> seedCourse() {
         Set<Course> output = new HashSet<>();
         output.add(new Course("OOP", "CS", "0101000", LocalTime.of(8, 0)));
         output.add(new Course("Computer Architecture", "CS", "0010100", LocalTime.of(10, 0)));

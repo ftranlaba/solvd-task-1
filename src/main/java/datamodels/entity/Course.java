@@ -1,21 +1,22 @@
 package entity;
+
 import java.time.LocalTime;
 import java.util.Objects;
 
 public class Course {
+    // Creates 1 and only 1 array in memory where Course objects can reference from to allow prettier printing
+    private static final String[] daysArray = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     private String courseTitle;
     private String major;
     // days will be a String representation of 7 bits. Ex: "0101000" will represent Monday and Wednesday
     private String days;
-    // Creates 1 and only 1 array in memory where Course objects can reference from to allow prettier printing
-    private static final String[] daysArray = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     private LocalTime time;
 
-    public Course(){
+    public Course() {
         this.courseTitle = "";
         this.major = "";
         this.days = "";
-        this.time = LocalTime.of(0,0);
+        this.time = LocalTime.of(0, 0);
     }
 
     public Course(String courseTitle, String major, String days, LocalTime time) {
@@ -23,6 +24,23 @@ public class Course {
         this.major = major;
         this.days = days;
         this.time = time;
+    }
+
+    public static String[] getDaysArray() {
+        return daysArray;
+    }
+
+    public static boolean isDaysValid(String days) {
+        if (days.equals("") || days.length() != 7) {
+            return false;
+        }
+
+        for (int i = 0; i < days.length(); i++) {
+            if (days.charAt(i) != '0' && days.charAt(i) != '1') {
+                return false;
+            }
+        }
+        return true;
     }
 
     public String getCourseTitle() {
@@ -47,10 +65,6 @@ public class Course {
 
     public void setDays(String days) {
         this.days = days;
-    }
-
-    public static String[] getDaysArray() {
-        return daysArray;
     }
 
     public LocalTime getTime() {
@@ -83,26 +97,13 @@ public class Course {
                 '}';
     }
 
-    public static boolean isDaysValid(String days){
-        if(days.equals("") || days.length() != 7){
-            return false;
-        }
-
-        for(int i = 0; i < days.length(); i++){
-            if(days.charAt(i) != '0' && days.charAt(i) != '1'){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public String getTranslatedDays(){
-        if(days.equals("0000000")){
+    public String getTranslatedDays() {
+        if (days.equals("0000000")) {
             return "No days were assigned";
         }
         String output = "";
-        for(int i = 0; i < days.length(); i++){
-            if(days.charAt(i) == '1'){
+        for (int i = 0; i < days.length(); i++) {
+            if (days.charAt(i) == '1') {
                 output += daysArray[i];
                 output += ", "; // length 2
             }

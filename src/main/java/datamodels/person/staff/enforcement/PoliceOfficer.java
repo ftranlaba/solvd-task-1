@@ -1,6 +1,8 @@
 package person.staff.enforcement;
+
 import java.util.Objects;
-public class PoliceOfficer extends EnforcementStaff{
+
+public class PoliceOfficer extends EnforcementStaff {
     private String badgeId;
     private String weapon;
 
@@ -8,15 +10,16 @@ public class PoliceOfficer extends EnforcementStaff{
         super();
         this.badgeId = "";
     }
-    @Override
-    public void doWork(){
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is patrolling campus");
-    }
 
     public PoliceOfficer(String firstName, String lastName, double salary, int hours, String car, String badgeId, String weapon) {
         super(firstName, lastName, salary, hours, car);
         this.badgeId = badgeId;
         this.weapon = weapon;
+    }
+
+    @Override
+    public void doWork() {
+        System.out.println(this.getFirstName() + " " + this.getLastName() + " is patrolling campus");
     }
 
     public String getBadgeId() {
@@ -42,6 +45,7 @@ public class PoliceOfficer extends EnforcementStaff{
                 ", weapon='" + weapon + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -50,6 +54,7 @@ public class PoliceOfficer extends EnforcementStaff{
         PoliceOfficer that = (PoliceOfficer) object;
         return badgeId.equals(that.badgeId) && weapon.equals(that.weapon);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), badgeId, weapon);

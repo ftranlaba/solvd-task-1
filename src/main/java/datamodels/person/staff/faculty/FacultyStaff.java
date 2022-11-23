@@ -1,11 +1,13 @@
 package person.staff.faculty;
 
 import person.staff.Staff;
+
 import java.util.Objects;
 import java.util.Set;
 
 import entity.Course;
-public abstract class FacultyStaff extends Staff{
+
+public abstract class FacultyStaff extends Staff {
     private String bookUsed;
     private Set<Course> schedule;
 
