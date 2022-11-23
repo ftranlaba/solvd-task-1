@@ -89,7 +89,7 @@ public class Course {
         }
 
         for(int i = 0; i < days.length(); i++){
-            if(days.charAt(i) != '0' || days.charAt(i) != '1'){
+            if(days.charAt(i) != '0' && days.charAt(i) != '1'){
                 return false;
             }
         }
