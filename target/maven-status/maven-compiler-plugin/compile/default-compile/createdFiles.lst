@@ -1,0 +1,17 @@
+entity\Course.class
+Seeder.class
+person\staff\enforcement\ParkingEnforcementOfficer.class
+person\student\Student.class
+person\Person.class
+entity\University.class
+Test.class
+person\staff\enforcement\EnforcementStaff.class
+person\staff\cleaner\CleaningStaff.class
+person\staff\faculty\FacultyStaff.class
+person\staff\cleaner\Custodian.class
+person\student\UndergraduateStudent.class
+person\staff\cleaner\Gardener.class
+person\staff\enforcement\PoliceOfficer.class
+person\student\GraduateStudent.class
+person\staff\Staff.class
+person\staff\faculty\Professor.class
