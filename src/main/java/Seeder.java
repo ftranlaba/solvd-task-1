@@ -4,9 +4,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import entity.person.student.*;
 import entity.Course;
 import entity.University;
-import person.student.*;;
+;
 
 public final class Seeder {
     private Seeder() {

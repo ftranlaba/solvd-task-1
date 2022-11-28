@@ -7,11 +7,12 @@ import java.util.Set;
 
 
 import entity.*;
-import person.*;
-import person.student.*;
-import person.staff.cleaner.*;
-import person.staff.enforcement.*;
-import person.staff.faculty.*;
+import entity.person.Person;
+import entity.person.staff.cleaner.*;
+import entity.person.staff.enforcement.*;
+import entity.person.staff.faculty.*;
+import entity.person.student.*;
+
 
 public final class Test {
 
@@ -40,11 +41,11 @@ public final class Test {
                 }
             }
             print("0) Load default data");
-            print("1) Create person object");
-            print("2) Modify person object");
-            print("3) Delete person object");
+            print("1) Create entity.person object");
+            print("2) Modify entity.person object");
+            print("3) Delete entity.person object");
             print("4) Create course object");
-            print("5) Test doWork() on every person object");
+            print("5) Test doWork() on every entity.person object");
             print("6) View students and professor schedule");
             print("7) Exit program");
             String input = scan.nextLine();
@@ -91,7 +92,7 @@ public final class Test {
         String firstName = scan.nextLine();
         print("Input last name:");
         String lastName = scan.nextLine();
-        print("Would you like to polymorph this person? Y/N");
+        print("Would you like to polymorph this entity.person? Y/N");
         while (true) {
             String input = scan.nextLine();
             if (input.equals("Y") || input.equals("y")) {
@@ -193,9 +194,9 @@ public final class Test {
                                     diff = findCourseSetDifference(((FacultyStaff) p).getSchedule(), o.getCourseSet());
                                 }
                                 if (diff.isEmpty()) {
-                                    print("The person has already enrolled into all of the courses!");
+                                    print("The entity.person has already enrolled into all of the courses!");
                                 } else {
-                                    print("Which course would you like this person to enroll in?");
+                                    print("Which course would you like this entity.person to enroll in?");
                                     Course[] arr = diff.toArray(new Course[diff.size()]);
                                     for (int i = 0; i < arr.length; i++) {
                                         print(i + ") " + arr[i]);
@@ -213,7 +214,7 @@ public final class Test {
                                     }
                                 }
                             } else {
-                                print("This person is not a student or professor");
+                                print("This entity.person is not a student or professor");
                             }
                             break infiniteloop;
 

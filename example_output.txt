@@ -2,11 +2,11 @@ Example usage of static block here.
 University Interaction Terminal Menu
 No one is attending this university.
 0) Load default data
-1) Create person object
-2) Modify person object
-3) Delete person object
+1) Create entity.person object
+2) Modify entity.person object
+3) Delete entity.person object
 4) Create course object
-5) Test doWork() on every person object
+5) Test doWork() on every entity.person object
 6) View students and professor schedule
 7) Exit program
 0
@@ -19,11 +19,11 @@ Deodat Smith - GraduateStudent
 Chris Smith - GraduateStudent
 Ricardo Smith - GraduateStudent
 0) Load default data
-1) Create person object
-2) Modify person object
-3) Delete person object
+1) Create entity.person object
+2) Modify entity.person object
+3) Delete entity.person object
 4) Create course object
-5) Test doWork() on every person object
+5) Test doWork() on every entity.person object
 6) View students and professor schedule
 7) Exit program
 2
@@ -46,7 +46,7 @@ Course{courseTitle='OOP', major='CS', days='Monday, Wednesday', time=08:00}
 Course{courseTitle='Algorithms', major='CS', days='Monday, Wednesday, Friday', time=13:00}
 Course{courseTitle='Computer Architecture', major='CS', days='Tuesday, Thursday', time=10:00}
 These are all of the courses that the student is enrolled in
-Which course would you like this person to enroll in?
+Which course would you like this entity.person to enroll in?
 0) Course{courseTitle='OOP', major='CS', days='Monday, Wednesday', time=08:00}
 1) Course{courseTitle='Algorithms', major='CS', days='Monday, Wednesday, Friday', time=13:00}
 2) Course{courseTitle='Computer Architecture', major='CS', days='Tuesday, Thursday', time=10:00}
@@ -61,11 +61,11 @@ Deodat Smith - GraduateStudent
 Chris Smith - GraduateStudent
 Ricardo Smith - GraduateStudent
 0) Load default data
-1) Create person object
-2) Modify person object
-3) Delete person object
+1) Create entity.person object
+2) Modify entity.person object
+3) Delete entity.person object
 4) Create course object
-5) Test doWork() on every person object
+5) Test doWork() on every entity.person object
 6) View students and professor schedule
 7) Exit program
 2
@@ -88,7 +88,7 @@ Course{courseTitle='OOP', major='CS', days='Monday, Wednesday', time=08:00}
 Course{courseTitle='Algorithms', major='CS', days='Monday, Wednesday, Friday', time=13:00}
 Course{courseTitle='Computer Architecture', major='CS', days='Tuesday, Thursday', time=10:00}
 These are all of the courses that the student is enrolled in
-Which course would you like this person to enroll in?
+Which course would you like this entity.person to enroll in?
 0) Course{courseTitle='OOP', major='CS', days='Monday, Wednesday', time=08:00}
 1) Course{courseTitle='Algorithms', major='CS', days='Monday, Wednesday, Friday', time=13:00}
 2) Course{courseTitle='Computer Architecture', major='CS', days='Tuesday, Thursday', time=10:00}
@@ -103,11 +103,11 @@ Deodat Smith - GraduateStudent
 Chris Smith - GraduateStudent
 Ricardo Smith - GraduateStudent
 0) Load default data
-1) Create person object
-2) Modify person object
-3) Delete person object
+1) Create entity.person object
+2) Modify entity.person object
+3) Delete entity.person object
 4) Create course object
-5) Test doWork() on every person object
+5) Test doWork() on every entity.person object
 6) View students and professor schedule
 7) Exit program
 2
@@ -130,7 +130,7 @@ Course{courseTitle='OOP', major='CS', days='Monday, Wednesday', time=08:00}
 Course{courseTitle='Algorithms', major='CS', days='Monday, Wednesday, Friday', time=13:00}
 Course{courseTitle='Computer Architecture', major='CS', days='Tuesday, Thursday', time=10:00}
 These are all of the courses that the student is enrolled in
-Which course would you like this person to enroll in?
+Which course would you like this entity.person to enroll in?
 0) Course{courseTitle='OOP', major='CS', days='Monday, Wednesday', time=08:00}
 1) Course{courseTitle='Algorithms', major='CS', days='Monday, Wednesday, Friday', time=13:00}
 2) Course{courseTitle='Computer Architecture', major='CS', days='Tuesday, Thursday', time=10:00}
@@ -145,11 +145,11 @@ Deodat Smith - GraduateStudent
 Chris Smith - GraduateStudent
 Ricardo Smith - GraduateStudent
 0) Load default data
-1) Create person object
-2) Modify person object
-3) Delete person object
+1) Create entity.person object
+2) Modify entity.person object
+3) Delete entity.person object
 4) Create course object
-5) Test doWork() on every person object
+5) Test doWork() on every entity.person object
 6) View students and professor schedule
 7) Exit program
 6
@@ -169,11 +169,11 @@ Deodat Smith - GraduateStudent
 Chris Smith - GraduateStudent
 Ricardo Smith - GraduateStudent
 0) Load default data
-1) Create person object
-2) Modify person object
-3) Delete person object
+1) Create entity.person object
+2) Modify entity.person object
+3) Delete entity.person object
 4) Create course object
-5) Test doWork() on every person object
+5) Test doWork() on every entity.person object
 6) View students and professor schedule
 7) Exit program
 7
