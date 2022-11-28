@@ -13,6 +13,8 @@ import entity.person.staff.enforcement.*;
 import entity.person.staff.faculty.*;
 import entity.person.student.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class Test {
 
@@ -27,6 +29,7 @@ public final class Test {
     }
 
     public final static void main(String[] args) {
+        Logger logger = LoggerFactory.getLogger("FirstLogger");
         Scanner scan = new Scanner(System.in);
         List<Person> personList = new ArrayList<>();
         University uni = new University("CSULB", 1967, personList, new HashSet<>());
