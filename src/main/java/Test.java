@@ -13,6 +13,9 @@ import entity.person.staff.enforcement.*;
 import entity.person.staff.faculty.*;
 import entity.person.student.*;
 
+import exception.InvalidMenuOptionException;
+import exception.userinput.InvalidSelectCourseIntegerException;
+import exception.userinput.InvalidSelectPersonIntegerException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +32,7 @@ public final class Test {
         logger.log(STATICLOG,"Example usage of static block here.");
     }
 
-    public final static void main(String[] args) {
+    public final static void main(String[] args) throws InvalidSelectPersonIntegerException, InvalidSelectCourseIntegerException {
         Scanner scan = new Scanner(System.in);
         List<Person> personList = new ArrayList<>();
         University uni = new University("CSULB", 1967, personList, new HashSet<>());
@@ -83,6 +86,7 @@ public final class Test {
                     break infiniteloop;
                 default:
                     logger.warn("User has inputted an invalid main menu option");
+                    throw new InvalidMenuOptionException("User has inputted an invalid main menu option");
             }
         }
         scan.close();
@@ -146,7 +150,7 @@ public final class Test {
         logger.debug(firstName + " " + lastName + " was successfully created!");
     }
 
-    public final static void modifyPerson(University o, Scanner scan) {
+    public final static void modifyPerson(University o, Scanner scan) throws InvalidSelectPersonIntegerException {
         for (int i = 0; i < o.getPersonList().size(); i++) {
             Person p = o.getPersonList().get(i);
             logger.log(MENULOG, i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
@@ -214,6 +218,7 @@ public final class Test {
                                         }
                                     } catch (Exception e) {
                                         logger.error("User has inputted an invalid integer when selecting a course");
+                                        throw new InvalidSelectCourseIntegerException("User has inputted an invalid integer when selecting a course", e);
                                     }
                                 }
                             } else {
@@ -225,6 +230,7 @@ public final class Test {
                 }
             } catch (Exception e) {
                 logger.error("User has inputted an invalid integer when selecting a person during modification");
+                throw new InvalidSelectPersonIntegerException("User has inputted an invalid integer when selecting a person during modification", e);
             }
         }
         logger.debug("Successfully modified!");
@@ -246,7 +252,7 @@ public final class Test {
     }
 
     // LinkedList would perform better than ArrayList here
-    public final static void deletePerson(University o, Scanner scan) {
+    public final static void deletePerson(University o, Scanner scan) throws InvalidSelectPersonIntegerException {
         for (int i = 0; i < o.getPersonList().size(); i++) {
             Person p = o.getPersonList().get(i);
             logger.log(MENULOG, i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
@@ -263,12 +269,13 @@ public final class Test {
                 }
             } catch (Exception e) {
                 logger.error("User has inputted an invalid integer when selecting a person during deletion");
+                throw new InvalidSelectPersonIntegerException("User has inputted an invalid integer when selecting a person during deletion", e);
             }
         }
         logger.debug("Successfully deleted!");
     }
 
-    public final static void createCourse(University o, Scanner scan) {
+    public final static void createCourse(University o, Scanner scan) throws InvalidSelectCourseIntegerException {
         logger.log(MENULOG, "Input course title:");
         String courseTitle = scan.nextLine();
         logger.log(MENULOG, "Input major:");
@@ -287,6 +294,7 @@ public final class Test {
                     break infiniteloop;
                 } catch (Exception e) {
                     logger.error("User has inputted an invalid integer when creating course");
+                    throw new InvalidSelectCourseIntegerException("User has inputted an invalid integer when creating course" ,e);
                 }
             }
             logger.warn("User has inputted an invalid integer when selecting a person during deletion");
