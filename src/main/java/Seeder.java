@@ -7,7 +7,6 @@ import java.util.Set;
 import entity.person.student.*;
 import entity.Course;
 import entity.University;
-;
 
 public final class Seeder {
     private Seeder() {

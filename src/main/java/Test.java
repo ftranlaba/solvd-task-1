@@ -23,7 +23,7 @@ public final class Test {
     private static boolean dataLoaded = false;
     final static Level STATICLOG = Level.forName("STATICLOG", 699);
     final static Level MENULOG = Level.forName("MENULOG", 700);
-    private static Logger logger = LogManager.getLogger(Test.class);
+    private static Logger logger = LogManager.getLogger("TESTLOGGER");
 
     static {
         logger.log(STATICLOG,"Example usage of static block here.");
@@ -82,7 +82,7 @@ public final class Test {
                 case "7":
                     break infiniteloop;
                 default:
-                    logger.error("User has inputted an invalid main menu option");
+                    logger.warn("User has inputted an invalid main menu option");
             }
         }
         scan.close();
@@ -132,7 +132,7 @@ public final class Test {
                             o.getPersonList().add(new GraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0));
                             break infiniteloop;
                         default:
-                            logger.error("User has inputted a bad polymorph menu option");
+                            logger.warn("User has inputted a bad polymorph menu option");
                     }
                 }
                 break;
@@ -289,7 +289,7 @@ public final class Test {
                     logger.error("User has inputted an invalid integer when creating course");
                 }
             }
-            logger.error("User has inputted an invalid integer when selecting a person during deletion");
+            logger.warn("User has inputted an invalid integer when selecting a person during deletion");
         }
         logger.debug(courseTitle + " has been successfully created!");
 

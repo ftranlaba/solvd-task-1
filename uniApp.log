@@ -1,0 +1,54 @@
+2022-11-29 05:06:24 STATICLOG Example usage of static block here.
+2022-11-29 05:06:24 MENULOG University Interaction Terminal Menu
+2022-11-29 05:06:24 MENULOG No one is attending this university.
+2022-11-29 05:06:24 MENULOG 0) Load default data
+2022-11-29 05:06:24 MENULOG 1) Create Person object
+2022-11-29 05:06:24 MENULOG 2) Modify Person object
+2022-11-29 05:06:24 MENULOG 3) Delete Person object
+2022-11-29 05:06:24 MENULOG 4) Create course object
+2022-11-29 05:06:24 MENULOG 5) Test doWork() on every Person object
+2022-11-29 05:06:24 MENULOG 6) View students and professor schedule
+2022-11-29 05:06:24 MENULOG 7) Exit program
+2022-11-29 05:06:25 MENULOG University Interaction Terminal Menu
+2022-11-29 05:06:25 MENULOG John Smith - UndergraduateStudent
+2022-11-29 05:06:25 MENULOG Adam Smith - UndergraduateStudent
+2022-11-29 05:06:25 MENULOG Ricky Smith - UndergraduateStudent
+2022-11-29 05:06:25 MENULOG Kevin Smith - UndergraduateStudent
+2022-11-29 05:06:25 MENULOG Deodat Smith - GraduateStudent
+2022-11-29 05:06:25 MENULOG Chris Smith - GraduateStudent
+2022-11-29 05:06:25 MENULOG Ricardo Smith - GraduateStudent
+2022-11-29 05:06:25 MENULOG 0) Load default data
+2022-11-29 05:06:25 MENULOG 1) Create Person object
+2022-11-29 05:06:25 MENULOG 2) Modify Person object
+2022-11-29 05:06:25 MENULOG 3) Delete Person object
+2022-11-29 05:06:25 MENULOG 4) Create course object
+2022-11-29 05:06:25 MENULOG 5) Test doWork() on every Person object
+2022-11-29 05:06:25 MENULOG 6) View students and professor schedule
+2022-11-29 05:06:25 MENULOG 7) Exit program
+2022-11-29 05:06:26 MENULOG 0) John Smith - UndergraduateStudent
+2022-11-29 05:06:26 MENULOG 1) Adam Smith - UndergraduateStudent
+2022-11-29 05:06:26 MENULOG 2) Ricky Smith - UndergraduateStudent
+2022-11-29 05:06:26 MENULOG 3) Kevin Smith - UndergraduateStudent
+2022-11-29 05:06:26 MENULOG 4) Deodat Smith - GraduateStudent
+2022-11-29 05:06:26 MENULOG 5) Chris Smith - GraduateStudent
+2022-11-29 05:06:26 MENULOG 6) Ricardo Smith - GraduateStudent
+2022-11-29 05:06:26 MENULOG Who would you like to delete?
+2022-11-29 05:06:28 ERROR User has inputted an invalid integer when selecting a person during deletion
+2022-11-29 05:06:29 ERROR User has inputted an invalid integer when selecting a person during deletion
+2022-11-29 05:06:31 DEBUG Successfully deleted!
+2022-11-29 05:06:31 MENULOG University Interaction Terminal Menu
+2022-11-29 05:06:31 MENULOG John Smith - UndergraduateStudent
+2022-11-29 05:06:31 MENULOG Adam Smith - UndergraduateStudent
+2022-11-29 05:06:31 MENULOG Ricky Smith - UndergraduateStudent
+2022-11-29 05:06:31 MENULOG Kevin Smith - UndergraduateStudent
+2022-11-29 05:06:31 MENULOG Deodat Smith - GraduateStudent
+2022-11-29 05:06:31 MENULOG Chris Smith - GraduateStudent
+2022-11-29 05:06:31 MENULOG 0) Load default data
+2022-11-29 05:06:31 MENULOG 1) Create Person object
+2022-11-29 05:06:31 MENULOG 2) Modify Person object
+2022-11-29 05:06:31 MENULOG 3) Delete Person object
+2022-11-29 05:06:31 MENULOG 4) Create course object
+2022-11-29 05:06:31 MENULOG 5) Test doWork() on every Person object
+2022-11-29 05:06:31 MENULOG 6) View students and professor schedule
+2022-11-29 05:06:31 MENULOG 7) Exit program
+2022-11-29 05:06:33 DEBUG Exited successfully
