@@ -1,24 +1,24 @@
-import java.util.List;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
-
-
-import entity.*;
+import entity.Course;
+import entity.University;
 import entity.person.Person;
-import entity.person.staff.cleaner.*;
-import entity.person.staff.enforcement.*;
-import entity.person.staff.faculty.*;
-import entity.person.student.*;
-
+import entity.person.staff.cleaner.Custodian;
+import entity.person.staff.cleaner.Gardener;
+import entity.person.staff.enforcement.ParkingEnforcementOfficer;
+import entity.person.staff.enforcement.PoliceOfficer;
+import entity.person.staff.faculty.FacultyStaff;
+import entity.person.staff.faculty.Professor;
+import entity.person.student.GraduateStudent;
+import entity.person.student.Student;
+import entity.person.student.UndergraduateStudent;
 import exception.InvalidMenuOptionException;
 import exception.userinput.InvalidSelectCourseIntegerException;
 import exception.userinput.InvalidSelectPersonIntegerException;
 import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.time.LocalTime;
+import java.util.*;
 
 
 public final class Test {
@@ -27,6 +27,7 @@ public final class Test {
     final static Level STATICLOG = Level.forName("STATICLOG", 699);
     final static Level MENULOG = Level.forName("MENULOG", 700);
     private static Logger logger = LogManager.getLogger("TESTLOGGER");
+    private static int personMapIndex = 0;
 
     static {
         logger.log(STATICLOG,"Example usage of static block here.");
@@ -35,6 +36,8 @@ public final class Test {
     public final static void main(String[] args) throws InvalidSelectPersonIntegerException, InvalidSelectCourseIntegerException {
         Scanner scan = new Scanner(System.in);
         List<Person> personList = new ArrayList<>();
+        Stack<Person> personStack = new Stack<>();
+        Map<Integer, Person> personMap = new HashMap<>();
         University uni = new University("CSULB", 1967, personList, new HashSet<>());
         infiniteloop:
         while (true) {
@@ -53,7 +56,9 @@ public final class Test {
             logger.log(MENULOG, "4) Create course object");
             logger.log(MENULOG, "5) Test doWork() on every Person object");
             logger.log(MENULOG, "6) View students and professor schedule");
-            logger.log(MENULOG, "7) Exit program");
+            logger.log(MENULOG, "7) View newest deleted Person");
+            logger.log(MENULOG, "8) View oldest deleted Person");
+            logger.log(MENULOG, "9) Exit program");
             String input = scan.nextLine();
             switch (input) {
                 case "0":
@@ -71,7 +76,7 @@ public final class Test {
                     modifyPerson(uni, scan);
                     break;
                 case "3":
-                    deletePerson(uni, scan);
+                    deletePerson(uni, scan, personStack, personMap);
                     break;
                 case "4":
                     createCourse(uni, scan);
@@ -83,6 +88,12 @@ public final class Test {
                     viewSchedule(uni);
                     break;
                 case "7":
+                    logger.log(MENULOG, personStack.peek() + "");
+                    break;
+                case "8":
+                    logger.log(MENULOG, personMap.get(personMapIndex) + "");
+                    break;
+                case "9":
                     break infiniteloop;
                 default:
                     logger.warn("User has inputted an invalid main menu option");
@@ -252,7 +263,7 @@ public final class Test {
     }
 
     // LinkedList would perform better than ArrayList here
-    public final static void deletePerson(University o, Scanner scan) throws InvalidSelectPersonIntegerException {
+    public final static void deletePerson(University o, Scanner scan, Stack<Person> personStack, Map<Integer, Person> personMap) throws InvalidSelectPersonIntegerException {
         for (int i = 0; i < o.getPersonList().size(); i++) {
             Person p = o.getPersonList().get(i);
             logger.log(MENULOG, i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
@@ -264,6 +275,9 @@ public final class Test {
             try {
                 int index = Integer.parseInt(input);
                 if (index >= 0 && index < o.getPersonList().size()) {
+                    personMap.put(personMapIndex, o.getPersonList().get(index));
+                    personMapIndex++;
+                    personStack.add(o.getPersonList().get(index));
                     o.getPersonList().remove(index);
                     break infiniteloop;
                 }

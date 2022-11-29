@@ -52,3 +52,77 @@
 2022-11-29 05:06:31 MENULOG 6) View students and professor schedule
 2022-11-29 05:06:31 MENULOG 7) Exit program
 2022-11-29 05:06:33 DEBUG Exited successfully
+2022-11-29 07:25:12 STATICLOG Example usage of static block here.
+2022-11-29 07:25:12 MENULOG University Interaction Terminal Menu
+2022-11-29 07:25:12 MENULOG No one is attending this university.
+2022-11-29 07:25:12 MENULOG 0) Load default data
+2022-11-29 07:25:12 MENULOG 1) Create Person object
+2022-11-29 07:25:12 MENULOG 2) Modify Person object
+2022-11-29 07:25:12 MENULOG 3) Delete Person object
+2022-11-29 07:25:12 MENULOG 4) Create course object
+2022-11-29 07:25:12 MENULOG 5) Test doWork() on every Person object
+2022-11-29 07:25:12 MENULOG 6) View students and professor schedule
+2022-11-29 07:25:12 MENULOG 7) View newest deleted Person
+2022-11-29 07:25:12 MENULOG 8) View oldest deleted Person
+2022-11-29 07:25:12 MENULOG 9) Exit program
+2022-11-29 07:25:14 MENULOG Input first name:
+2022-11-29 07:25:15 MENULOG Input last name:
+2022-11-29 07:25:15 MENULOG Would you like to polymorph this Person? Y/N
+2022-11-29 07:32:20 STATICLOG Example usage of static block here.
+2022-11-29 07:32:20 MENULOG University Interaction Terminal Menu
+2022-11-29 07:32:20 MENULOG No one is attending this university.
+2022-11-29 07:32:20 MENULOG 0) Load default data
+2022-11-29 07:32:20 MENULOG 1) Create Person object
+2022-11-29 07:32:20 MENULOG 2) Modify Person object
+2022-11-29 07:32:20 MENULOG 3) Delete Person object
+2022-11-29 07:32:20 MENULOG 4) Create course object
+2022-11-29 07:32:20 MENULOG 5) Test doWork() on every Person object
+2022-11-29 07:32:20 MENULOG 6) View students and professor schedule
+2022-11-29 07:32:20 MENULOG 7) View newest deleted Person
+2022-11-29 07:32:20 MENULOG 8) View oldest deleted Person
+2022-11-29 07:32:20 MENULOG 9) Exit program
+2022-11-29 07:32:22 MENULOG Input first name:
+2022-11-29 07:32:22 MENULOG Input last name:
+2022-11-29 07:32:23 MENULOG Would you like to polymorph this Person? Y/N
+2022-11-29 07:32:24 DEBUG f t was successfully created!
+2022-11-29 07:32:24 MENULOG University Interaction Terminal Menu
+2022-11-29 07:32:24 MENULOG f t - UndergraduateStudent
+2022-11-29 07:32:24 MENULOG 0) Load default data
+2022-11-29 07:32:24 MENULOG 1) Create Person object
+2022-11-29 07:32:24 MENULOG 2) Modify Person object
+2022-11-29 07:32:24 MENULOG 3) Delete Person object
+2022-11-29 07:32:24 MENULOG 4) Create course object
+2022-11-29 07:32:24 MENULOG 5) Test doWork() on every Person object
+2022-11-29 07:32:24 MENULOG 6) View students and professor schedule
+2022-11-29 07:32:24 MENULOG 7) View newest deleted Person
+2022-11-29 07:32:24 MENULOG 8) View oldest deleted Person
+2022-11-29 07:32:24 MENULOG 9) Exit program
+2022-11-29 07:32:26 MENULOG 0) f t - UndergraduateStudent
+2022-11-29 07:32:26 MENULOG Who would you like to delete?
+2022-11-29 07:32:28 DEBUG Successfully deleted!
+2022-11-29 07:32:28 MENULOG University Interaction Terminal Menu
+2022-11-29 07:32:28 MENULOG No one is attending this university.
+2022-11-29 07:32:28 MENULOG 0) Load default data
+2022-11-29 07:32:28 MENULOG 1) Create Person object
+2022-11-29 07:32:28 MENULOG 2) Modify Person object
+2022-11-29 07:32:28 MENULOG 3) Delete Person object
+2022-11-29 07:32:28 MENULOG 4) Create course object
+2022-11-29 07:32:28 MENULOG 5) Test doWork() on every Person object
+2022-11-29 07:32:28 MENULOG 6) View students and professor schedule
+2022-11-29 07:32:28 MENULOG 7) View newest deleted Person
+2022-11-29 07:32:28 MENULOG 8) View oldest deleted Person
+2022-11-29 07:32:28 MENULOG 9) Exit program
+2022-11-29 07:32:30 MENULOG null
+2022-11-29 07:32:30 MENULOG University Interaction Terminal Menu
+2022-11-29 07:32:30 MENULOG No one is attending this university.
+2022-11-29 07:32:30 MENULOG 0) Load default data
+2022-11-29 07:32:30 MENULOG 1) Create Person object
+2022-11-29 07:32:30 MENULOG 2) Modify Person object
+2022-11-29 07:32:30 MENULOG 3) Delete Person object
+2022-11-29 07:32:30 MENULOG 4) Create course object
+2022-11-29 07:32:30 MENULOG 5) Test doWork() on every Person object
+2022-11-29 07:32:30 MENULOG 6) View students and professor schedule
+2022-11-29 07:32:30 MENULOG 7) View newest deleted Person
+2022-11-29 07:32:30 MENULOG 8) View oldest deleted Person
+2022-11-29 07:32:30 MENULOG 9) Exit program
+2022-11-29 07:32:34 DEBUG Exited successfully
