@@ -13,12 +13,17 @@ import entity.person.staff.enforcement.*;
 import entity.person.staff.faculty.*;
 import entity.person.student.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 
 public final class Test {
 
     private static boolean dataLoaded = false;
+    final static Level STATICLOG = Level.forName("STATICLOG", 699);
+    final static Level MENULOG = Level.forName("MENULOG", 700);
+    private static Logger logger = LogManager.getLogger(Test.class);
 
     static {
         print("Example usage of static block here.");
@@ -29,13 +34,12 @@ public final class Test {
     }
 
     public final static void main(String[] args) {
-        Logger logger = LoggerFactory.getLogger("FirstLogger");
         Scanner scan = new Scanner(System.in);
         List<Person> personList = new ArrayList<>();
         University uni = new University("CSULB", 1967, personList, new HashSet<>());
         infiniteloop:
         while (true) {
-            print("University Interaction Terminal Menu");
+            logger.log(MENULOG, "University Interaction Terminal Menu");
             if (personList.size() == 0) {
                 print("No one is attending this university.");
             } else {
