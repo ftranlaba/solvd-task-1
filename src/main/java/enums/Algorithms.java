@@ -5,7 +5,7 @@ public enum Algorithms {
     MERGESORT("O(n log(n))"),
     BUBBLESORT("O(n^2)");
 
-    String worstCase;
+    private final String worstCase;
     Algorithms(String s){
         worstCase = s;
     }
@@ -17,7 +17,7 @@ public enum Algorithms {
         }
     }
 
-    String getRunTime(){
+    public String getRunTime(){
         return worstCase;
     }
 
