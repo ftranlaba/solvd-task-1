@@ -1,5 +1,7 @@
 package entity;
 
+import enums.BuildingNumbers;
+
 import java.time.LocalTime;
 import java.util.Objects;
 
@@ -11,19 +13,22 @@ public class Course {
     // days will be a String representation of 7 bits. Ex: "0101000" will represent Monday and Wednesday
     private String days;
     private LocalTime time;
+    private BuildingNumbers location;
 
     public Course() {
         this.courseTitle = "";
         this.major = "";
         this.days = "";
         this.time = LocalTime.of(0, 0);
+        this.location = BuildingNumbers.B101;
     }
 
-    public Course(String courseTitle, String major, String days, LocalTime time) {
+    public Course(String courseTitle, String major, String days, LocalTime time, BuildingNumbers location) {
         this.courseTitle = courseTitle;
         this.major = major;
         this.days = days;
         this.time = time;
+        this.location = location;
     }
 
     public static String[] getDaysArray() {
@@ -75,16 +80,25 @@ public class Course {
         this.time = time;
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Course course = (Course) object;
-        return courseTitle.equals(course.courseTitle) && major.equals(course.major) && days.equals(course.days) && time.equals(course.time);
+    public BuildingNumbers getLocation() {
+        return location;
     }
 
+    public void setLocation(BuildingNumbers location) {
+        this.location = location;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return courseTitle.equals(course.courseTitle) && major.equals(course.major) && days.equals(course.days) && time.equals(course.time) && location == course.location;
+    }
+
+    @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), courseTitle, major, days, time);
+        return Objects.hash(courseTitle, major, days, time, location);
     }
 
     @java.lang.Override
@@ -94,6 +108,7 @@ public class Course {
                 ", major='" + major + '\'' +
                 ", days='" + this.getTranslatedDays() + '\'' +
                 ", time=" + time +
+                ", location=" + location +
                 '}';
     }
 

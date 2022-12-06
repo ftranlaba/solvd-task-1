@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import entity.Course;
+import enums.ClassLevels;
 
 public class UndergraduateStudent extends Student {
     private int internshipAmount;
@@ -13,8 +14,8 @@ public class UndergraduateStudent extends Student {
         this.internshipAmount = 0;
     }
 
-    public UndergraduateStudent(String firstName, String lastName, String studentId, Set<Course> schedule, int internshipAmount) {
-        super(firstName, lastName, studentId, schedule);
+    public UndergraduateStudent(String firstName, String lastName, String studentId, Set<Course> schedule, int internshipAmount, ClassLevels level) {
+        super(firstName, lastName, studentId, schedule, level);
         this.internshipAmount = internshipAmount;
     }
 
