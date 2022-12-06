@@ -1,3 +1,4 @@
+import datastructure.MyLinkedList;
 import entity.Course;
 import entity.University;
 import entity.person.Person;
@@ -10,6 +11,7 @@ import entity.person.staff.faculty.Professor;
 import entity.person.student.GraduateStudent;
 import entity.person.student.Student;
 import entity.person.student.UndergraduateStudent;
+import enums.*;
 import exception.InvalidMenuOptionException;
 import exception.userinput.InvalidSelectCourseIntegerException;
 import exception.userinput.InvalidSelectPersonIntegerException;
@@ -54,11 +56,16 @@ public final class Test {
             logger.log(MENULOG, "2) Modify Person object");
             logger.log(MENULOG, "3) Delete Person object");
             logger.log(MENULOG, "4) Create course object");
-            logger.log(MENULOG, "5) Test doWork() on every Person object");
-            logger.log(MENULOG, "6) View students and professor schedule");
-            logger.log(MENULOG, "7) View newest deleted Person");
-            logger.log(MENULOG, "8) View oldest deleted Person");
-            logger.log(MENULOG, "9) Exit program");
+            logger.log(MENULOG, "5) View current course information");
+            logger.log(MENULOG, "6) View class level of every student");
+            logger.log(MENULOG, "7) View parking lot fees");
+            logger.log(MENULOG, "8) View allowed exam materials");
+            logger.log(MENULOG, "9) View algorithms and their O(n)");
+            logger.log(MENULOG, "10) Test doWork() on every Person object");
+            logger.log(MENULOG, "11) View students and professor schedule");
+            logger.log(MENULOG, "12) View newest deleted Person");
+            logger.log(MENULOG, "13) View oldest deleted Person");
+            logger.log(MENULOG, "14) Exit program");
             String input = scan.nextLine();
             switch (input) {
                 case "0":
@@ -82,18 +89,33 @@ public final class Test {
                     createCourse(uni, scan);
                     break;
                 case "5":
-                    testPerson(uni);
+                    viewCourseInfo(uni);
                     break;
                 case "6":
-                    viewSchedule(uni);
+                    viewStudentLevels(uni);
                     break;
                 case "7":
-                    logger.log(MENULOG, personStack.peek() + "");
+                    viewParkingFees();
                     break;
                 case "8":
-                    logger.log(MENULOG, personMap.get(personMapIndex) + "");
+                    viewAllowedExamMaterials();
                     break;
                 case "9":
+                    viewAlgorithms();
+                    break;
+                case "10":
+                    testPerson(uni);
+                    break;
+                case "11":
+                    viewSchedule(uni);
+                    break;
+                case "12":
+                    logger.log(MENULOG, personStack.peek() + "");
+                    break;
+                case "13":
+                    logger.log(MENULOG, personMap.get(personMapIndex) + "");
+                    break;
+                case "14":
                     break infiniteloop;
                 default:
                     logger.warn("User has inputted an invalid main menu option");
@@ -103,6 +125,39 @@ public final class Test {
         scan.close();
         logger.debug("Exited successfully");
 
+    }
+
+    public final static void viewStudentLevels(University o){
+        if(o.getPersonList().size() == 0){
+            logger.log(MENULOG, "There are no students");
+            return;
+        }
+        for(Person p : o.getPersonList()){
+            if(p instanceof Student){
+                logger.log(MENULOG, p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName() + " " + ((Student) p).getLevel());
+            }
+        }
+    }
+
+    public final static void viewParkingFees(){
+        logger.log(MENULOG, "Here are the parking fees");
+        for(ParkingLots o : ParkingLots.values()){
+            System.out.println(o + " $" + o.getFee());
+        }
+    }
+
+    public final static void viewAllowedExamMaterials(){
+        logger.log(MENULOG, "Here are the allowed Exam Materials");
+        for (AllowedMaterials o : AllowedMaterials.values()) {
+            System.out.println(o + " " + o.isAllowed());
+        }
+    }
+
+    public final static void viewAlgorithms(){
+        logger.log(MENULOG, "Here are some algorithms and their O(n)");
+        for (Algorithms o : Algorithms.values()) {
+            System.out.println(o + " " + o.getRunTime());
+        }
     }
 
     public final static void createPerson(University o, Scanner scan) {
@@ -141,10 +196,10 @@ public final class Test {
                             o.getPersonList().add(new Professor(firstName, lastName, 10, 10, "textbook", "someVar"));
                             break infiniteloop;
                         case "6":
-                            o.getPersonList().add(new UndergraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0));
+                            o.getPersonList().add(new UndergraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0, ClassLevels.FRESHMAN));
                             break infiniteloop;
                         case "7":
-                            o.getPersonList().add(new GraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0));
+                            o.getPersonList().add(new GraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0, ClassLevels.FRESHMAN));
                             break infiniteloop;
                         default:
                             logger.warn("User has inputted a bad polymorph menu option");
@@ -152,7 +207,7 @@ public final class Test {
                 }
                 break;
             } else if (input.equals("N") || input.equals("n")) {
-                o.getPersonList().add(new UndergraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0));
+                o.getPersonList().add(new UndergraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0, ClassLevels.FRESHMAN));
                 break;
             } else {
                 logger.log(MENULOG, "Please select y/n");
@@ -304,7 +359,7 @@ public final class Test {
                     int hours = scan.nextInt();
                     logger.log(MENULOG, "At what minutes does it start? Pick a number in the range [0, 59]");
                     int minutes = scan.nextInt();
-                    o.getCourseSet().add(new Course(courseTitle, major, days, LocalTime.of(hours, minutes)));
+                    o.getCourseSet().add(new Course(courseTitle, major, days, LocalTime.of(hours, minutes), BuildingNumbers.B101));
                     break infiniteloop;
                 } catch (Exception e) {
                     logger.error("User has inputted an invalid integer when creating course");
@@ -315,6 +370,20 @@ public final class Test {
         }
         logger.debug(courseTitle + " has been successfully created!");
 
+    }
+
+    public final static void viewCourseInfo(University o){
+        Course[] arr = o.getCourseSet().toArray(new Course[o.getCourseSet().size()]);
+        if(arr.length == 0){
+            logger.log(MENULOG, "There are currently no courses");
+            return;
+        }
+        // Example usage of custom LinkedList
+        MyLinkedList<String> list = new MyLinkedList<>();
+        for(Course c : arr){
+            list.add(c.toString());
+        }
+        logger.log(MENULOG, list.toString());
     }
 
     public final static void testPerson(University o) {
