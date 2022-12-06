@@ -20,7 +20,7 @@ public enum AllowedMaterials {
         }
     }
 
-    boolean isAllowed() {
+    public boolean isAllowed() {
         return isAllowed;
     }
 }

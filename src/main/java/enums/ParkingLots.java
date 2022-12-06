@@ -18,7 +18,7 @@ public enum ParkingLots {
         }
     }
 
-    int getFee() {
+    public int getFee() {
         return ticketFee * 2;
     }
 }

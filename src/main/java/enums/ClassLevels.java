@@ -16,7 +16,7 @@ public enum ClassLevels {
         }
     }
 
-    boolean canTakeCSElectives(ClassLevels o) {
+    public boolean canTakeCSElectives(ClassLevels o) {
         switch (o) {
             case FRESHMAN:
             case SOPHOMORE:
