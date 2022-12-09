@@ -28,7 +28,7 @@ public final class Test {
     final static Level STATICLOG = Level.forName("STATICLOG", 699);
     final static Level MENULOG = Level.forName("MENULOG", 700);
     private static boolean dataLoaded = false;
-    private static Logger LOGGER = LogManager.getLogger("TESTLOGGER");
+    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
     private static int personMapIndex = 0;
 
     static {

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.function.*;
 
 public class Test {
-    private static Logger LOGGER = LogManager.getLogger("TESTLOGGER");
+    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public static void main(String[] args) {
         ToIntFunction<University> uniPersonMultiplier = (uni) -> uni.getPersonList().size() * 100;

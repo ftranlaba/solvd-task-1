@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-    private static Logger LOGGER = LogManager.getLogger("TESTLOGGER");
+    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public static void main(String[] args) {
         String input = "src/main/java/uniquewords/sampleinput.txt";
