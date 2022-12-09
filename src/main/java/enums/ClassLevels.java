@@ -9,13 +9,6 @@ public enum ClassLevels {
     ClassLevels() {
     }
 
-    public static void main(String[] args) {
-        System.out.println("These are the class levels that are able to take CS electives");
-        for (ClassLevels o : ClassLevels.values()) {
-            System.out.println(o + " " + o.canTakeCSElectives(o));
-        }
-    }
-
     public boolean canTakeCSElectives(ClassLevels o) {
         switch (o) {
             case FRESHMAN:

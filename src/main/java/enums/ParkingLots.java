@@ -11,13 +11,6 @@ public enum ParkingLots {
         this.ticketFee = ticketFee;
     }
 
-    public static void main(String[] args) {
-        System.out.println("These are the ticket fees");
-        for (ParkingLots o : ParkingLots.values()) {
-            System.out.println(o + " $" + o.getFee());
-        }
-    }
-
     public int getFee() {
         return ticketFee * 2;
     }
