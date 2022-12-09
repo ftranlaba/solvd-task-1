@@ -1,11 +1,10 @@
 package entity.person.staff.faculty;
 
+import entity.Course;
 import entity.person.staff.Staff;
 
 import java.util.Objects;
 import java.util.Set;
-
-import entity.Course;
 
 public abstract class FacultyStaff extends Staff {
     private String bookUsed;

@@ -1,10 +1,10 @@
 package entity.person.student;
 
-import java.util.Objects;
-import java.util.Set;
-
 import entity.Course;
 import enums.ClassLevels;
+
+import java.util.Objects;
+import java.util.Set;
 
 public class UndergraduateStudent extends Student {
     private int internshipAmount;
@@ -21,7 +21,7 @@ public class UndergraduateStudent extends Student {
 
     @Override
     public void doWork() {
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is studying for 20 hours");
+        LOGGER.info(this.getFirstName() + " " + this.getLastName() + " is studying for 20 hours");
     }
 
     public int getInternshipAmount() {

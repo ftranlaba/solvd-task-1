@@ -19,7 +19,7 @@ public class PoliceOfficer extends EnforcementStaff {
 
     @Override
     public void doWork() {
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is patrolling campus");
+        LOGGER.info(this.getFirstName() + " " + this.getLastName() + " is patrolling campus");
     }
 
     public String getBadgeId() {

@@ -1,10 +1,10 @@
 package entity.person.student;
 
-import java.util.Objects;
-import java.util.Set;
-
 import entity.Course;
 import enums.ClassLevels;
+
+import java.util.Objects;
+import java.util.Set;
 
 public class GraduateStudent extends Student {
     private int researchPaperAmount;
@@ -21,7 +21,7 @@ public class GraduateStudent extends Student {
 
     @Override
     public void doWork() {
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is studying for 30 hours");
+        LOGGER.info(this.getFirstName() + " " + this.getLastName() + " is studying for 30 hours");
     }
 
     public int getResearchPaperAmount() {

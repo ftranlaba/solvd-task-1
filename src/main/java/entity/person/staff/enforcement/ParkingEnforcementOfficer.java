@@ -17,7 +17,7 @@ public class ParkingEnforcementOfficer extends EnforcementStaff {
 
     @Override
     public void doWork() {
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is patrolling the parking lot.");
+        LOGGER.info(this.getFirstName() + " " + this.getLastName() + " is patrolling the parking lot.");
     }
 
     public int getTotalTicketsGivenOut() {

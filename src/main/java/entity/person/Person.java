@@ -1,10 +1,14 @@
 package entity.person;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 public abstract class Person {
     private String firstName;
     private String lastName;
+    protected static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public Person() {
         super();

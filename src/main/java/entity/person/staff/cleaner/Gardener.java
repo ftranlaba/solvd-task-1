@@ -17,7 +17,7 @@ public class Gardener extends CleaningStaff {
 
     @Override
     public void doWork() {
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is tending to flowers");
+        LOGGER.info(this.getFirstName() + " " + this.getLastName() + " is tending to flowers");
     }
 
     public int getTotalFlowersTended() {

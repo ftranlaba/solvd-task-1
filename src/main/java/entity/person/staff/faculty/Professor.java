@@ -17,7 +17,7 @@ public class Professor extends FacultyStaff {
 
     @Override
     public void doWork() {
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is lecturing the class");
+        LOGGER.info(this.getFirstName() + " " + this.getLastName() + " is lecturing the class");
     }
 
     public String getSomeData() {

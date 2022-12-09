@@ -1,20 +1,19 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ThreadTest{
     private static final String resourceOne = "RESOURCE 1";
     private static final String resourceTwo = "RESOURCE 2";
-
-    public static void print(Object o) {
-        System.out.println(o);
-    }
+    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public static class TestRunnable implements Runnable{
-
         @Override
         public void run() {
             synchronized (resourceOne){
-                print("TestRunnable has locked resourceOne");
+                LOGGER.info("TestRunnable has locked resourceOne");
                 try { Thread.sleep(500);} catch (Exception e) {}
                 synchronized (resourceTwo){
-                    print("TestRunnable has locked resourceTwo");
+                    LOGGER.info("TestRunnable has locked resourceTwo");
                 }
             }
         }
@@ -24,10 +23,10 @@ public class ThreadTest{
         @Override
         public void run() {
             synchronized (resourceTwo){
-                print("TestThread has locked resourceTwo");
+                LOGGER.info("TestThread has locked resourceTwo");
                 try { Thread.sleep(500);} catch (Exception e) {}
                 synchronized (resourceOne){
-                    print("TestThread has locked resourceOne");
+                    LOGGER.info("TestThread has locked resourceOne");
                 }
             }
         }
@@ -39,7 +38,6 @@ public class ThreadTest{
         Thread t2 = new Thread(new TestThread());
         t1.start();
         t2.start();
-
     }
 
 }

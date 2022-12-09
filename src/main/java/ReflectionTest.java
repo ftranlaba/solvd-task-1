@@ -17,10 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ReflectionTest {
-    private static Logger logger = LogManager.getLogger("TESTLOGGER");
-    public static void print(Object o) {
-        System.out.println(o);
-    }
+    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public final static void main(String[] args){
         List<Object> list = new ArrayList<>();
@@ -36,20 +33,18 @@ public class ReflectionTest {
         list.stream()
                 .forEach((o) -> {
                     Class obj = o.getClass();
-                    logger.info("Class name: " + obj.getName());
-                    logger.info("Fields:");
+                    LOGGER.info("Class name: " + obj.getName());
+                    LOGGER.info("Fields:");
                     Arrays.stream(obj.getDeclaredFields())
                             .forEach(fieldObj -> {
-                                String fieldHeader = fieldObj.toString();
-                                logger.info(fieldHeader);
+                                LOGGER.info(fieldObj.toString());
                             });
-                    logger.info("Constructors:");
+                    LOGGER.info("Constructors:");
                     Arrays.stream(obj.getConstructors())
                             .forEach(constructObj -> {
-                                String constructHeader = constructObj.toString();
-                                logger.info(constructHeader);
+                                LOGGER.info(constructObj.toString());
                             });
-                    logger.info("Methods:");
+                    LOGGER.info("Methods:");
                     Arrays.stream(obj.getMethods())
                             .forEach((methodObj) -> {
                                 String methodHeader = Modifier.toString(methodObj.getModifiers()) + " " + methodObj.getReturnType() + " " + methodObj.getName();
@@ -58,7 +53,7 @@ public class ReflectionTest {
                                     s += param.toString() + ",";
                                 }
                                 s += ")";
-                                logger.info(methodHeader + s);
+                                LOGGER.info(methodHeader + s);
                             });
                 });
     }

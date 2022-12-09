@@ -25,14 +25,14 @@ import java.util.*;
 
 public final class Test {
 
-    private static boolean dataLoaded = false;
     final static Level STATICLOG = Level.forName("STATICLOG", 699);
     final static Level MENULOG = Level.forName("MENULOG", 700);
-    private static Logger logger = LogManager.getLogger("TESTLOGGER");
+    private static boolean dataLoaded = false;
+    private static Logger LOGGER = LogManager.getLogger("TESTLOGGER");
     private static int personMapIndex = 0;
 
     static {
-        logger.log(STATICLOG,"Example usage of static block here.");
+        LOGGER.log(STATICLOG, "Example usage of static block here.");
     }
 
     public final static void main(String[] args) throws InvalidSelectPersonIntegerException, InvalidSelectCourseIntegerException {
@@ -43,29 +43,29 @@ public final class Test {
         University uni = new University("CSULB", 1967, personList, new HashSet<>());
         infiniteloop:
         while (true) {
-            logger.log(MENULOG, "University Interaction Terminal Menu");
+            LOGGER.log(MENULOG, "University Interaction Terminal Menu");
             if (personList.size() == 0) {
-                logger.log(MENULOG, "No one is attending this university.");
+                LOGGER.log(MENULOG, "No one is attending this university.");
             } else {
                 for (Person o : uni.getPersonList()) {
-                    logger.log(MENULOG, o.getFirstName() + " " + o.getLastName() + " - " + o.getClass().getSimpleName());
+                    LOGGER.log(MENULOG, o.getFirstName() + " " + o.getLastName() + " - " + o.getClass().getSimpleName());
                 }
             }
-            logger.log(MENULOG, "0) Load default data");
-            logger.log(MENULOG, "1) Create Person object");
-            logger.log(MENULOG, "2) Modify Person object");
-            logger.log(MENULOG, "3) Delete Person object");
-            logger.log(MENULOG, "4) Create course object");
-            logger.log(MENULOG, "5) View current course information");
-            logger.log(MENULOG, "6) View class level of every student");
-            logger.log(MENULOG, "7) View parking lot fees");
-            logger.log(MENULOG, "8) View allowed exam materials");
-            logger.log(MENULOG, "9) View algorithms and their O(n)");
-            logger.log(MENULOG, "10) Test doWork() on every Person object");
-            logger.log(MENULOG, "11) View students and professor schedule");
-            logger.log(MENULOG, "12) View newest deleted Person");
-            logger.log(MENULOG, "13) View oldest deleted Person");
-            logger.log(MENULOG, "14) Exit program");
+            LOGGER.log(MENULOG, "0) Load default data");
+            LOGGER.log(MENULOG, "1) Create Person object");
+            LOGGER.log(MENULOG, "2) Modify Person object");
+            LOGGER.log(MENULOG, "3) Delete Person object");
+            LOGGER.log(MENULOG, "4) Create course object");
+            LOGGER.log(MENULOG, "5) View current course information");
+            LOGGER.log(MENULOG, "6) View class level of every student");
+            LOGGER.log(MENULOG, "7) View parking lot fees");
+            LOGGER.log(MENULOG, "8) View allowed exam materials");
+            LOGGER.log(MENULOG, "9) View algorithms and their O(n)");
+            LOGGER.log(MENULOG, "10) Test doWork() on every Person object");
+            LOGGER.log(MENULOG, "11) View students and professor schedule");
+            LOGGER.log(MENULOG, "12) View newest deleted Person");
+            LOGGER.log(MENULOG, "13) View oldest deleted Person");
+            LOGGER.log(MENULOG, "14) Exit program");
             String input = scan.nextLine();
             switch (input) {
                 case "0":
@@ -73,7 +73,7 @@ public final class Test {
                         Seeder.seedDefaultData(uni);
                         dataLoaded = true;
                     } else {
-                        logger.log(MENULOG, "Default data is already loaded.");
+                        LOGGER.log(MENULOG, "Default data is already loaded.");
                     }
                     break;
                 case "1":
@@ -110,72 +110,72 @@ public final class Test {
                     viewSchedule(uni);
                     break;
                 case "12":
-                    logger.log(MENULOG, personStack.peek() + "");
+                    LOGGER.log(MENULOG, personStack.peek() + "");
                     break;
                 case "13":
-                    logger.log(MENULOG, personMap.get(personMapIndex) + "");
+                    LOGGER.log(MENULOG, personMap.get(personMapIndex) + "");
                     break;
                 case "14":
                     break infiniteloop;
                 default:
-                    logger.warn("User has inputted an invalid main menu option");
+                    LOGGER.warn("User has inputted an invalid main menu option");
                     throw new InvalidMenuOptionException("User has inputted an invalid main menu option");
             }
         }
         scan.close();
-        logger.debug("Exited successfully");
+        LOGGER.debug("Exited successfully");
 
     }
 
-    public final static void viewStudentLevels(University o){
-        if(o.getPersonList().size() == 0){
-            logger.log(MENULOG, "There are no students");
+    public final static void viewStudentLevels(University o) {
+        if (o.getPersonList().size() == 0) {
+            LOGGER.log(MENULOG, "There are no students");
             return;
         }
-        for(Person p : o.getPersonList()){
-            if(p instanceof Student){
-                logger.log(MENULOG, p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName() + " " + ((Student) p).getLevel());
+        for (Person p : o.getPersonList()) {
+            if (p instanceof Student) {
+                LOGGER.log(MENULOG, p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName() + " " + ((Student) p).getLevel());
             }
         }
     }
 
-    public final static void viewParkingFees(){
-        logger.log(MENULOG, "Here are the parking fees");
-        for(ParkingLots o : ParkingLots.values()){
-            System.out.println(o + " $" + o.getFee());
+    public final static void viewParkingFees() {
+        LOGGER.log(MENULOG, "Here are the parking fees");
+        for (ParkingLots o : ParkingLots.values()) {
+            LOGGER.log(MENULOG,o + " $" + o.getFee());
         }
     }
 
-    public final static void viewAllowedExamMaterials(){
-        logger.log(MENULOG, "Here are the allowed Exam Materials");
+    public final static void viewAllowedExamMaterials() {
+        LOGGER.log(MENULOG, "Here are the allowed Exam Materials");
         for (AllowedMaterials o : AllowedMaterials.values()) {
-            System.out.println(o + " " + o.isAllowed());
+            LOGGER.log(MENULOG,o + " " + o.isAllowed());
         }
     }
 
-    public final static void viewAlgorithms(){
-        logger.log(MENULOG, "Here are some algorithms and their O(n)");
+    public final static void viewAlgorithms() {
+        LOGGER.log(MENULOG, "Here are some algorithms and their O(n)");
         for (Algorithms o : Algorithms.values()) {
-            System.out.println(o + " " + o.getRunTime());
+            LOGGER.log(MENULOG,o + " " + o.getRunTime());
         }
     }
 
     public final static void createPerson(University o, Scanner scan) {
-        logger.log(MENULOG, "Input first name:");
+        LOGGER.log(MENULOG, "Input first name:");
         String firstName = scan.nextLine();
-        logger.log(MENULOG, "Input last name:");
+        LOGGER.log(MENULOG, "Input last name:");
         String lastName = scan.nextLine();
-        logger.log(MENULOG, "Would you like to polymorph this Person? Y/N");
+        LOGGER.log(MENULOG, "Would you like to polymorph this Person? Y/N");
         while (true) {
             String input = scan.nextLine();
             if (input.equals("Y") || input.equals("y")) {
-                logger.log(MENULOG, "1) Custodian");
-                logger.log(MENULOG, "2) Gardener");
-                logger.log(MENULOG, "3) Police Officer");
-                logger.log(MENULOG, "4) Parking Enforcement Officer");
-                logger.log(MENULOG, "5) Professor");
-                logger.log(MENULOG, "6) Undergraduate Student");
-                logger.log(MENULOG, "7) Graduate Student");
+                LOGGER.log(MENULOG, "1) Custodian");
+                LOGGER.log(MENULOG, "2) Gardener");
+                LOGGER.log(MENULOG, "3) Police Officer");
+                LOGGER.log(MENULOG, "4) Parking Enforcement Officer");
+                LOGGER.log(MENULOG, "5) Professor");
+                LOGGER.log(MENULOG, "6) Undergraduate Student");
+                LOGGER.log(MENULOG, "7) Graduate Student");
                 infiniteloop:
                 while (true) {
                     String input2 = scan.nextLine();
@@ -202,7 +202,7 @@ public final class Test {
                             o.getPersonList().add(new GraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0, ClassLevels.FRESHMAN));
                             break infiniteloop;
                         default:
-                            logger.warn("User has inputted a bad polymorph menu option");
+                            LOGGER.warn("User has inputted a bad polymorph menu option");
                     }
                 }
                 break;
@@ -210,18 +210,18 @@ public final class Test {
                 o.getPersonList().add(new UndergraduateStudent(firstName, lastName, "1640298", new HashSet<>(), 0, ClassLevels.FRESHMAN));
                 break;
             } else {
-                logger.log(MENULOG, "Please select y/n");
+                LOGGER.log(MENULOG, "Please select y/n");
             }
         }
-        logger.debug(firstName + " " + lastName + " was successfully created!");
+        LOGGER.debug(firstName + " " + lastName + " was successfully created!");
     }
 
     public final static void modifyPerson(University o, Scanner scan) throws InvalidSelectPersonIntegerException {
         for (int i = 0; i < o.getPersonList().size(); i++) {
             Person p = o.getPersonList().get(i);
-            logger.log(MENULOG, i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
+            LOGGER.log(MENULOG, i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
         }
-        logger.log(MENULOG, "Who would you like to modify?");
+        LOGGER.log(MENULOG, "Who would you like to modify?");
         infiniteloop:
         while (true) {
             String input = scan.nextLine();
@@ -229,50 +229,50 @@ public final class Test {
                 int index = Integer.parseInt(input);
                 if (index >= 0 && index < o.getPersonList().size()) {
                     Person p = o.getPersonList().get(index);
-                    logger.log(MENULOG, "What would you like to modify?");
-                    logger.log(MENULOG, "0) First Name");
-                    logger.log(MENULOG, "1) Last Name");
-                    logger.log(MENULOG, "2) Course (if student or professor)");
+                    LOGGER.log(MENULOG, "What would you like to modify?");
+                    LOGGER.log(MENULOG, "0) First Name");
+                    LOGGER.log(MENULOG, "1) Last Name");
+                    LOGGER.log(MENULOG, "2) Course (if student or professor)");
                     input = scan.nextLine();
                     switch (input) {
                         case "0":
-                            logger.log(MENULOG, "Enter First Name: ");
+                            LOGGER.log(MENULOG, "Enter First Name: ");
                             String firstName = scan.nextLine();
                             p.setFirstName(firstName);
                             break infiniteloop;
                         case "1":
-                            logger.log(MENULOG, "Enter Last Name: ");
+                            LOGGER.log(MENULOG, "Enter Last Name: ");
                             String lastName = scan.nextLine();
                             p.setLastName(lastName);
                             break infiniteloop;
                         case "2":
                             if (p instanceof Student || p instanceof FacultyStaff) {
-                                logger.log(MENULOG, "These are all of the courses offered by the University");
+                                LOGGER.log(MENULOG, "These are all of the courses offered by the University");
                                 for (Course c : o.getCourseSet()) {
-                                    logger.log(MENULOG, c);
+                                    LOGGER.log(MENULOG, c);
                                 }
                                 Set<Course> diff = new HashSet<>();
                                 if (p instanceof Student) {
-                                    logger.log(MENULOG, "These are all of the courses that the student is enrolled in");
+                                    LOGGER.log(MENULOG, "These are all of the courses that the student is enrolled in");
                                     for (Course c : ((Student) p).getSchedule()) {
-                                        logger.log(MENULOG, c);
+                                        LOGGER.log(MENULOG, c);
                                     }
                                     diff = findCourseSetDifference(((Student) p).getSchedule(), o.getCourseSet());
 
                                 } else if (p instanceof FacultyStaff) {
-                                    logger.log(MENULOG, "These are all of the courses that the professor is enrolled in");
+                                    LOGGER.log(MENULOG, "These are all of the courses that the professor is enrolled in");
                                     for (Course c : ((FacultyStaff) p).getSchedule()) {
-                                        logger.log(MENULOG, c);
+                                        LOGGER.log(MENULOG, c);
                                     }
                                     diff = findCourseSetDifference(((FacultyStaff) p).getSchedule(), o.getCourseSet());
                                 }
                                 if (diff.isEmpty()) {
-                                    logger.log(MENULOG, "The Person has already enrolled into all of the courses!");
+                                    LOGGER.log(MENULOG, "The Person has already enrolled into all of the courses!");
                                 } else {
-                                    logger.log(MENULOG, "Which course would you like this Person to enroll in?");
+                                    LOGGER.log(MENULOG, "Which course would you like this Person to enroll in?");
                                     Course[] arr = diff.toArray(new Course[diff.size()]);
                                     for (int i = 0; i < arr.length; i++) {
-                                        logger.log(MENULOG, i + ") " + arr[i]);
+                                        LOGGER.log(MENULOG, i + ") " + arr[i]);
                                     }
                                     try {
                                         input = scan.nextLine();
@@ -283,23 +283,23 @@ public final class Test {
                                             ((FacultyStaff) p).getSchedule().add(arr[num]);
                                         }
                                     } catch (Exception e) {
-                                        logger.error("User has inputted an invalid integer when selecting a course");
+                                        LOGGER.error("User has inputted an invalid integer when selecting a course");
                                         throw new InvalidSelectCourseIntegerException("User has inputted an invalid integer when selecting a course", e);
                                     }
                                 }
                             } else {
-                                logger.log(MENULOG, "This Person is not a student or professor");
+                                LOGGER.log(MENULOG, "This Person is not a student or professor");
                             }
                             break infiniteloop;
 
                     }
                 }
             } catch (Exception e) {
-                logger.error("User has inputted an invalid integer when selecting a person during modification");
+                LOGGER.error("User has inputted an invalid integer when selecting a person during modification");
                 throw new InvalidSelectPersonIntegerException("User has inputted an invalid integer when selecting a person during modification", e);
             }
         }
-        logger.debug("Successfully modified!");
+        LOGGER.debug("Successfully modified!");
     }
 
     public final static Set<Course> findCourseSetDifference(Set<Course> o1, Set<Course> o2) {
@@ -321,9 +321,9 @@ public final class Test {
     public final static void deletePerson(University o, Scanner scan, Stack<Person> personStack, Map<Integer, Person> personMap) throws InvalidSelectPersonIntegerException {
         for (int i = 0; i < o.getPersonList().size(); i++) {
             Person p = o.getPersonList().get(i);
-            logger.log(MENULOG, i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
+            LOGGER.log(MENULOG, i + ") " + p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
         }
-        logger.log(MENULOG, "Who would you like to delete?");
+        LOGGER.log(MENULOG, "Who would you like to delete?");
         infiniteloop:
         while (true) {
             String input = scan.nextLine();
@@ -337,53 +337,53 @@ public final class Test {
                     break infiniteloop;
                 }
             } catch (Exception e) {
-                logger.error("User has inputted an invalid integer when selecting a person during deletion");
+                LOGGER.error("User has inputted an invalid integer when selecting a person during deletion");
                 throw new InvalidSelectPersonIntegerException("User has inputted an invalid integer when selecting a person during deletion", e);
             }
         }
-        logger.debug("Successfully deleted!");
+        LOGGER.debug("Successfully deleted!");
     }
 
     public final static void createCourse(University o, Scanner scan) throws InvalidSelectCourseIntegerException {
-        logger.log(MENULOG, "Input course title:");
+        LOGGER.log(MENULOG, "Input course title:");
         String courseTitle = scan.nextLine();
-        logger.log(MENULOG, "Input major:");
+        LOGGER.log(MENULOG, "Input major:");
         String major = scan.nextLine();
         infiniteloop:
         while (true) {
-            logger.log(MENULOG, "Input days of the week as 7 bits. For example, 0101000 represents Mondays and Wednesdays");
+            LOGGER.log(MENULOG, "Input days of the week as 7 bits. For example, 0101000 represents Mondays and Wednesdays");
             String days = scan.nextLine();
             if (Course.isDaysValid(days)) {
                 try {
-                    logger.log(MENULOG, "At what hour of the day does this class start? Pick a number in the range [0, 23])");
+                    LOGGER.log(MENULOG, "At what hour of the day does this class start? Pick a number in the range [0, 23])");
                     int hours = scan.nextInt();
-                    logger.log(MENULOG, "At what minutes does it start? Pick a number in the range [0, 59]");
+                    LOGGER.log(MENULOG, "At what minutes does it start? Pick a number in the range [0, 59]");
                     int minutes = scan.nextInt();
                     o.getCourseSet().add(new Course(courseTitle, major, days, LocalTime.of(hours, minutes), BuildingNumbers.B101));
                     break infiniteloop;
                 } catch (Exception e) {
-                    logger.error("User has inputted an invalid integer when creating course");
-                    throw new InvalidSelectCourseIntegerException("User has inputted an invalid integer when creating course" ,e);
+                    LOGGER.error("User has inputted an invalid integer when creating course");
+                    throw new InvalidSelectCourseIntegerException("User has inputted an invalid integer when creating course", e);
                 }
             }
-            logger.warn("User has inputted an invalid integer when selecting a person during deletion");
+            LOGGER.warn("User has inputted an invalid integer when selecting a person during deletion");
         }
-        logger.debug(courseTitle + " has been successfully created!");
+        LOGGER.debug(courseTitle + " has been successfully created!");
 
     }
 
-    public final static void viewCourseInfo(University o){
+    public final static void viewCourseInfo(University o) {
         Course[] arr = o.getCourseSet().toArray(new Course[o.getCourseSet().size()]);
-        if(arr.length == 0){
-            logger.log(MENULOG, "There are currently no courses");
+        if (arr.length == 0) {
+            LOGGER.log(MENULOG, "There are currently no courses");
             return;
         }
         // Example usage of custom LinkedList
         MyLinkedList<String> list = new MyLinkedList<>();
-        for(Course c : arr){
+        for (Course c : arr) {
             list.add(c.toString());
         }
-        logger.log(MENULOG, list.toString());
+        LOGGER.log(MENULOG, list.toString());
     }
 
     public final static void testPerson(University o) {
@@ -394,23 +394,23 @@ public final class Test {
 
     public final static void viewSchedule(University o) {
         for (Course c : o.getCourseSet()) {
-            logger.log(MENULOG, c);
+            LOGGER.log(MENULOG, c);
             boolean isEmpty = true;
             for (Person p : o.getPersonList()) {
                 if (p instanceof Student) {
                     if (((Student) p).getSchedule().contains(c)) {
-                        logger.log(MENULOG, p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
+                        LOGGER.log(MENULOG, p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
                         isEmpty = false;
                     }
                 } else if (p instanceof FacultyStaff) {
                     if (((FacultyStaff) p).getSchedule().contains(c)) {
-                        logger.log(MENULOG, p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
+                        LOGGER.log(MENULOG, p.getFirstName() + " " + p.getLastName() + " - " + p.getClass().getSimpleName());
                         isEmpty = false;
                     }
                 }
             }
             if (isEmpty) {
-                logger.debug("No one is taking this course.");
+                LOGGER.debug("No one is taking this course.");
             }
         }
     }

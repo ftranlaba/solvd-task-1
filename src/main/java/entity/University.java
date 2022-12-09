@@ -1,12 +1,8 @@
 package entity;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.HashSet;
-
 import entity.person.Person;
+
+import java.util.*;
 
 public class University {
     private String name;

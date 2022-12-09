@@ -1,16 +1,12 @@
 package entity.person.student;
 
-import java.util.Set;
-
 import entity.Course;
-
-import java.util.HashSet;
-
 import entity.person.Person;
 import enums.ClassLevels;
-import enums.ParkingLots;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public abstract class Student extends Person {
     private String studentId;

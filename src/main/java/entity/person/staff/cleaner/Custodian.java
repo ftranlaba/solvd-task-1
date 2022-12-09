@@ -17,7 +17,7 @@ public class Custodian extends CleaningStaff {
 
     @Override
     public void doWork() {
-        System.out.println(this.getFirstName() + " " + this.getLastName() + " is cleaning the classroom");
+        LOGGER.info(this.getFirstName() + " " + this.getLastName() + " is cleaning the classroom");
     }
 
     public int getTotalFacilitiesCleaned() {
