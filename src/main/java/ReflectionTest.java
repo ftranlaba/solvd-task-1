@@ -7,13 +7,17 @@ import entity.person.staff.enforcement.PoliceOfficer;
 import entity.person.staff.faculty.Professor;
 import entity.person.student.GraduateStudent;
 import entity.person.student.UndergraduateStudent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ReflectionTest {
+    private static Logger logger = LogManager.getLogger("TESTLOGGER");
     public static void print(Object o) {
         System.out.println(o);
     }
@@ -32,29 +36,30 @@ public class ReflectionTest {
         list.stream()
                 .forEach((o) -> {
                     Class obj = o.getClass();
-                    print("Class name: " + obj.getName());
-                    print("Fields:");
+                    logger.info("Class name: " + obj.getName());
+                    logger.info("Fields:");
                     Arrays.stream(obj.getDeclaredFields())
                             .forEach(fieldObj -> {
                                 String fieldHeader = fieldObj.toString();
-                                System.out.print("\t" + fieldHeader + "\n");
+                                logger.info(fieldHeader);
                             });
-                    print("Constructors:");
+                    logger.info("Constructors:");
                     Arrays.stream(obj.getConstructors())
                             .forEach(constructObj -> {
                                 String constructHeader = constructObj.toString();
-                                System.out.print("\t" + constructHeader + "\n");
+                                logger.info(constructHeader);
                             });
-                    print("Methods:");
+                    logger.info("Methods:");
                     Arrays.stream(obj.getMethods())
                             .forEach((methodObj) -> {
                                 String methodHeader = Modifier.toString(methodObj.getModifiers()) + " " + methodObj.getReturnType() + " " + methodObj.getName();
-                                System.out.print("\t" + methodHeader);
-                                System.out.print("(");
-                                Arrays.stream(methodObj.getParameters()).forEach(parameter -> System.out.print(parameter.toString() + ","));
-                                System.out.print(")\n");
+                                String s = "(";
+                                for(Parameter param : methodObj.getParameters()){
+                                    s += param.toString() + ",";
+                                }
+                                s += ")";
+                                logger.info(methodHeader + s);
                             });
-                    print("");
                 });
     }
 }
