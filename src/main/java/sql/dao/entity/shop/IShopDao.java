@@ -1,7 +1,7 @@
 package sql.dao.entity.shop;
 
 import sql.dao.IDao;
-import sql.datamodels.entity.*;
+import sql.datamodels.entity.Shop;
 
 import java.sql.Connection;
 import java.sql.SQLException;

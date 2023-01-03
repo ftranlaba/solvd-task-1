@@ -1,9 +1,8 @@
 package sql.datamodels.entity;
 
-import java.sql.Timestamp;
 import java.util.Objects;
 
-public class Product extends Entity{
+public class Product extends Entity {
     int price, amount;
 
     public Product(String name, int price, int amount) {
@@ -12,7 +11,7 @@ public class Product extends Entity{
         this.amount = amount;
     }
 
-    public Product(Object[] arr){
+    public Product(Object[] arr) {
         super(arr[0] + "");
         this.price = Integer.parseInt(arr[1] + "");
         this.amount = Integer.parseInt(arr[2] + "");

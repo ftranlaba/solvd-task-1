@@ -1,6 +1,6 @@
 package sql.datamodels.person;
 
-public class Customer extends Person{
+public class Customer extends Person {
     public Customer() {
         super();
     }

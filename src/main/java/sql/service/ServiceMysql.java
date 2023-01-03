@@ -17,7 +17,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ServiceMysql implements IService{ // String url, String user, String pass, int size
+public class ServiceMysql implements IService { // String url, String user, String pass, int size
     private final static JDBCConnectionPool pool = new JDBCConnectionPool("jdbc:mysql://localhost:3306/mydb", "root", "", 10);
     private final static ICityDao cityDao = new CityDaoMysql();
     private final static ICountryDao countryDao = new CountryDaoMysql();
@@ -25,7 +25,7 @@ public class ServiceMysql implements IService{ // String url, String user, Strin
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     @Override
-    public City findCity(int id){
+    public City findCity(int id) {
         Connection conn = pool.getConnection();
         City output = null;
         try {
@@ -38,7 +38,7 @@ public class ServiceMysql implements IService{ // String url, String user, Strin
     }
 
     @Override
-    public List<City> findAllCities(){
+    public List<City> findAllCities() {
         Connection conn = pool.getConnection();
         List<City> output = null;
         try {
@@ -51,18 +51,17 @@ public class ServiceMysql implements IService{ // String url, String user, Strin
     }
 
     @Override
-    public void createCity(City o){
+    public void createCity(City o) {
         Connection conn = pool.getConnection();
-        try{
+        try {
             cityDao.save(conn, o);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             LOGGER.error(e);
         }
     }
 
     @Override
-    public Country findCountry(int id){
+    public Country findCountry(int id) {
         Connection conn = pool.getConnection();
         Country output = null;
         try {
@@ -75,7 +74,7 @@ public class ServiceMysql implements IService{ // String url, String user, Strin
     }
 
     @Override
-    public List<Country> findAllCountries(){
+    public List<Country> findAllCountries() {
         Connection conn = pool.getConnection();
         List<Country> output = null;
         try {
@@ -88,7 +87,7 @@ public class ServiceMysql implements IService{ // String url, String user, Strin
     }
 
     @Override
-    public Manufacturer findManufacturer(int id){
+    public Manufacturer findManufacturer(int id) {
         Connection conn = pool.getConnection();
         Manufacturer output = null;
         try {
@@ -101,7 +100,7 @@ public class ServiceMysql implements IService{ // String url, String user, Strin
     }
 
     @Override
-    public List<Manufacturer> findAllManufacturers(){
+    public List<Manufacturer> findAllManufacturers() {
         Connection conn = pool.getConnection();
         List<Manufacturer> output = null;
         try {

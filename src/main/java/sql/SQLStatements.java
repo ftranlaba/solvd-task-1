@@ -14,19 +14,18 @@ public class SQLStatements {
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "")){
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "")) {
             Statement stmt = conn.createStatement();
             List<String> insertStatements = getSqlStatements();
-            for(String s : insertStatements){
+            for (String s : insertStatements) {
                 stmt.execute(s);
             }
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             LOGGER.error(e);
         }
     }
 
-    public static List<String> getSqlStatements(){
+    public static List<String> getSqlStatements() {
         List<String> list = new ArrayList<>();
         list.addAll(getInsertStatements());
         list.addAll(getUpdateStatements());
@@ -39,7 +38,7 @@ public class SQLStatements {
         return list;
     }
 
-    public static List<String> getInsertStatements(){
+    public static List<String> getInsertStatements() {
         List<String> list = new ArrayList<>();
         list.add("INSERT INTO cities(name) VALUES ('Pomona')");
         list.add("INSERT INTO states(name) VALUES ('California')");
@@ -54,7 +53,7 @@ public class SQLStatements {
         return list;
     }
 
-    public static List<String> getUpdateStatements(){
+    public static List<String> getUpdateStatements() {
         List<String> list = new ArrayList<>();
         list.add("UPDATE cities SET name = 'Buffalo' WHERE IDCITIES = 1");
         list.add("UPDATE states SET name = 'New York' WHERE IDSTATES = 1");
@@ -69,7 +68,7 @@ public class SQLStatements {
         return list;
     }
 
-    public static List<String> getDeleteStatements(){
+    public static List<String> getDeleteStatements() {
         List<String> list = new ArrayList<>();
         list.add("DELETE FROM orders");
         list.add("DELETE FROM customers");
@@ -84,7 +83,7 @@ public class SQLStatements {
         return list;
     }
 
-    public static List<String> getAlterStatements(){
+    public static List<String> getAlterStatements() {
         List<String> list = new ArrayList<>();
         list.add("ALTER TABLE states ADD Capital varchar(25)");
         list.add("ALTER TABLE states ADD Executive varchar(25)");
@@ -94,7 +93,7 @@ public class SQLStatements {
         return list;
     }
 
-    public static List<String> getJoinStatements(){
+    public static List<String> getJoinStatements() {
         List<String> list = new ArrayList<>();
         list.add("SELECT * FROM customers\n" +
                 "INNER JOIN customer_phonenumbers ON customers.id_customer = customer_phonenumbers.id_customer\n" +
@@ -116,7 +115,7 @@ public class SQLStatements {
         return list;
     }
 
-    public static List<String> getAggregateWithoutHaving(){
+    public static List<String> getAggregateWithoutHaving() {
         List<String> list = new ArrayList<>();
         list.add("SELECT COUNT(id_customer), first_name FROM customers GROUP BY first_name");
         list.add("SELECT COUNT(id_employee), first_name FROM employees GROUP BY first_name");
@@ -128,7 +127,7 @@ public class SQLStatements {
         return list;
     }
 
-    public static List<String> getAggregateWithHaving(){
+    public static List<String> getAggregateWithHaving() {
         List<String> list = new ArrayList<>();
         list.add("SELECT COUNT(id_customer), first_name FROM customers GROUP BY first_name HAVING COUNT(id_customer) > 5");
         list.add("SELECT COUNT(id_employee), first_name FROM employees GROUP BY first_name HAVING COUNT(LASTNAME) = 1");

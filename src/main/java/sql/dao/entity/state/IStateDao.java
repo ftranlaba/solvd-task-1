@@ -1,7 +1,7 @@
 package sql.dao.entity.state;
 
 import sql.dao.IDao;
-import sql.datamodels.entity.*;
+import sql.datamodels.entity.State;
 
 import java.sql.Connection;
 import java.sql.SQLException;

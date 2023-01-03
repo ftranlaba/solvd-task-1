@@ -5,7 +5,9 @@ import sql.datamodels.entity.Shop;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class ShopDaoMysql implements IShopDao {
 
@@ -17,19 +19,19 @@ public class ShopDaoMysql implements IShopDao {
     }
 
     @Override
-    public List getAll(Connection conn) throws SQLException{
+    public List getAll(Connection conn) throws SQLException {
         //public Shop(int zipcode)
         String sql = "SELECT zipcode FROM shops";
         List<Object[]> list = genericGet(conn, sql);
         List<Shop> output = new ArrayList<>();
-        for(Object[] o : list){
+        for (Object[] o : list) {
             output.add(new Shop(o));
         }
         return output;
     }
 
     @Override
-    public void save(Connection conn, Shop o) throws SQLException{
+    public void save(Connection conn, Shop o) throws SQLException {
         String sql = "INSERT INTO shops(zipcode) VALUES (?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, o.getZipcode());
@@ -38,7 +40,7 @@ public class ShopDaoMysql implements IShopDao {
     }
 
     @Override
-    public void update(Connection conn, Shop o, int id) throws SQLException{
+    public void update(Connection conn, Shop o, int id) throws SQLException {
         String sql = "UPDATE shops SET zipcode = ? WHERE id_shop = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, o.getZipcode());
@@ -47,7 +49,7 @@ public class ShopDaoMysql implements IShopDao {
     }
 
     @Override
-    public void delete(Connection conn, int id) throws SQLException{
+    public void delete(Connection conn, int id) throws SQLException {
         String sql = "DELETE FROM shops WHERE id_shop = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, id);

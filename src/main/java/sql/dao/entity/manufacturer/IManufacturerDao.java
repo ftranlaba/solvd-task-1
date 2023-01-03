@@ -1,7 +1,6 @@
 package sql.dao.entity.manufacturer;
 
 import sql.dao.IDao;
-import sql.datamodels.entity.Country;
 import sql.datamodels.entity.Manufacturer;
 
 import java.sql.Connection;

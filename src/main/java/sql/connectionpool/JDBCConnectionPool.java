@@ -10,11 +10,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class JDBCConnectionPool {
+    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
     private String url, user, pass;
     private ConcurrentMap<Connection, Boolean> map;
-    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
-    private JDBCConnectionPool(){
+    private JDBCConnectionPool() {
         this.url = "";
         this.user = "";
         this.pass = "";
@@ -41,40 +41,38 @@ public class JDBCConnectionPool {
         this.pass = pass;
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         Connection output = map.keySet().stream()
                 .filter(k -> !map.get(k))
                 .findAny().orElse(null);
         if (output != null) {
-            synchronized (output){
-                if(!map.get(output))
+            synchronized (output) {
+                if (!map.get(output))
                     map.put(output, true);
-                else{
+                else {
                     output = getConnection();
                 }
             }
-        }
-        else{
+        } else {
             output = getConnection();
         }
         return output;
     }
 
-    public void returnConnection(Connection o){
+    public void returnConnection(Connection o) {
         map.put(o, false);
     }
 
-    public void createConnection(){
+    public void createConnection() {
         try {
             map.put(DriverManager.getConnection(url, user, pass), false);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             LOGGER.error("SQL ERROR");
         }
     }
 
-    public void createConnection(int size){
-        for(int i = 0; i < size; i++){
+    public void createConnection(int size) {
+        for (int i = 0; i < size; i++) {
             createConnection();
         }
     }

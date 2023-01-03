@@ -1,11 +1,11 @@
 package sql.datamodels.entity;
 
-public class Shop extends Zipcode{
+public class Shop extends Zipcode {
     public Shop(int zipcode) {
         super(zipcode);
     }
 
-    public Shop(Object[] arr){
+    public Shop(Object[] arr) {
         super(Integer.parseInt(arr[0] + ""));
     }
 
