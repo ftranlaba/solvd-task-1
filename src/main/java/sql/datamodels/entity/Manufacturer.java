@@ -2,7 +2,7 @@ package sql.datamodels.entity;
 
 import java.util.Objects;
 
-public class Manufacturer extends Entity{
+public class Manufacturer extends Entity {
     private int year;
 
     public Manufacturer(String name, int year) {
@@ -10,7 +10,7 @@ public class Manufacturer extends Entity{
         this.year = year;
     }
 
-    public Manufacturer(Object[] arr){
+    public Manufacturer(Object[] arr) {
         super(arr[0] + "");
         year = Integer.parseInt(arr[1] + "");
     }

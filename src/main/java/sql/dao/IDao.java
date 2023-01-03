@@ -1,7 +1,5 @@
 package sql.dao;
 
-import sql.datamodels.person.Customer;
-
 import java.sql.*;
 import java.util.*;
 
@@ -24,7 +22,7 @@ public interface IDao<T> {
         for (int i = 1; i <= columnCount; i++) {
             map.put(meta.getColumnName(i), new ArrayList<>());
         }
-        while (rs.next()){
+        while (rs.next()) {
             for (int i = 1; i <= columnCount; i++) {
                 map.get(meta.getColumnName(i)).add(rs.getObject(i));
             }
@@ -36,7 +34,7 @@ public interface IDao<T> {
 
     default Map<String, List<Object>> boilerPlateGet(Connection conn, String sql, int id) throws SQLException {
         ResultSet result = null;
-        Map<String, List<Object>> map =  null;
+        Map<String, List<Object>> map = null;
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, id);
         result = stmt.executeQuery();
@@ -47,7 +45,7 @@ public interface IDao<T> {
 
     default Map<String, List<Object>> boilerPlateGet(Connection conn, String sql) throws SQLException {
         ResultSet result = null;
-        Map<String, List<Object>> map =  null;
+        Map<String, List<Object>> map = null;
         PreparedStatement stmt = conn.prepareStatement(sql);
         result = stmt.executeQuery();
         map = resultSetToMap(result);
@@ -55,16 +53,16 @@ public interface IDao<T> {
         return map;
     }
 
-    default Object[] genericGet(Connection conn, String sql, int id) throws SQLException{
+    default Object[] genericGet(Connection conn, String sql, int id) throws SQLException {
         // each key in the map represents a column
         // each Object inside the List represents a row value of the column
         Map<String, List<Object>> map = boilerPlateGet(conn, sql);
         Object[] rowData = null;
-        if(map != null){
+        if (map != null) {
             rowData = new Object[map.size()];
             Iterator<List<Object>> iter = map.values().iterator();
             int i = 0;
-            while(iter.hasNext()){
+            while (iter.hasNext()) {
                 rowData[i] = iter.next().get(0);
                 i++;
             }
@@ -73,14 +71,14 @@ public interface IDao<T> {
         return rowData;
     }
 
-    default List<Object[]> genericGet(Connection conn, String sql) throws SQLException{
+    default List<Object[]> genericGet(Connection conn, String sql) throws SQLException {
         // each key in the map represents a column
         // each object inside the List represents a row value of the column
         Map<String, List<Object>> map = boilerPlateGet(conn, sql);
         List<Object[]> output = new ArrayList<>();
-        if(map != null){
+        if (map != null) {
             int rowCount = map.values().stream().findAny().orElse(new ArrayList<>()).size();
-            for(int listIndex = 0; listIndex < rowCount; listIndex++) {
+            for (int listIndex = 0; listIndex < rowCount; listIndex++) {
                 Object[] rowData = new Object[map.size()];
                 Iterator<List<Object>> iter = map.values().iterator();
                 int i = 0;

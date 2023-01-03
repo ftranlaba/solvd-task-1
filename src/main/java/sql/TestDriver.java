@@ -18,7 +18,7 @@ public class TestDriver {
         service.createCity(new City("Miami"));
         service.createCity(new City("San Francisco"));
         List<City> list = service.findAllCities();
-        for(City o : list){
+        for (City o : list) {
             LOGGER.info(o.getName());
         }
     }

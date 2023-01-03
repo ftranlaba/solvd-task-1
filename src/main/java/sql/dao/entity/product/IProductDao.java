@@ -1,9 +1,6 @@
 package sql.dao.entity.product;
 
 import sql.dao.IDao;
-import sql.datamodels.entity.Country;
-import sql.datamodels.entity.Manufacturer;
-import sql.datamodels.entity.Order;
 import sql.datamodels.entity.Product;
 
 import java.sql.Connection;

@@ -11,7 +11,7 @@ public class Order {
         this.endDate = endDate;
     }
 
-    public Order(Object[] arr){
+    public Order(Object[] arr) {
         this.startDate = (Timestamp) arr[0];
         this.endDate = (Timestamp) arr[1];
     }
