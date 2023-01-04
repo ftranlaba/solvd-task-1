@@ -3,25 +3,23 @@ package sql.dao.person.customer;
 import sql.dao.IDao;
 import sql.datamodels.person.Customer;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerDao extends IDao<Customer> {
 
     @Override
-    Optional get(Connection conn, int id) throws SQLException;
+    Optional get(int id);
 
     @Override
-    List getAll(Connection conn) throws SQLException;
+    List getAll();
 
     @Override
-    void save(Connection conn, Customer o) throws SQLException;
+    void save(Customer o);
 
     @Override
-    void update(Connection conn, Customer o, int id) throws SQLException;
+    void update(Customer o, int id);
 
     @Override
-    void delete(Connection conn, int id) throws SQLException;
+    void delete(int id);
 }

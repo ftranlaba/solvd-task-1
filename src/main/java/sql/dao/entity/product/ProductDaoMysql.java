@@ -1,28 +1,27 @@
 package sql.dao.entity.product;
 
+import sql.dao.MysqlDao;
+import sql.dao.MysqlType;
 import sql.datamodels.entity.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ProductDaoMysql implements IProductDao {
+public class ProductDaoMysql extends MysqlDao implements IProductDao {
 
     @Override
-    public Optional get(Connection conn, int id) throws SQLException {
+    public Optional get(int id) {
         //public Product(String name, int price, int amount)
         String sql = "SELECT name, price, amount FROM products WHERE id_product = ?";
-        return Optional.ofNullable(new Product(genericGet(conn, sql, id)));
+        return Optional.ofNullable(new Product(getWithTryCatch(sql, id)));
     }
 
     @Override
-    public List getAll(Connection conn) throws SQLException {
+    public List getAll() {
         //public Product(String name, int price, int amount)
         String sql = "SELECT name, price, amount FROM products";
-        List<Object[]> list = genericGet(conn, sql);
+        List<Object[]> list = getWithTryCatch(sql);
         List<Product> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Product(o));
@@ -31,34 +30,43 @@ public class ProductDaoMysql implements IProductDao {
     }
 
     @Override
-    public void save(Connection conn, Product o) throws SQLException {
+    public void save(Product o) {
         String sql = "INSERT INTO products(name, price, amount) VALUES (?, ?, ?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, o.getName());
-        stmt.setInt(2, o.getPrice());
-        stmt.setInt(3, o.getAmount());
-        stmt.execute();
-        stmt.close();
+
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getName());
+        valueList.add(o.getPrice());
+        valueList.add(o.getAmount());
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.STRING);
+        typeList.add(MysqlType.INT);
+        typeList.add(MysqlType.INT);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void update(Connection conn, Product o, int id) throws SQLException {
+    public void update(Product o, int id) {
         String sql = "UPDATE products SET name = ?, price = ?, amount = ? WHERE id_product = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, o.getName());
-        stmt.setInt(2, o.getPrice());
-        stmt.setInt(3, o.getAmount());
-        stmt.setInt(4, id);
-        stmt.execute();
-        stmt.close();
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getName());
+        valueList.add(o.getPrice());
+        valueList.add(o.getAmount());
+        valueList.add(id);
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.STRING);
+        typeList.add(MysqlType.INT);
+        typeList.add(MysqlType.INT);
+        typeList.add(MysqlType.INT);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void delete(Connection conn, int id) throws SQLException {
+    public void delete(int id) {
         String sql = "DELETE FROM products WHERE id_product = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, id);
-        stmt.execute();
-        stmt.close();
+        deleteWithTryCatch(sql, id);
     }
 }

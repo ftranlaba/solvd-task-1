@@ -1,29 +1,28 @@
 package sql.dao.entity.state;
 
 
+import sql.dao.MysqlDao;
+import sql.dao.MysqlType;
 import sql.datamodels.entity.State;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StateDaoMysql implements IStateDao {
+public class StateDaoMysql extends MysqlDao implements IStateDao {
 
     @Override
-    public Optional get(Connection conn, int id) throws SQLException {
+    public Optional get(int id) {
         //public State(String name)
         String sql = "SELECT name FROM states WHERE id_state = ?";
-        return Optional.ofNullable(new State(genericGet(conn, sql, id)));
+        return Optional.ofNullable(new State(getWithTryCatch(sql, id)));
     }
 
     @Override
-    public List getAll(Connection conn) throws SQLException {
+    public List getAll() {
         //public State(String name)
         String sql = "SELECT name FROM states";
-        List<Object[]> list = genericGet(conn, sql);
+        List<Object[]> list = getWithTryCatch(sql);
         List<State> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new State(o));
@@ -32,30 +31,34 @@ public class StateDaoMysql implements IStateDao {
     }
 
     @Override
-    public void save(Connection conn, State o) throws SQLException {
+    public void save(State o) {
         String sql = "INSERT INTO states(name) VALUES (?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, o.getName());
-        stmt.execute();
-        stmt.close();
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getName());
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.STRING);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void update(Connection conn, State o, int id) throws SQLException {
+    public void update(State o, int id) {
         String sql = "UPDATE states SET name = ? WHERE id_state = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, o.getName());
-        stmt.setInt(2, id);
-        stmt.execute();
-        stmt.close();
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getName());
+        valueList.add(id);
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.STRING);
+        typeList.add(MysqlType.INT);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void delete(Connection conn, int id) throws SQLException {
+    public void delete(int id) {
         String sql = "DELETE FROM states WHERE id_state = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, id);
-        stmt.execute();
-        stmt.close();
+        deleteWithTryCatch(sql, id);
     }
 }

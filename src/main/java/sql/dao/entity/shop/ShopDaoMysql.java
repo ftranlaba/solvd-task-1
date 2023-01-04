@@ -1,28 +1,27 @@
 package sql.dao.entity.shop;
 
+import sql.dao.MysqlDao;
+import sql.dao.MysqlType;
 import sql.datamodels.entity.Shop;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ShopDaoMysql implements IShopDao {
+public class ShopDaoMysql extends MysqlDao implements IShopDao {
 
     @Override
-    public Optional get(Connection conn, int id) throws SQLException {
+    public Optional get(int id) {
         //public Shop(int zipcode)
         String sql = "SELECT zipcode FROM shops WHERE id_shop = ?";
-        return Optional.ofNullable(new Shop(genericGet(conn, sql, id)));
+        return Optional.ofNullable(new Shop(getWithTryCatch(sql, id)));
     }
 
     @Override
-    public List getAll(Connection conn) throws SQLException {
+    public List getAll() {
         //public Shop(int zipcode)
         String sql = "SELECT zipcode FROM shops";
-        List<Object[]> list = genericGet(conn, sql);
+        List<Object[]> list = getWithTryCatch(sql);
         List<Shop> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Shop(o));
@@ -31,29 +30,34 @@ public class ShopDaoMysql implements IShopDao {
     }
 
     @Override
-    public void save(Connection conn, Shop o) throws SQLException {
+    public void save(Shop o) {
         String sql = "INSERT INTO shops(zipcode) VALUES (?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, o.getZipcode());
-        stmt.execute();
-        stmt.close();
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getZipcode());
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.INT);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void update(Connection conn, Shop o, int id) throws SQLException {
+    public void update(Shop o, int id) {
         String sql = "UPDATE shops SET zipcode = ? WHERE id_shop = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, o.getZipcode());
-        stmt.execute();
-        stmt.close();
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getZipcode());
+        valueList.add(id);
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.INT);
+        typeList.add(MysqlType.INT);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void delete(Connection conn, int id) throws SQLException {
+    public void delete(int id) {
         String sql = "DELETE FROM shops WHERE id_shop = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, id);
-        stmt.execute();
-        stmt.close();
+        deleteWithTryCatch(sql, id);
     }
 }

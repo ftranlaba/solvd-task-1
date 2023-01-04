@@ -3,24 +3,22 @@ package sql.dao.person.employee;
 import sql.dao.IDao;
 import sql.datamodels.person.Employee;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public interface IEmployeeDao extends IDao<Employee> {
     @Override
-    Optional get(Connection conn, int id) throws SQLException;
+    Optional get(int id);
 
     @Override
-    List getAll(Connection conn) throws SQLException;
+    List getAll();
 
     @Override
-    void save(Connection conn, Employee o) throws SQLException;
+    void save(Employee o);
 
     @Override
-    void update(Connection conn, Employee o, int id) throws SQLException;
+    void update(Employee o, int id);
 
     @Override
-    void delete(Connection conn, int id) throws SQLException;
+    void delete(int id);
 }
