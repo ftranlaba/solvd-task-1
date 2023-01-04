@@ -26,7 +26,7 @@ public class JDBCConnectionPool {
         this.map = new ConcurrentHashMap<>();
     }
 
-    public JDBCConnectionPool(String url, String user, String pass, int size) {
+    private JDBCConnectionPool(String url, String user, String pass, int size) {
         this.url = url;
         this.user = user;
         this.pass = pass;
@@ -60,7 +60,7 @@ public class JDBCConnectionPool {
         try {
             map.put(DriverManager.getConnection(url, user, pass), false);
         } catch (Exception e) {
-            LOGGER.error("SQL ERROR");
+            LOGGER.error(e);
         }
     }
 
@@ -80,7 +80,7 @@ public class JDBCConnectionPool {
 
     public static synchronized JDBCConnectionPool getInstance() {
         if (instance == null) {
-            instance = new JDBCConnectionPool();
+            instance = new JDBCConnectionPool(p.getProperty("db.url"), p.getProperty("db.user"), p.getProperty("db.password"), 10);
         }
         return instance;
     }
