@@ -3,19 +3,17 @@ package sql.dao.entity.product;
 import sql.dao.IDao;
 import sql.datamodels.entity.Product;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public interface IProductDao extends IDao<Product> {
-    Optional<Product> get(Connection conn, int id) throws SQLException;
+    Optional<Product> get(int id);
 
-    List<Product> getAll(Connection conn) throws SQLException;
+    List<Product> getAll();
 
-    void save(Connection conn, Product o) throws SQLException;
+    void save(Product o);
 
-    void update(Connection conn, Product o, int id) throws SQLException;
+    void update(Product o, int id);
 
-    void delete(Connection conn, int id) throws SQLException;
+    void delete(int id);
 }
