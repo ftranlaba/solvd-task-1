@@ -1,28 +1,27 @@
 package sql.dao.entity.country;
 
+import sql.dao.MysqlDao;
+import sql.dao.MysqlType;
 import sql.datamodels.entity.Country;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CountryDaoMysql implements ICountryDao {
+public class CountryDaoMysql extends MysqlDao implements ICountryDao {
 
     @Override
-    public Optional get(Connection conn, int id) throws SQLException {
+    public Optional get(int id) {
         //public Country(String name)
         String sql = "SELECT name FROM countries WHERE id_country = ?";
-        return Optional.ofNullable(new Country(genericGet(conn, sql, id)));
+        return Optional.ofNullable(new Country(getWithTryCatch(sql, id)));
     }
 
     @Override
-    public List getAll(Connection conn) throws SQLException {
+    public List getAll() {
         //public Country(String name)
         String sql = "SELECT name FROM countries";
-        List<Object[]> list = genericGet(conn, sql);
+        List<Object[]> list = getWithTryCatch(sql);
         List<Country> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Country(o));
@@ -31,30 +30,34 @@ public class CountryDaoMysql implements ICountryDao {
     }
 
     @Override
-    public void save(Connection conn, Country o) throws SQLException {
+    public void save(Country o) {
         String sql = "INSERT INTO countries(name) VALUES (?)";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, o.getName());
-        stmt.execute();
-        stmt.close();
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getName());
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.STRING);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void update(Connection conn, Country o, int id) throws SQLException {
+    public void update(Country o, int id) {
         String sql = "UPDATE countries SET name = ? WHERE id_country = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, o.getName());
-        stmt.setInt(2, id);
-        stmt.execute();
-        stmt.close();
+        List<Object> valueList = new ArrayList<>();
+        valueList.add(o.getName());
+        valueList.add(id);
+
+        List<MysqlType> typeList = new ArrayList<>();
+        typeList.add(MysqlType.STRING);
+        typeList.add(MysqlType.INT);
+
+        saveWithTryCatch(sql, valueList, typeList);
     }
 
     @Override
-    public void delete(Connection conn, int id) throws SQLException {
+    public void delete(int id) {
         String sql = "DELETE FROM countries WHERE id_country = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, id);
-        stmt.execute();
-        stmt.close();
+        deleteWithTryCatch(sql, id);
     }
 }
