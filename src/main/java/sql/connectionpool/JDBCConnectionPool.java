@@ -3,28 +3,14 @@ package sql.connectionpool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Objects;
-import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class JDBCConnectionPool {
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
-    private static JDBCConnectionPool instance = null;
-    private static Properties p = new Properties();
-
-    static {
-        try (FileInputStream f = new FileInputStream("src/main/resources/db.properties")) {
-            p.load(f);
-        } catch (IOException e) {
-            LOGGER.info(e);
-        }
-    }
-
     private String url, user, pass;
     private ConcurrentMap<Connection, Boolean> map;
 
@@ -43,11 +29,16 @@ public class JDBCConnectionPool {
         createConnection(size);
     }
 
-    public static synchronized JDBCConnectionPool getInstance() {
-        if (instance == null) {
-            instance = new JDBCConnectionPool();
-        }
-        return instance;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public Connection getConnection() {
@@ -76,7 +67,7 @@ public class JDBCConnectionPool {
         try {
             map.put(DriverManager.getConnection(url, user, pass), false);
         } catch (Exception e) {
-            LOGGER.error(e);
+            LOGGER.error("SQL ERROR");
         }
     }
 
