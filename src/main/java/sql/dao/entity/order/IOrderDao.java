@@ -3,19 +3,17 @@ package sql.dao.entity.order;
 import sql.dao.IDao;
 import sql.datamodels.entity.Order;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public interface IOrderDao extends IDao<Order> {
-    Optional<Order> get(Connection conn, int id) throws SQLException;
+    Optional<Order> get(int id);
 
-    List<Order> getAll(Connection conn) throws SQLException;
+    List<Order> getAll();
 
-    void save(Connection conn, Order o) throws SQLException;
+    void save(Order o);
 
-    void update(Connection conn, Order o, int id) throws SQLException;
+    void update(Order o, int id);
 
-    void delete(Connection conn, int id) throws SQLException;
+    void delete(int id);
 }

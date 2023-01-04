@@ -3,19 +3,17 @@ package sql.dao.entity.shop;
 import sql.dao.IDao;
 import sql.datamodels.entity.Shop;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public interface IShopDao extends IDao<Shop> {
-    Optional<Shop> get(Connection conn, int id) throws SQLException;
+    Optional<Shop> get(int id);
 
-    List<Shop> getAll(Connection conn) throws SQLException;
+    List<Shop> getAll();
 
-    void save(Connection conn, Shop o) throws SQLException;
+    void save(Shop o);
 
-    void update(Connection conn, Shop o, int id) throws SQLException;
+    void update(Shop o, int id);
 
-    void delete(Connection conn, int id) throws SQLException;
+    void delete(int id);
 }
