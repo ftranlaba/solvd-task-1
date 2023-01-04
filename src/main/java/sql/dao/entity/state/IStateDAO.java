@@ -1,12 +1,12 @@
 package sql.dao.entity.state;
 
-import sql.dao.IDao;
+import sql.dao.IBaseDAO;
 import sql.datamodels.entity.State;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IStateDao extends IDao<State> {
+public interface IStateDAO extends IBaseDAO<State> {
     Optional<State> get(int id);
 
     List<State> getAll();

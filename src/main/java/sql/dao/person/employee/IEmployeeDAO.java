@@ -1,12 +1,12 @@
 package sql.dao.person.employee;
 
-import sql.dao.IDao;
+import sql.dao.IBaseDAO;
 import sql.datamodels.person.Employee;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IEmployeeDao extends IDao<Employee> {
+public interface IEmployeeDAO extends IBaseDAO<Employee> {
     @Override
     Optional get(int id);
 

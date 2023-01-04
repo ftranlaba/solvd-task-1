@@ -1,12 +1,12 @@
 package sql.dao.entity.manufacturer;
 
-import sql.dao.IDao;
+import sql.dao.IBaseDAO;
 import sql.datamodels.entity.Manufacturer;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IManufacturerDao extends IDao<Manufacturer> {
+public interface IManufacturerDAO extends IBaseDAO<Manufacturer> {
     Optional<Manufacturer> get(int id);
 
     List<Manufacturer> getAll();

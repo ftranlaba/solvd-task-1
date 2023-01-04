@@ -7,7 +7,7 @@ import sql.connectionpool.JDBCConnectionPool;
 import java.sql.*;
 import java.util.*;
 
-public abstract class MysqlDao {
+public abstract class MySQLDAO {
     private static final JDBCConnectionPool pool = JDBCConnectionPool.getInstance();
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
@@ -123,7 +123,7 @@ public abstract class MysqlDao {
         return list;
     }
 
-    public void saveWithTryCatch(String sql, List<Object> valueList, List<MysqlType> typeList) {
+    public void saveWithTryCatch(String sql, List<Object> valueList, List<MySQLType> typeList) {
         Connection conn = pool.getConnection();
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             setStatementValue(stmt, valueList, typeList);
@@ -137,9 +137,9 @@ public abstract class MysqlDao {
         }
     }
 
-    public void setStatementValue(PreparedStatement stmt, List<Object> valueList, List<MysqlType> typeList) throws SQLException {
+    public void setStatementValue(PreparedStatement stmt, List<Object> valueList, List<MySQLType> typeList) throws SQLException {
         int i = 1;
-        for (MysqlType enumObj : typeList) {
+        for (MySQLType enumObj : typeList) {
             switch (enumObj) {
                 case INT:
                     stmt.setInt(i, (Integer) valueList.get(i - 1));

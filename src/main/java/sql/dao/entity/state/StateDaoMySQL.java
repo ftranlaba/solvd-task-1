@@ -1,15 +1,15 @@
 package sql.dao.entity.state;
 
 
-import sql.dao.MysqlDao;
-import sql.dao.MysqlType;
+import sql.dao.MySQLDAO;
+import sql.dao.MySQLType;
 import sql.datamodels.entity.State;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StateDaoMysql extends MysqlDao implements IStateDao {
+public class StateDaoMySQL extends MySQLDAO implements IStateDAO {
 
     @Override
     public Optional get(int id) {
@@ -36,8 +36,8 @@ public class StateDaoMysql extends MysqlDao implements IStateDao {
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getName());
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -49,9 +49,9 @@ public class StateDaoMysql extends MysqlDao implements IStateDao {
         valueList.add(o.getName());
         valueList.add(id);
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }

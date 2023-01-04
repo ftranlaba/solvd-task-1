@@ -1,6 +1,6 @@
 package sql.dao;
 
-public enum MysqlType {
+public enum MySQLType {
     STRING,
     TIMESTAMP,
     INT

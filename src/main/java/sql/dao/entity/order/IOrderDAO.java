@@ -1,12 +1,12 @@
 package sql.dao.entity.order;
 
-import sql.dao.IDao;
+import sql.dao.IBaseDAO;
 import sql.datamodels.entity.Order;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IOrderDao extends IDao<Order> {
+public interface IOrderDAO extends IBaseDAO<Order> {
     Optional<Order> get(int id);
 
     List<Order> getAll();

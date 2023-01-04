@@ -1,14 +1,14 @@
 package sql.dao.entity.manufacturer;
 
-import sql.dao.MysqlDao;
-import sql.dao.MysqlType;
+import sql.dao.MySQLDAO;
+import sql.dao.MySQLType;
 import sql.datamodels.entity.Manufacturer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ManufacturerDaoMysql extends MysqlDao implements IManufacturerDao {
+public class ManufacturerDaoMySQL extends MySQLDAO implements IManufacturerDAO {
 
     @Override
     public Optional get(int id) {
@@ -36,9 +36,9 @@ public class ManufacturerDaoMysql extends MysqlDao implements IManufacturerDao {
         valueList.add(o.getName());
         valueList.add(o.getYear());
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -51,10 +51,10 @@ public class ManufacturerDaoMysql extends MysqlDao implements IManufacturerDao {
         valueList.add(o.getYear());
         valueList.add(id);
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.INT);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.INT);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }

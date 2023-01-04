@@ -1,14 +1,14 @@
 package sql.dao.person.employee;
 
-import sql.dao.MysqlDao;
-import sql.dao.MysqlType;
+import sql.dao.MySQLDAO;
+import sql.dao.MySQLType;
 import sql.datamodels.person.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class EmployeeDaoMysql extends MysqlDao implements IEmployeeDao {
+public class EmployeeDAOMySQL extends MySQLDAO implements IEmployeeDAO {
 
     @Override
     public Optional get(int id) {
@@ -41,11 +41,11 @@ public class EmployeeDaoMysql extends MysqlDao implements IEmployeeDao {
         valueList.add(o.getAddress());
         valueList.add(o.getZipcode());
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
 
@@ -54,8 +54,8 @@ public class EmployeeDaoMysql extends MysqlDao implements IEmployeeDao {
         valueList.add(o.getPhoneNumber());
 
         typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.STRING);
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.STRING);
 
         saveWithTryCatch(phonesql, valueList, typeList);
     }
@@ -72,12 +72,12 @@ public class EmployeeDaoMysql extends MysqlDao implements IEmployeeDao {
         valueList.add(o.getZipcode());
         valueList.add(id);
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.INT);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.INT);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
 
@@ -87,9 +87,9 @@ public class EmployeeDaoMysql extends MysqlDao implements IEmployeeDao {
         valueList.add(id);
 
         typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.INT);
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(phonesql, valueList, typeList);
 

@@ -1,12 +1,12 @@
 package sql.dao.entity.shop;
 
-import sql.dao.IDao;
+import sql.dao.IBaseDAO;
 import sql.datamodels.entity.Shop;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IShopDao extends IDao<Shop> {
+public interface IShopDAO extends IBaseDAO<Shop> {
     Optional<Shop> get(int id);
 
     List<Shop> getAll();

@@ -1,14 +1,14 @@
 package sql.dao.entity.order;
 
-import sql.dao.MysqlDao;
-import sql.dao.MysqlType;
+import sql.dao.MySQLDAO;
+import sql.dao.MySQLType;
 import sql.datamodels.entity.Order;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class OrderDaoMysql extends MysqlDao implements IOrderDao {
+public class OrderDaoMySQL extends MySQLDAO implements IOrderDAO {
 
     @Override
     public Optional get(int id) {
@@ -36,9 +36,9 @@ public class OrderDaoMysql extends MysqlDao implements IOrderDao {
         valueList.add(o.getStartDate());
         valueList.add(o.getEndDate());
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.TIMESTAMP);
-        typeList.add(MysqlType.TIMESTAMP);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.TIMESTAMP);
+        typeList.add(MySQLType.TIMESTAMP);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -51,10 +51,10 @@ public class OrderDaoMysql extends MysqlDao implements IOrderDao {
         valueList.add(o.getEndDate());
         valueList.add(id);
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.TIMESTAMP);
-        typeList.add(MysqlType.TIMESTAMP);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.TIMESTAMP);
+        typeList.add(MySQLType.TIMESTAMP);
+        typeList.add(MySQLType.INT);
         saveWithTryCatch(sql, valueList, typeList);
     }
 

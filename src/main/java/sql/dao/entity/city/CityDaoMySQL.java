@@ -1,14 +1,14 @@
 package sql.dao.entity.city;
 
-import sql.dao.MysqlDao;
-import sql.dao.MysqlType;
+import sql.dao.MySQLDAO;
+import sql.dao.MySQLType;
 import sql.datamodels.entity.City;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CityDaoMysql extends MysqlDao implements ICityDao {
+public class CityDaoMySQL extends MySQLDAO implements ICityDAO {
 
     @Override
     public Optional get(int id) {
@@ -35,8 +35,8 @@ public class CityDaoMysql extends MysqlDao implements ICityDao {
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getName());
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -48,9 +48,9 @@ public class CityDaoMysql extends MysqlDao implements ICityDao {
         valueList.add(o.getName());
         valueList.add(id);
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.STRING);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.STRING);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }

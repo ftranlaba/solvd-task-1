@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sql.datamodels.entity.City;
 import sql.service.IService;
-import sql.service.ServiceMysql;
+import sql.service.ServiceMySQL;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class TestDriver {
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public static void main(String[] args) {
-        IService service = new ServiceMysql();
+        IService service = new ServiceMySQL();
         service.createCity(new City("Los Angeles"));
         service.createCity(new City("New York"));
         service.createCity(new City("Miami"));

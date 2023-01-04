@@ -2,22 +2,22 @@ package sql.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sql.dao.entity.city.CityDaoMysql;
-import sql.dao.entity.city.ICityDao;
-import sql.dao.entity.country.CountryDaoMysql;
-import sql.dao.entity.country.ICountryDao;
-import sql.dao.entity.manufacturer.IManufacturerDao;
-import sql.dao.entity.manufacturer.ManufacturerDaoMysql;
+import sql.dao.entity.city.CityDaoMySQL;
+import sql.dao.entity.city.ICityDAO;
+import sql.dao.entity.country.CountryDaoMySQL;
+import sql.dao.entity.country.ICountryDAO;
+import sql.dao.entity.manufacturer.IManufacturerDAO;
+import sql.dao.entity.manufacturer.ManufacturerDaoMySQL;
 import sql.datamodels.entity.City;
 import sql.datamodels.entity.Country;
 import sql.datamodels.entity.Manufacturer;
 
 import java.util.List;
 
-public class ServiceMysql implements IService { // String url, String user, String pass, int size
-    private static final ICityDao cityDao = new CityDaoMysql();
-    private static final ICountryDao countryDao = new CountryDaoMysql();
-    private static final IManufacturerDao manufacturerDao = new ManufacturerDaoMysql();
+public class ServiceMySQL implements IService { // String url, String user, String pass, int size
+    private static final ICityDAO cityDao = new CityDaoMySQL();
+    private static final ICountryDAO countryDao = new CountryDaoMySQL();
+    private static final IManufacturerDAO manufacturerDao = new ManufacturerDaoMySQL();
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     @Override

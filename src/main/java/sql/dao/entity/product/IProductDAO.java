@@ -1,12 +1,12 @@
 package sql.dao.entity.product;
 
-import sql.dao.IDao;
+import sql.dao.IBaseDAO;
 import sql.datamodels.entity.Product;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IProductDao extends IDao<Product> {
+public interface IProductDAO extends IBaseDAO<Product> {
     Optional<Product> get(int id);
 
     List<Product> getAll();

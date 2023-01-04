@@ -1,12 +1,12 @@
 package sql.dao.person.customer;
 
-import sql.dao.IDao;
+import sql.dao.IBaseDAO;
 import sql.datamodels.person.Customer;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ICustomerDao extends IDao<Customer> {
+public interface ICustomerDAO extends IBaseDAO<Customer> {
 
     @Override
     Optional get(int id);

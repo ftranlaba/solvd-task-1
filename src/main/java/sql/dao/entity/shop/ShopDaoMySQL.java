@@ -1,14 +1,14 @@
 package sql.dao.entity.shop;
 
-import sql.dao.MysqlDao;
-import sql.dao.MysqlType;
+import sql.dao.MySQLDAO;
+import sql.dao.MySQLType;
 import sql.datamodels.entity.Shop;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ShopDaoMysql extends MysqlDao implements IShopDao {
+public class ShopDaoMySQL extends MySQLDAO implements IShopDAO {
 
     @Override
     public Optional get(int id) {
@@ -35,8 +35,8 @@ public class ShopDaoMysql extends MysqlDao implements IShopDao {
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getZipcode());
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -48,9 +48,9 @@ public class ShopDaoMysql extends MysqlDao implements IShopDao {
         valueList.add(o.getZipcode());
         valueList.add(id);
 
-        List<MysqlType> typeList = new ArrayList<>();
-        typeList.add(MysqlType.INT);
-        typeList.add(MysqlType.INT);
+        List<MySQLType> typeList = new ArrayList<>();
+        typeList.add(MySQLType.INT);
+        typeList.add(MySQLType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
