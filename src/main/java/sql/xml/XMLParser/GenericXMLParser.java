@@ -52,6 +52,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
                 }
             } else {
                 if (c == '/' && potentialElement.charAt(potentialElement.length() - 1) == '<') {
+                    potentialElement = potentialElement.substring(0, potentialElement.length() - 1);
                     Method m = getClassMethod(property, objStack.peek());
                     try {
                         m.invoke(objStack.peek(), potentialElement);
