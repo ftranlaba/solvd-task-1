@@ -88,7 +88,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
     public Method getClassMethod(String s, Class<?> obj) {
         Method[] array = obj.getMethods();
         for (Method m : array) {
-            if (m.getName().contains(s)) return m;
+            if (m.getName().contains("set" + s)) return m;
         }
         return null;
     }
