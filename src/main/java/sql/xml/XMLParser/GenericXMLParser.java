@@ -76,7 +76,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
         try {
             output = fileReader.read();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return output;
     }
