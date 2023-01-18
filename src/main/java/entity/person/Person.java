@@ -6,9 +6,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 
 public abstract class Person {
+    protected static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
     private String firstName;
     private String lastName;
-    protected static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public Person() {
         super();

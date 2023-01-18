@@ -1,7 +1,6 @@
 package sql.datamodels.entity;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "Country")
 public class Country extends Entity {

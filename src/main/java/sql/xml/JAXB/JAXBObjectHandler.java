@@ -48,10 +48,18 @@ public class JAXBObjectHandler {
         this.stateList = stateList;
     }
 
-    @XmlElementWrapper(name="Customers")
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    @XmlElementWrapper(name = "Customers")
     @XmlElement(name = "Customer")
     public void setCustomerList(List<Customer> customerList) {
         this.customerList = customerList;
+    }
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
     }
 
     @XmlElementWrapper(name = "Employees")
@@ -60,10 +68,18 @@ public class JAXBObjectHandler {
         this.employeeList = employeeList;
     }
 
+    public List<City> getCityList() {
+        return cityList;
+    }
+
     @XmlElementWrapper(name = "Cities")
     @XmlElement(name = "City")
     public void setCityList(List<City> cityList) {
         this.cityList = cityList;
+    }
+
+    public List<Country> getCountryList() {
+        return countryList;
     }
 
     @XmlElementWrapper(name = "Countries")
@@ -72,10 +88,18 @@ public class JAXBObjectHandler {
         this.countryList = countryList;
     }
 
+    public List<Manufacturer> getManufacturerList() {
+        return manufacturerList;
+    }
+
     @XmlElementWrapper(name = "Manufacturers")
     @XmlElement(name = "Manufacturer")
     public void setManufacturerList(List<Manufacturer> manufacturerList) {
         this.manufacturerList = manufacturerList;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
     @XmlElementWrapper(name = "Orders")
@@ -84,10 +108,18 @@ public class JAXBObjectHandler {
         this.orderList = orderList;
     }
 
+    public List<Product> getProductList() {
+        return productList;
+    }
+
     @XmlElementWrapper(name = "Products")
     @XmlElement(name = "Product")
     public void setProductList(List<Product> productList) {
         this.productList = productList;
+    }
+
+    public List<Shop> getShopList() {
+        return shopList;
     }
 
     @XmlElementWrapper(name = "Shops")
@@ -96,45 +128,13 @@ public class JAXBObjectHandler {
         this.shopList = shopList;
     }
 
+    public List<State> getStateList() {
+        return stateList;
+    }
+
     @XmlElementWrapper(name = "States")
     @XmlElement(name = "State")
     public void setStateList(List<State> stateList) {
         this.stateList = stateList;
-    }
-
-    public List<Customer> getCustomerList() {
-        return customerList;
-    }
-
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public List<City> getCityList() {
-        return cityList;
-    }
-
-    public List<Country> getCountryList() {
-        return countryList;
-    }
-
-    public List<Manufacturer> getManufacturerList() {
-        return manufacturerList;
-    }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public List<Shop> getShopList() {
-        return shopList;
-    }
-
-    public List<State> getStateList() {
-        return stateList;
     }
 }

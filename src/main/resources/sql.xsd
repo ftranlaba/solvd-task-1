@@ -54,32 +54,32 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="customer" type="personInfo" />
-    <xs:element name="employee" type="personInfo" />
+    <xs:element name="customer" type="personInfo"/>
+    <xs:element name="employee" type="personInfo"/>
     <xs:complexType name="personInfo">
         <xs:sequence>
-            <xs:element name="firstName" type="xs:string" />
-            <xs:element name="lastName" type="xs:string" />
-            <xs:element name="address" type="xs:string" />
-            <xs:element name="phoneType" type="xs:string" />
-            <xs:element name="phoneNumber" type="xs:string" />
-            <xs:element name="zipcode" type="xs:string" />
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="phoneType" type="xs:string"/>
+            <xs:element name="phoneNumber" type="xs:string"/>
+            <xs:element name="zipcode" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:element name="state" type="entityInfo" />
-    <xs:element name="city" type="entityInfo" />
-    <xs:element name="country" type="entityInfo" />
+    <xs:element name="state" type="entityInfo"/>
+    <xs:element name="city" type="entityInfo"/>
+    <xs:element name="country" type="entityInfo"/>
     <xs:complexType name="entityInfo">
         <xs:sequence>
-            <xs:element name="name" type="xs:string" />
+            <xs:element name="name" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:element name="manufacturer" type="manufacturerInfo" />
+    <xs:element name="manufacturer" type="manufacturerInfo"/>
     <xs:complexType name="manufacturerInfo">
         <xs:complexContent>
             <xs:extension base="entityInfo">
                 <xs:sequence>
-                    <xs:element name="year" type="xs:string" />
+                    <xs:element name="year" type="xs:string"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>

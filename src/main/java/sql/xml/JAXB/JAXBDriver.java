@@ -38,7 +38,7 @@ public class JAXBDriver {
 
         JAXBObjectHandler data = new JAXBObjectHandler(customerList, employeeList, cityList, countryList, manufacturerList, orderList, productList, shopList, stateList);
         JAXBContext context = JAXBContext.newInstance(JAXBObjectHandler.class);
-        Marshaller mar= context.createMarshaller();
+        Marshaller mar = context.createMarshaller();
         mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         mar.marshal(data, new File("src/main/resources/jaxb_data.xml"));
     }

@@ -32,7 +32,7 @@ public class Order {
     }
 
     @XmlElement(name = "startDate")
-    @XmlJavaTypeAdapter( JAXBDateAdapter.class )
+    @XmlJavaTypeAdapter(JAXBDateAdapter.class)
     public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
@@ -42,7 +42,7 @@ public class Order {
     }
 
     @XmlElement(name = "endDate")
-    @XmlJavaTypeAdapter( JAXBDateAdapter.class )
+    @XmlJavaTypeAdapter(JAXBDateAdapter.class)
     public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }

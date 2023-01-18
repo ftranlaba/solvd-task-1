@@ -1,7 +1,6 @@
 package sql.datamodels.person;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "Employee")
 public class Employee extends Person {

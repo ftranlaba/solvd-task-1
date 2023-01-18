@@ -1,14 +1,16 @@
+import entity.Course;
+import entity.University;
+import entity.person.student.GraduateStudent;
+import entity.person.student.Student;
+import entity.person.student.UndergraduateStudent;
+import enums.BuildingNumbers;
+import enums.ClassLevels;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import entity.person.student.*;
-import entity.Course;
-import entity.University;
-import enums.BuildingNumbers;
-import enums.ClassLevels;
 
 public final class Seeder {
     private Seeder() {
