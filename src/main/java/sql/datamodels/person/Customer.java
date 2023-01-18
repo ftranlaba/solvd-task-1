@@ -1,5 +1,9 @@
 package sql.datamodels.person;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "Customer")
 public class Customer extends Person {
     public Customer() {
         super();

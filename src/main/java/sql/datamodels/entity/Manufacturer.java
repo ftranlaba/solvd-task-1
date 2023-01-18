@@ -1,7 +1,12 @@
 package sql.datamodels.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
+@XmlRootElement(name = "Manufacturer")
+@XmlType(propOrder = {"year"})
 public class Manufacturer extends Entity {
     private int year;
 
@@ -24,6 +29,7 @@ public class Manufacturer extends Entity {
         return year;
     }
 
+    @XmlElement(name = "year")
     public void setYear(int year) {
         this.year = year;
     }
