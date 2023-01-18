@@ -26,6 +26,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
         String potentialElement = "";
         Stack<Class<?>> objStack = new Stack<>();
         Stack<String> classElementNameStack = new Stack<>();
+        String property = "";
         while (true) {
             int i = getReaderIndex();
             if (i == -1) break;
@@ -40,6 +41,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
                         classElementNameStack.push("/" + potentialElement);
                     } else if (!objStack.empty() && isClassProperty(potentialElement, objStack.peek())) {
                         foundProperty = true;
+                        property = toClassName(potentialElement);
                     }
                     potentialElement = "";
                     isStart = false;
@@ -50,7 +52,8 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
                 }
             } else {
                 if (c == '/' && potentialElement.charAt(potentialElement.length() - 1) == '<') {
-                    Method m = getClassMethod(potentialElement, objStack.peek());
+                    potentialElement = potentialElement.substring(0, potentialElement.length() - 1);
+                    Method m = getClassMethod(property, objStack.peek());
                     try {
                         m.invoke(objStack.peek(), potentialElement);
                     } catch (IllegalAccessException | InvocationTargetException e) {
@@ -58,6 +61,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
                     } finally {
                         potentialElement = "";
                         foundProperty = false;
+                        property = "";
                     }
                 } else {
                     potentialElement += c;
@@ -73,7 +77,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
         try {
             output = fileReader.read();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return output;
     }
@@ -85,15 +89,18 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
     public Method getClassMethod(String s, Class<?> obj) {
         Method[] array = obj.getMethods();
         for (Method m : array) {
-            if (m.getName().contains(s)) return m;
+            if (m.getName().contains("set" + s)) return m;
         }
         return null;
     }
 
+    public String toClassName(String s){
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
     public boolean isClassElement(String s) {
-        s = s.substring(0, 1).toUpperCase() + s.substring(1);
         try {
-            Class<?> obj = Class.forName(getPackageName(s));
+            Class<?> obj = Class.forName(getPackageName(toClassName(s)));
             if (obj.toGenericString().contains("abstract")) {
                 return false;
             }
@@ -106,9 +113,8 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
 
     public Class<?> getClassFromElement(String s) {
         Class<?> obj = null;
-        s = s.substring(0, 1).toUpperCase() + s.substring(1);
         try {
-            obj = Class.forName(getPackageName(s));
+            obj = Class.forName(getPackageName(toClassName(s)));
         } catch (ClassNotFoundException e) {
             LOGGER.error(e);
 

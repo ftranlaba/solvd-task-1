@@ -2,14 +2,56 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="data">
         <xs:complexType>
-            <xs:all>
-                <xs:element ref="customer"/>
-                <xs:element ref="employee"/>
-                <xs:element ref="state"/>
-                <xs:element ref="city"/>
-                <xs:element ref="country"/>
-                <xs:element ref="manufacturer"/>
-            </xs:all>
+            <xs:sequence>
+                <xs:element ref="customers" maxOccurs="unbounded"/>
+                <xs:element ref="employees" maxOccurs="unbounded"/>
+                <xs:element ref="states" maxOccurs="unbounded"/>
+                <xs:element ref="cities" maxOccurs="unbounded"/>
+                <xs:element ref="countries" maxOccurs="unbounded"/>
+                <xs:element ref="manufacturers" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="customers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="customer" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="employees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="employee" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="states">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="state" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cities">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="city" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="countries">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="country" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="manufacturers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="manufacturer" maxOccurs="unbounded"/>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="customer" type="personInfo" />
