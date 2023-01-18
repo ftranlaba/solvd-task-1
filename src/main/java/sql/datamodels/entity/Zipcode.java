@@ -1,10 +1,7 @@
 package sql.datamodels.entity;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
-@XmlType(propOrder = {"zipcode"})
 public abstract class Zipcode {
     int zipcode;
 
@@ -19,7 +16,6 @@ public abstract class Zipcode {
         return zipcode;
     }
 
-    @XmlElement(name = "zipcode")
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }

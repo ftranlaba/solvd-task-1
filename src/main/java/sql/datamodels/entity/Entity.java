@@ -1,6 +1,5 @@
 package sql.datamodels.entity;
 
-import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
 public abstract class Entity {
@@ -17,7 +16,6 @@ public abstract class Entity {
         return name;
     }
 
-    @XmlElement(name = "name")
     public void setName(String name) {
         this.name = name;
     }

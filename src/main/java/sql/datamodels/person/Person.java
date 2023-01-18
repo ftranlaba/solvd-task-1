@@ -2,11 +2,8 @@ package sql.datamodels.person;
 
 import sql.datamodels.entity.Zipcode;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
-@XmlType(propOrder = {"firstName", "lastName", "address", "phoneType", "phoneNumber"})
 public abstract class Person extends Zipcode {
     String firstName, lastName, address, phoneType, phoneNumber;
 
@@ -27,7 +24,6 @@ public abstract class Person extends Zipcode {
         return firstName;
     }
 
-    @XmlElement(name = "firstName")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -36,7 +32,6 @@ public abstract class Person extends Zipcode {
         return lastName;
     }
 
-    @XmlElement(name = "lastName")
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -45,7 +40,6 @@ public abstract class Person extends Zipcode {
         return address;
     }
 
-    @XmlElement(name = "address")
     public void setAddress(String address) {
         this.address = address;
     }
@@ -54,7 +48,6 @@ public abstract class Person extends Zipcode {
         return phoneType;
     }
 
-    @XmlElement(name = "phoneType")
     public void setPhoneType(String phoneType) {
         this.phoneType = phoneType;
     }
@@ -63,7 +56,6 @@ public abstract class Person extends Zipcode {
         return phoneNumber;
     }
 
-    @XmlElement(name = "phoneNumber")
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }

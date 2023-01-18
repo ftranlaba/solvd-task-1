@@ -1,17 +1,9 @@
 package sql.datamodels.entity;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
-@XmlRootElement(name = "Product")
-@XmlType(propOrder = {"price", "amount"})
 public class Product extends Entity {
     int price, amount;
-
-    public Product() {
-    }
 
     public Product(String name, int price, int amount) {
         super(name);
@@ -34,7 +26,6 @@ public class Product extends Entity {
         return price;
     }
 
-    @XmlElement(name = "price")
     public void setPrice(int price) {
         this.price = price;
     }
@@ -43,7 +34,6 @@ public class Product extends Entity {
         return amount;
     }
 
-    @XmlElement(name = "amount")
     public void setAmount(int amount) {
         this.amount = amount;
     }

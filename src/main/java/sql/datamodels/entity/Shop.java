@@ -1,9 +1,5 @@
 package sql.datamodels.entity;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement(name = "Shop")
 public class Shop extends Zipcode {
     public Shop(int zipcode) {
         super(zipcode);
