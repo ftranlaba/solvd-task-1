@@ -1,5 +1,7 @@
 package sql.xml.JAXB;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import sql.datamodels.entity.*;
 import sql.datamodels.person.Customer;
 import sql.datamodels.person.Employee;
@@ -7,12 +9,14 @@ import sql.datamodels.person.Employee;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JAXBDriver {
+    private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public static void main(String[] args) throws JAXBException {
         List<Customer> customerList = new ArrayList<>();
@@ -41,5 +45,11 @@ public class JAXBDriver {
         Marshaller mar = context.createMarshaller();
         mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         mar.marshal(data, new File("src/main/resources/jaxb_data.xml"));
+
+        Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+        JAXBObjectHandler jaxbInput = (JAXBObjectHandler) jaxbUnmarshaller.unmarshal(new File("src/main/resources/jaxb_data.xml"));
+        for(Customer c : jaxbInput.getCustomerList()){
+            LOGGER.info(c.getFirstName());
+        }
     }
 }
