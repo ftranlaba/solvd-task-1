@@ -1,10 +1,9 @@
 package sql.datamodels.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import sql.json.TimestampSerializer;
-import sql.xml.JAXB.JAXBDateAdapter;
+import sql.xml.JAXB.JAXBTimestampAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,7 +37,7 @@ public class Order {
     }
 
     @XmlElement(name = "startDate")
-    @XmlJavaTypeAdapter(JAXBDateAdapter.class)
+    @XmlJavaTypeAdapter(JAXBTimestampAdapter.class)
     public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
@@ -48,7 +47,7 @@ public class Order {
     }
 
     @XmlElement(name = "endDate")
-    @XmlJavaTypeAdapter(JAXBDateAdapter.class)
+    @XmlJavaTypeAdapter(JAXBTimestampAdapter.class)
     public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
