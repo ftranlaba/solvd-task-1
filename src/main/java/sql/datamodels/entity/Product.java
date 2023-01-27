@@ -1,5 +1,7 @@
 package sql.datamodels.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -8,6 +10,7 @@ import java.util.Objects;
 @XmlRootElement(name = "Product")
 @XmlType(propOrder = {"price", "amount"})
 public class Product extends Entity {
+    @JsonProperty
     int price, amount;
 
     public Product() {

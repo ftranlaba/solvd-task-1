@@ -1,11 +1,14 @@
 package sql.datamodels.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 @XmlType(propOrder = {"zipcode"})
 public abstract class Zipcode {
+    @JsonProperty
     int zipcode;
 
     public Zipcode() {

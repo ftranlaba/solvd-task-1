@@ -1,5 +1,6 @@
 package sql.datamodels.person;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import sql.datamodels.entity.Zipcode;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -8,6 +9,7 @@ import java.util.Objects;
 
 @XmlType(propOrder = {"firstName", "lastName", "address", "phoneType", "phoneNumber"})
 public abstract class Person extends Zipcode {
+    @JsonProperty
     String firstName, lastName, address, phoneType, phoneNumber;
 
     public Person() {

@@ -1,9 +1,12 @@
 package sql.datamodels.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
 public abstract class Entity {
+    @JsonProperty
     private String name;
 
     public Entity(String name) {

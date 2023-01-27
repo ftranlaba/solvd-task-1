@@ -1,4 +1,4 @@
-package sql.xml.JAXB;
+package sql;
 
 import sql.datamodels.entity.*;
 import sql.datamodels.person.Customer;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlRootElement(name = "Data")
 @XmlType(propOrder = {"customerList", "employeeList", "cityList", "countryList", "manufacturerList", "orderList", "productList", "shopList", "stateList"})
-public class JAXBObjectHandler {
+public class DataModelContainer {
     private List<Customer> customerList;
     private List<Employee> employeeList;
     private List<City> cityList;
@@ -24,7 +24,7 @@ public class JAXBObjectHandler {
     private List<Shop> shopList;
     private List<State> stateList;
 
-    public JAXBObjectHandler() {
+    public DataModelContainer() {
         customerList = new ArrayList<>();
         employeeList = new ArrayList<>();
         cityList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class JAXBObjectHandler {
         stateList = new ArrayList<>();
     }
 
-    public JAXBObjectHandler(List<Customer> customerList, List<Employee> employeeList, List<City> cityList, List<Country> countryList, List<Manufacturer> manufacturerList, List<Order> orderList, List<Product> productList, List<Shop> shopList, List<State> stateList) {
+    public DataModelContainer(List<Customer> customerList, List<Employee> employeeList, List<City> cityList, List<Country> countryList, List<Manufacturer> manufacturerList, List<Order> orderList, List<Product> productList, List<Shop> shopList, List<State> stateList) {
         this.customerList = customerList;
         this.employeeList = employeeList;
         this.cityList = cityList;
@@ -136,5 +136,20 @@ public class JAXBObjectHandler {
     @XmlElement(name = "State")
     public void setStateList(List<State> stateList) {
         this.stateList = stateList;
+    }
+
+    @Override
+    public String toString() {
+        return "DataModelContainer{" +
+                "customerList=" + customerList +
+                ", employeeList=" + employeeList +
+                ", cityList=" + cityList +
+                ", countryList=" + countryList +
+                ", manufacturerList=" + manufacturerList +
+                ", orderList=" + orderList +
+                ", productList=" + productList +
+                ", shopList=" + shopList +
+                ", stateList=" + stateList +
+                '}';
     }
 }

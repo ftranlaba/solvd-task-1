@@ -1,0 +1,70 @@
+{
+  "customerList": [
+    {
+      "zipcode": 1,
+      "firstName": "Francis",
+      "lastName": "Tran",
+      "address": "1",
+      "phoneType": "1",
+      "phoneNumber": "1"
+    },
+    {
+      "zipcode": 2,
+      "firstName": "Francis",
+      "lastName": "Tran",
+      "address": "2",
+      "phoneType": "2",
+      "phoneNumber": "2"
+    },
+    {
+      "zipcode": 3,
+      "firstName": "Francis",
+      "lastName": "Tran",
+      "address": "3",
+      "phoneType": "3",
+      "phoneNumber": "3"
+    }
+  ],
+  "employeeList": [],
+  "cityList": [
+    {
+      "name": "Los Angeles"
+    },
+    {
+      "name": "New York"
+    }
+  ],
+  "countryList": [
+    {
+      "name": "USA"
+    }
+  ],
+  "manufacturerList": [
+    {
+      "name": "Nike",
+      "year": 1979
+    }
+  ],
+  "orderList": [
+    {
+      "startDate": "1969-12-31 16:00:12.345",
+      "endDate": "1969-12-31 16:00:12.345"
+    }
+  ],
+  "productList": [
+    {
+      "price": 22,
+      "amount": 1979
+    }
+  ],
+  "shopList": [
+    {
+      "zipcode": 12345
+    }
+  ],
+  "stateList": [
+    {
+      "name": "California"
+    }
+  ]
+}
