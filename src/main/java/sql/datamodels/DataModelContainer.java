@@ -1,4 +1,4 @@
-package sql;
+package sql.datamodels;
 
 import sql.datamodels.entity.*;
 import sql.datamodels.person.Customer;
