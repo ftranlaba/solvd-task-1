@@ -1,7 +1,6 @@
-package sql.dao.entity.manufacturer;
+package sql.dao.mysql;
 
-import sql.dao.MySQLDAO;
-import sql.dao.MySQLType;
+import sql.dao.IManufacturerDAO;
 import sql.datamodels.entity.Manufacturer;
 
 import java.util.ArrayList;

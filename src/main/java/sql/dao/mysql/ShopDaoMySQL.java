@@ -1,7 +1,6 @@
-package sql.dao.entity.shop;
+package sql.dao.mysql;
 
-import sql.dao.MySQLDAO;
-import sql.dao.MySQLType;
+import sql.dao.IShopDAO;
 import sql.datamodels.entity.Shop;
 
 import java.util.ArrayList;

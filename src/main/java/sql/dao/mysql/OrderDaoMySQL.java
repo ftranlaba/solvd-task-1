@@ -1,7 +1,6 @@
-package sql.dao.entity.order;
+package sql.dao.mysql;
 
-import sql.dao.MySQLDAO;
-import sql.dao.MySQLType;
+import sql.dao.IOrderDAO;
 import sql.datamodels.entity.Order;
 
 import java.util.ArrayList;

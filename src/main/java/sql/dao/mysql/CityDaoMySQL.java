@@ -1,37 +1,36 @@
-package sql.dao.entity.country;
+package sql.dao.mysql;
 
-import sql.dao.MySQLDAO;
-import sql.dao.MySQLType;
-import sql.datamodels.entity.Country;
+import sql.dao.ICityDAO;
+import sql.datamodels.entity.City;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CountryDaoMySQL extends MySQLDAO implements ICountryDAO {
+public class CityDaoMySQL extends MySQLDAO implements ICityDAO {
 
     @Override
     public Optional get(int id) {
-        //public Country(String name)
-        String sql = "SELECT name FROM countries WHERE id_country = ?";
-        return Optional.ofNullable(new Country(getWithTryCatch(sql, id)));
+        //public City(String name)
+        String sql = "SELECT name FROM cities WHERE id_city = ?";
+        return Optional.ofNullable(new City(getWithTryCatch(sql, id)));
     }
 
     @Override
     public List getAll() {
-        //public Country(String name)
-        String sql = "SELECT name FROM countries";
+        //public City(String name)
+        String sql = "SELECT name FROM cities";
         List<Object[]> list = getWithTryCatch(sql);
-        List<Country> output = new ArrayList<>();
+        List<City> output = new ArrayList<>();
         for (Object[] o : list) {
-            output.add(new Country(o));
+            output.add(new City(o));
         }
         return output;
     }
 
     @Override
-    public void save(Country o) {
-        String sql = "INSERT INTO countries(name) VALUES (?)";
+    public void save(City o) {
+        String sql = "INSERT INTO cities(name) VALUES (?)";
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getName());
 
@@ -42,8 +41,8 @@ public class CountryDaoMySQL extends MySQLDAO implements ICountryDAO {
     }
 
     @Override
-    public void update(Country o, int id) {
-        String sql = "UPDATE countries SET name = ? WHERE id_country = ?";
+    public void update(City o, int id) {
+        String sql = "UPDATE cities SET name = ? WHERE id_city = ?";
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getName());
         valueList.add(id);
@@ -57,7 +56,7 @@ public class CountryDaoMySQL extends MySQLDAO implements ICountryDAO {
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM countries WHERE id_country = ?";
+        String sql = "DELETE FROM cities WHERE id_city = ?";
         deleteWithTryCatch(sql, id);
     }
 }

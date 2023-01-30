@@ -1,4 +1,4 @@
-package sql.dao.entity.order;
+package sql.dao;
 
 import sql.dao.IBaseDAO;
 import sql.datamodels.entity.Order;

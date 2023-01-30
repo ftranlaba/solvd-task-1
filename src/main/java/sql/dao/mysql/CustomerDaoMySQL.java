@@ -1,40 +1,39 @@
-package sql.dao.person.employee;
+package sql.dao.mysql;
 
-import sql.dao.MySQLDAO;
-import sql.dao.MySQLType;
-import sql.datamodels.person.Employee;
+import sql.dao.ICustomerDAO;
+import sql.datamodels.person.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class EmployeeDAOMySQL extends MySQLDAO implements IEmployeeDAO {
+public class CustomerDaoMySQL extends MySQLDAO implements ICustomerDAO {
 
     @Override
     public Optional get(int id) {
-        //public Employee(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode)
+        //public Customer(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode)
         String sql = "SELECT first_name, last_name, address, phone_type, phone_number, zipcode " +
-                "FROM employees INNER JOIN employee_phonenumbers ON employees.id_employee = employee_phonenumbers.id_employee WHERE id_employee = ?";
-        return Optional.ofNullable(new Employee(getWithTryCatch(sql, id)));
+                "FROM customers INNER JOIN customer_phonenumbers ON customers.id_customer = customer_phonenumbers.id_customer WHERE id_customers = ?";
+        return Optional.ofNullable(new Customer(getWithTryCatch(sql, id)));
     }
 
     @Override
     public List getAll() {
         //public Customer(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode)
         String sql = "SELECT first_name, last_name, address, phone_type, phone_number, zipcode " +
-                "FROM employees INNER JOIN employee_phonenumbers ON employees.id_employee = employee_phonenumbers.id_employee";
+                "FROM customers INNER JOIN customer_phonenumbers ON customers.id_customer = customer_phonenumbers.id_customer";
         List<Object[]> list = getWithTryCatch(sql);
-        List<Employee> output = new ArrayList<>();
+        List<Customer> output = new ArrayList<>();
         for (Object[] o : list) {
-            output.add(new Employee(o));
+            output.add(new Customer(o));
         }
         return output;
     }
 
     @Override
-    public void save(Employee o) {
-        String sql = "INSERT INTO employees(first_name, last_name, street, zipcode) VALUES (?, ?, ?, ?)";
-        String phonesql = "INSERT INTO employee_phonenumbers(phone_type, phone_number) VALUES(?, ?)";
+    public void save(Customer o) {
+        String sql = "INSERT INTO customers(first_name, last_name, street, zipcode) VALUES (?, ?, ?, ?)";
+        String phonesql = "INSERT INTO customer_phonenumbers(phone_type, phone_number) VALUES(?, ?)";
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getFirstName());
         valueList.add(o.getLastName());
@@ -61,9 +60,9 @@ public class EmployeeDAOMySQL extends MySQLDAO implements IEmployeeDAO {
     }
 
     @Override
-    public void update(Employee o, int id) {
-        String sql = "UPDATE employees SET first_name = ?, last_name = ?, street = ?, zipcode = ? WHERE id_employee = ?";
-        String phonesql = "UPDATE employee_phonenumbers SET phone_type = ?, phone_number = ? WHERE id_employee = ?";
+    public void update(Customer o, int id) {
+        String sql = "UPDATE customers SET first_name = ?, last_name = ?, street = ?, zipcode = ? WHERE id_customer = ?";
+        String phonesql = "UPDATE customer_phonenumbers SET phone_type = ?, phone_number = ? WHERE id_customer = ?";
 
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getFirstName());
@@ -97,8 +96,8 @@ public class EmployeeDAOMySQL extends MySQLDAO implements IEmployeeDAO {
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM employees WHERE id_employee = ?";
-        String phonesql = "DELETE FROM employee_phonenumbers WHERE id_employee = ?";
+        String sql = "DELETE FROM customers WHERE id_customer = ?";
+        String phonesql = "DELETE FROM customer_phonenumbers WHERE id_customer = ?";
 
         deleteWithTryCatch(phonesql, id);
         deleteWithTryCatch(sql, id);

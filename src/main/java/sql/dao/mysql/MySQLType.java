@@ -1,4 +1,4 @@
-package sql.dao;
+package sql.dao.mysql;
 
 public enum MySQLType {
     STRING,

@@ -1,4 +1,4 @@
-package sql.dao;
+package sql.dao.mysql;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -2,12 +2,12 @@ package sql.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sql.dao.entity.city.CityDaoMySQL;
-import sql.dao.entity.city.ICityDAO;
-import sql.dao.entity.country.CountryDaoMySQL;
-import sql.dao.entity.country.ICountryDAO;
-import sql.dao.entity.manufacturer.IManufacturerDAO;
-import sql.dao.entity.manufacturer.ManufacturerDaoMySQL;
+import sql.dao.mysql.CityDaoMySQL;
+import sql.dao.ICityDAO;
+import sql.dao.mysql.CountryDaoMySQL;
+import sql.dao.ICountryDAO;
+import sql.dao.IManufacturerDAO;
+import sql.dao.mysql.ManufacturerDaoMySQL;
 import sql.datamodels.entity.City;
 import sql.datamodels.entity.Country;
 import sql.datamodels.entity.Manufacturer;

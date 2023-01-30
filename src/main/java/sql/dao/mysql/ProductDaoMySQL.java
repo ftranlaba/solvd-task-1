@@ -1,7 +1,6 @@
-package sql.dao.entity.product;
+package sql.dao.mysql;
 
-import sql.dao.MySQLDAO;
-import sql.dao.MySQLType;
+import sql.dao.IProductDAO;
 import sql.datamodels.entity.Product;
 
 import java.util.ArrayList;

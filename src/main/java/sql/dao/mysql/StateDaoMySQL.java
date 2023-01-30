@@ -1,8 +1,7 @@
-package sql.dao.entity.state;
+package sql.dao.mysql;
 
 
-import sql.dao.MySQLDAO;
-import sql.dao.MySQLType;
+import sql.dao.IStateDAO;
 import sql.datamodels.entity.State;
 
 import java.util.ArrayList;

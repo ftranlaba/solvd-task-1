@@ -1,12 +1,13 @@
-package sql.dao.person.employee;
+package sql.dao;
 
 import sql.dao.IBaseDAO;
-import sql.datamodels.person.Employee;
+import sql.datamodels.person.Customer;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IEmployeeDAO extends IBaseDAO<Employee> {
+public interface ICustomerDAO extends IBaseDAO<Customer> {
+
     @Override
     Optional get(int id);
 
@@ -14,10 +15,10 @@ public interface IEmployeeDAO extends IBaseDAO<Employee> {
     List getAll();
 
     @Override
-    void save(Employee o);
+    void save(Customer o);
 
     @Override
-    void update(Employee o, int id);
+    void update(Customer o, int id);
 
     @Override
     void delete(int id);
