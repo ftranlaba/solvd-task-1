@@ -8,7 +8,7 @@ import sql.service.ServiceMySQL;
 
 import java.util.List;
 
-public class TestDriver {
+public class ServiceTestDriver {
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     public static void main(String[] args) {
