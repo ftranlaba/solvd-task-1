@@ -1,4 +1,4 @@
-package sql.dao.mysql;
+package sql.dao.jdbc;
 
 import sql.dao.IProductDAO;
 import sql.datamodels.entity.Product;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ProductDAO extends MySQLDAO implements IProductDAO {
+public class ProductDAO extends JDBCDAO implements IProductDAO {
 
     @Override
     public Optional get(int id) {
@@ -37,10 +37,10 @@ public class ProductDAO extends MySQLDAO implements IProductDAO {
         valueList.add(o.getPrice());
         valueList.add(o.getAmount());
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
-        typeList.add(MySQLType.INT);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -54,11 +54,11 @@ public class ProductDAO extends MySQLDAO implements IProductDAO {
         valueList.add(o.getAmount());
         valueList.add(id);
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
-        typeList.add(MySQLType.INT);
-        typeList.add(MySQLType.INT);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
+        typeList.add(JDBCType.INT);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }

@@ -2,14 +2,14 @@ package sql.service;
 
 
 import sql.dao.*;
-import sql.dao.mysql.*;
+import sql.dao.jdbc.*;
 import sql.datamodels.entity.*;
 import sql.datamodels.person.Customer;
 import sql.datamodels.person.Employee;
 
 import java.util.List;
 
-public class ServiceMySQL implements IService {
+public class ServiceJDBC implements IService {
     private static final ICityDAO cityDao = new CityDAO();
     private static final ICountryDAO countryDao = new CountryDAO();
     private static final ICustomerDAO customerDAO = new CustomerDAO();

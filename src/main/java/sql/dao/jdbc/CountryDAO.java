@@ -1,4 +1,4 @@
-package sql.dao.mysql;
+package sql.dao.jdbc;
 
 import sql.dao.ICountryDAO;
 import sql.datamodels.entity.Country;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CountryDAO extends MySQLDAO implements ICountryDAO {
+public class CountryDAO extends JDBCDAO implements ICountryDAO {
 
     @Override
     public Optional get(int id) {
@@ -34,8 +34,8 @@ public class CountryDAO extends MySQLDAO implements ICountryDAO {
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getName());
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -47,9 +47,9 @@ public class CountryDAO extends MySQLDAO implements ICountryDAO {
         valueList.add(o.getName());
         valueList.add(id);
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }

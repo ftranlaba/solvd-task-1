@@ -1,4 +1,4 @@
-package sql.dao.mysql;
+package sql.dao.jdbc;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,7 +7,7 @@ import sql.connectionpool.JDBCConnectionPool;
 import java.sql.*;
 import java.util.*;
 
-public abstract class MySQLDAO {
+public abstract class JDBCDAO {
     private static final JDBCConnectionPool pool = JDBCConnectionPool.getInstance();
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
@@ -123,7 +123,7 @@ public abstract class MySQLDAO {
         return list;
     }
 
-    public void saveWithTryCatch(String sql, List<Object> valueList, List<MySQLType> typeList) {
+    public void saveWithTryCatch(String sql, List<Object> valueList, List<JDBCType> typeList) {
         Connection conn = pool.getConnection();
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             setStatementValue(stmt, valueList, typeList);
@@ -137,9 +137,9 @@ public abstract class MySQLDAO {
         }
     }
 
-    public void setStatementValue(PreparedStatement stmt, List<Object> valueList, List<MySQLType> typeList) throws SQLException {
+    public void setStatementValue(PreparedStatement stmt, List<Object> valueList, List<JDBCType> typeList) throws SQLException {
         int i = 1;
-        for (MySQLType enumObj : typeList) {
+        for (JDBCType enumObj : typeList) {
             switch (enumObj) {
                 case INT:
                     stmt.setInt(i, (Integer) valueList.get(i - 1));
