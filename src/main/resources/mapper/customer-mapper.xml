@@ -1,0 +1,50 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.ICustomerDAO">
+    <resultMap type="Customer" id="CustomerResultMap" autoMapping="false">
+        <result property="id" column="id_customer"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="address" column="street"/>
+        <result property="zipcode" column="zipcode"/>
+        <result property="phoneType" column="phone_type"/>
+        <result property="phoneNumber" column="phone_number"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_customer">
+        INSERT INTO customers (first_name, last_name, street, zipcode)
+        VALUES (#{firstName}, #{lastName}, #{address}, #{zipcode});
+
+        INSERT INTO customer_phonenumbers(id_customer, phone_type, phone_number)
+        VALUES (#{id}, #{phoneType}, #{phoneNumber});
+
+    </insert>
+    <update id="update" parameterType = "Customer">
+        UPDATE customers SET
+        first_name = #{firstName},
+        last_name = #{lastName},
+        street = #{address},
+        zipcode = #{zipcode},
+        WHERE id_customer = #{id};
+
+        UPDATE customer_phonenumbers SET
+        phoneType = #{phoneType},
+        phoneNumber = #{phoneNumber}
+        WHERE id_customer = #{id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM customers WHERE id_customer = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "CustomerResultMap">
+        SELECT first_name, last_name, street, phone_type, phone_number, zipcode FROM customers
+        INNER JOIN customer_phonenumbers ON customer_phonenumbers.id_customer = customers.id_customer
+        WHERE customers.id_customer = #{id};
+    </select>
+    <select id = "getAll" resultMap = "CustomerResultMap">
+        SELECT first_name, last_name, street, phone_type, phone_number, zipcode FROM customers
+        INNER JOIN customer_phonenumbers ON customers.id_customer = customer_phonenumbers.id_customer;
+    </select>
+</mapper>
