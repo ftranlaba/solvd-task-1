@@ -60,11 +60,6 @@ public class CustomerDAO extends MySQLDAO implements ICustomerDAO {
     }
 
     @Override
-    public void savePhone(Customer o) {
-
-    }
-
-    @Override
     public void update(Customer o, int id) {
         String sql = "UPDATE customers SET first_name = ?, last_name = ?, street = ?, zipcode = ? WHERE id_customer = ?";
         String phonesql = "UPDATE customer_phonenumbers SET phone_type = ?, phone_number = ? WHERE id_customer = ?";
@@ -100,22 +95,12 @@ public class CustomerDAO extends MySQLDAO implements ICustomerDAO {
     }
 
     @Override
-    public void updatePhone(Customer o, int id) {
-
-    }
-
-    @Override
     public void delete(int id) {
         String sql = "DELETE FROM customers WHERE id_customer = ?";
         String phonesql = "DELETE FROM customer_phonenumbers WHERE id_customer = ?";
 
         deleteWithTryCatch(phonesql, id);
         deleteWithTryCatch(sql, id);
-
-    }
-
-    @Override
-    public void deletePhone(int id) {
 
     }
 }

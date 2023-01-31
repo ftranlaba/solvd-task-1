@@ -98,7 +98,6 @@ public class ServiceMySQL implements IService {
     @Override
     public void createEmployee(Employee o) {
         employeeDAO.save(o);
-        employeeDAO.savePhone(o);
     }
 
     @Override

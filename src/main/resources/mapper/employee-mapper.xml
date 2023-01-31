@@ -4,7 +4,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="sql.dao.IEmployeeDAO">
+<mapper namespace="sql.dao.mybatis.IEmployeeDAOMyBatis">
     <resultMap type="Employee" id="EmployeeResultMap" autoMapping="false">
         <result property="id" column="id_employee"/>
         <result property="firstName" column="first_name"/>

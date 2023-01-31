@@ -103,19 +103,4 @@ public class EmployeeDAO extends MySQLDAO implements IEmployeeDAO {
         deleteWithTryCatch(sql, id);
 
     }
-
-    @Override
-    public void deletePhone(int id) {
-
-    }
-
-    @Override
-    public void updatePhone(Employee o, int id) {
-
-    }
-
-    @Override
-    public void savePhone(Employee o) {
-
-    }
 }

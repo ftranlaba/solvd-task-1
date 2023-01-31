@@ -29,19 +29,19 @@ public class MyBatisDriver {
 
         Customer customer1 = new Customer(15, "FRANCIS", "TRAN", "ADDRESS", "WORK", "7777777", 123);
         customerDAO.save(customer1);
-        customerDAO.savePhone(customer1);
+        ((ICustomerDAOMyBatis) customerDAO).savePhone(customer1);
         LOGGER.info("GET NEW CREATED CUSTOMER: " + customerDAO.get(customer1.getId()));
 
         customer1.setFirstName("francis-tran");
         customer1.setPhoneType("work-home");
         customerDAO.update(customer1, customer1.getId());
-        customerDAO.updatePhone(customer1, customer1.getId());
+        ((ICustomerDAOMyBatis) customerDAO).updatePhone(customer1, customer1.getId());
         LOGGER.info("GET NEW UPDATED CUSTOMER: " + customerDAO.get(customer1.getId()));
 
         List<Customer> customerList = customerDAO.getAll();
         LOGGER.info("GETALL: " + customerList);
 
-        customerDAO.deletePhone(customer1.getId());
+        ((ICustomerDAOMyBatis) customerDAO).deletePhone(customer1.getId());
         customerDAO.delete(customer1.getId());
         customerList = customerDAO.getAll();
         LOGGER.info("GETALL AFTER DELETE NEW CUSTOMER: " + customerList);
@@ -53,19 +53,19 @@ public class MyBatisDriver {
 
         Employee employee1 = new Employee(15, "FRANCIS", "TRAN", "ADDRESS", "WORK", "7777777", 123);
         employeeDAO.save(employee1);
-        employeeDAO.savePhone(employee1);
+        ((IEmployeeDAOMyBatis) employeeDAO).savePhone(employee1);
         LOGGER.info("GET NEW CREATED EMPLOYEE: " + employeeDAO.get(employee1.getId()));
 
         employee1.setFirstName("francis-tran");
         employee1.setPhoneType("work-home");
         employeeDAO.update(employee1, employee1.getId());
-        employeeDAO.updatePhone(employee1, employee1.getId());
+        ((IEmployeeDAOMyBatis) employeeDAO).updatePhone(employee1, employee1.getId());
         LOGGER.info("GET NEW UPDATED EMPLOYEE: " + employeeDAO.get(employee1.getId()));
 
         List<Employee> employeeList = employeeDAO.getAll();
         LOGGER.info("GETALL: " + employeeList);
 
-        employeeDAO.deletePhone(employee1.getId());
+        ((IEmployeeDAOMyBatis) employeeDAO).deletePhone(employee1.getId());
         employeeDAO.delete(employee1.getId());
         employeeList = employeeDAO.getAll();
         LOGGER.info("GETALL AFTER DELETE NEW EMPLOYEE: " + employeeList);

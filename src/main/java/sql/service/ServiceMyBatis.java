@@ -72,7 +72,7 @@ public class ServiceMyBatis implements IService {
     @Override
     public void createCustomer(Customer o) {
         customerDAO.save(o);
-        customerDAO.savePhone(o);
+        ((ICustomerDAOMyBatis) customerDAO).savePhone(o);
     }
 
     @Override
@@ -88,19 +88,19 @@ public class ServiceMyBatis implements IService {
     @Override
     public void updateCustomer(Customer o, int id) {
         customerDAO.update(o, id);
-        customerDAO.updatePhone(o, id);
+        ((ICustomerDAOMyBatis) customerDAO).updatePhone(o, id);
     }
 
     @Override
     public void deleteCustomer(int id) {
-        customerDAO.deletePhone(id);
+        ((ICustomerDAOMyBatis) customerDAO).deletePhone(id);
         customerDAO.delete(id);
     }
 
     @Override
     public void createEmployee(Employee o) {
         employeeDAO.save(o);
-        employeeDAO.savePhone(o);
+        ((IEmployeeDAOMyBatis) employeeDAO).savePhone(o);
     }
 
     @Override
@@ -116,12 +116,12 @@ public class ServiceMyBatis implements IService {
     @Override
     public void updateEmployee(Employee o, int id) {
         employeeDAO.update(o, id);
-        employeeDAO.updatePhone(o, id);
+        ((IEmployeeDAOMyBatis) employeeDAO).updatePhone(o, id);
     }
 
     @Override
     public void deleteEmployee(int id) {
-        employeeDAO.deletePhone(id);
+        ((IEmployeeDAOMyBatis) employeeDAO).deletePhone(id);
         employeeDAO.delete(id);
     }
 
