@@ -192,7 +192,7 @@ public class MyBatisDriver {
         LOGGER.info("SHOP QUERY DONE\n");
     }
 
-    public static void executeShop() {
+    public static void executeState() {
         IStateDAO stateDAO = new StateDAO();
 
         State state1 = new State(1, "California");
