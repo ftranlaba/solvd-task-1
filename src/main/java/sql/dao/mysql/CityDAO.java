@@ -1,37 +1,36 @@
 package sql.dao.mysql;
 
-
-import sql.dao.IStateDAO;
-import sql.datamodels.entity.State;
+import sql.dao.ICityDAO;
+import sql.datamodels.entity.City;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StateDaoMySQL extends MySQLDAO implements IStateDAO {
+public class CityDAO extends MySQLDAO implements ICityDAO {
 
     @Override
     public Optional get(int id) {
-        //public State(String name)
-        String sql = "SELECT name FROM states WHERE id_state = ?";
-        return Optional.ofNullable(new State(getWithTryCatch(sql, id)));
+        //public City(String name)
+        String sql = "SELECT name FROM cities WHERE id_city = ?";
+        return Optional.ofNullable(new City(getWithTryCatch(sql, id)));
     }
 
     @Override
     public List getAll() {
-        //public State(String name)
-        String sql = "SELECT name FROM states";
+        //public City(String name)
+        String sql = "SELECT name FROM cities";
         List<Object[]> list = getWithTryCatch(sql);
-        List<State> output = new ArrayList<>();
+        List<City> output = new ArrayList<>();
         for (Object[] o : list) {
-            output.add(new State(o));
+            output.add(new City(o));
         }
         return output;
     }
 
     @Override
-    public void save(State o) {
-        String sql = "INSERT INTO states(name) VALUES (?)";
+    public void save(City o) {
+        String sql = "INSERT INTO cities(name) VALUES (?)";
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getName());
 
@@ -42,8 +41,8 @@ public class StateDaoMySQL extends MySQLDAO implements IStateDAO {
     }
 
     @Override
-    public void update(State o, int id) {
-        String sql = "UPDATE states SET name = ? WHERE id_state = ?";
+    public void update(City o, int id) {
+        String sql = "UPDATE cities SET name = ? WHERE id_city = ?";
         List<Object> valueList = new ArrayList<>();
         valueList.add(o.getName());
         valueList.add(id);
@@ -57,7 +56,7 @@ public class StateDaoMySQL extends MySQLDAO implements IStateDAO {
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM states WHERE id_state = ?";
+        String sql = "DELETE FROM cities WHERE id_city = ?";
         deleteWithTryCatch(sql, id);
     }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ShopDaoMySQL extends MySQLDAO implements IShopDAO {
+public class ShopDAO extends MySQLDAO implements IShopDAO {
 
     @Override
     public Optional get(int id) {

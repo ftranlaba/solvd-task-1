@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class OrderDaoMySQL extends MySQLDAO implements IOrderDAO {
+public class OrderDAO extends MySQLDAO implements IOrderDAO {
 
     @Override
     public Optional get(int id) {

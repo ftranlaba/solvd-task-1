@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ManufacturerDaoMySQL extends MySQLDAO implements IManufacturerDAO {
+public class ManufacturerDAO extends MySQLDAO implements IManufacturerDAO {
 
     @Override
     public Optional get(int id) {
