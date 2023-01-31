@@ -2,7 +2,6 @@ package sql.dao.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import sql.dao.IStateDAO;
-import sql.datamodels.entity.Product;
 import sql.datamodels.entity.State;
 
 import java.util.List;
