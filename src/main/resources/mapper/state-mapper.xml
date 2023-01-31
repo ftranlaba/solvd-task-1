@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.IStateDAO">
+    <resultMap type="State" id="StateResultMap" autoMapping="false">
+        <result property="id" column="id_state"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_state">
+        INSERT INTO states (name)
+        VALUES (#{name});
+    </insert>
+    <update id="update">
+        UPDATE states SET
+        name = #{param1.name}
+        WHERE id_state = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM states WHERE id_state = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "StateResultMap">
+        SELECT name FROM states
+        WHERE id_state = #{id};
+    </select>
+    <select id = "getAll" resultMap = "StateResultMap">
+        SELECT name FROM states
+    </select>
+</mapper>

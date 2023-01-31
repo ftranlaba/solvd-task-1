@@ -171,4 +171,45 @@ public class MyBatisDriver {
         LOGGER.info("GETALL AFTER DELETE NEW PRODUCT: " + orderList);
         LOGGER.info("PRODUCT QUERY DONE\n");
     }
+
+    public static void executeShop() {
+        IShopDAO shopDAO = new ShopDAO();
+
+        Shop shop1 = new Shop(1, 11111);
+        shopDAO.save(shop1);
+        LOGGER.info("GET NEW CREATED SHOP: " + shopDAO.get(shop1.getId()));
+
+        shop1.setZipcode(55555);
+        shopDAO.update(shop1, shop1.getId());
+        LOGGER.info("GET NEW UPDATED SHOP: " + shopDAO.get(shop1.getId()));
+
+        List<Shop> orderList = shopDAO.getAll();
+        LOGGER.info("GETALL: " + orderList);
+
+        shopDAO.delete(shop1.getId());
+        orderList = shopDAO.getAll();
+        LOGGER.info("GETALL AFTER DELETE NEW SHOP: " + orderList);
+        LOGGER.info("SHOP QUERY DONE\n");
+    }
+
+    public static void executeShop() {
+        IStateDAO stateDAO = new StateDAO();
+
+        State state1 = new State(1, "California");
+        stateDAO.save(state1);
+        LOGGER.info("GET NEW CREATED STATE: " + stateDAO.get(state1.getId()));
+
+        state1.setName("Utah");
+        stateDAO.update(state1, state1.getId());
+        LOGGER.info("GET NEW UPDATED STATE: " + stateDAO.get(state1.getId()));
+
+        List<State> orderList = stateDAO.getAll();
+        LOGGER.info("GETALL: " + orderList);
+
+        stateDAO.delete(state1.getId());
+        orderList = stateDAO.getAll();
+        LOGGER.info("GETALL AFTER DELETE NEW STATE: " + orderList);
+        LOGGER.info("STATE QUERY DONE\n");
+    }
+
 }
