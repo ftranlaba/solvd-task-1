@@ -1,9 +1,6 @@
 package sql.service;
 
-import sql.datamodels.entity.City;
-import sql.datamodels.entity.Country;
-import sql.datamodels.entity.Manufacturer;
-import sql.datamodels.entity.Order;
+import sql.datamodels.entity.*;
 import sql.datamodels.person.Customer;
 import sql.datamodels.person.Employee;
 
@@ -70,5 +67,34 @@ public interface IService {
 
     void deleteOrder(int id);
 
+    void createProduct(Product o);
+
+    Product readProduct(int id);
+
+    List<Product> readAllProducts();
+
+    void updateProduct(Product o, int id);
+
+    void deleteProduct(int id);
+
+    void createShop(Shop o);
+
+    Shop readShop(int id);
+
+    List<Shop> readAllShops();
+
+    void updateShop(Shop o, int id);
+
+    void deleteShop(int id);
+
+    void createState(State o);
+
+    State readState(int id);
+
+    List<State> readAllStates();
+
+    void updateState(State o, int id);
+
+    void deleteState(int id);
 
 }

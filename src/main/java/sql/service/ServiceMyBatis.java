@@ -2,10 +2,7 @@ package sql.service;
 
 import sql.dao.*;
 import sql.dao.mybatis.*;
-import sql.datamodels.entity.City;
-import sql.datamodels.entity.Country;
-import sql.datamodels.entity.Manufacturer;
-import sql.datamodels.entity.Order;
+import sql.datamodels.entity.*;
 import sql.datamodels.person.Customer;
 import sql.datamodels.person.Employee;
 
@@ -18,6 +15,9 @@ public class ServiceMyBatis implements IService {
     private static final IEmployeeDAO employeeDAO = new EmployeeDAO();
     private static final IManufacturerDAO manufacturerDao = new ManufacturerDAO();
     private static final IOrderDAO orderDAO = new OrderDAO();
+    private static final IProductDAO productDAO = new ProductDAO();
+    private static final IShopDAO shopDAO = new ShopDAO();
+    private static final IStateDAO stateDAO = new StateDAO();
 
     @Override
     public void createCity(City o) {
@@ -173,5 +173,80 @@ public class ServiceMyBatis implements IService {
     @Override
     public void deleteOrder(int id) {
         orderDAO.delete(id);
+    }
+
+    @Override
+    public void createProduct(Product o) {
+        productDAO.save(o);
+    }
+
+    @Override
+    public Product readProduct(int id) {
+        return productDAO.get(id).orElse(null);
+    }
+
+    @Override
+    public List<Product> readAllProducts() {
+        return productDAO.getAll();
+    }
+
+    @Override
+    public void updateProduct(Product o, int id) {
+        productDAO.update(o, id);
+    }
+
+    @Override
+    public void deleteProduct(int id) {
+        productDAO.delete(id);
+    }
+
+    @Override
+    public void createShop(Shop o) {
+        shopDAO.save(o);
+    }
+
+    @Override
+    public Shop readShop(int id) {
+        return shopDAO.get(id).orElse(null);
+    }
+
+    @Override
+    public List<Shop> readAllShops() {
+        return shopDAO.getAll();
+    }
+
+    @Override
+    public void updateShop(Shop o, int id) {
+        shopDAO.update(o, id);
+    }
+
+    @Override
+    public void deleteShop(int id) {
+        shopDAO.delete(id);
+    }
+
+    @Override
+    public void createState(State o) {
+        stateDAO.save(o);
+    }
+
+    @Override
+    public State readState(int id) {
+        return stateDAO.get(id).orElse(null);
+    }
+
+    @Override
+    public List<State> readAllStates() {
+        return stateDAO.getAll();
+    }
+
+    @Override
+    public void updateState(State o, int id) {
+        stateDAO.update(o, id);
+    }
+
+    @Override
+    public void deleteState(int id) {
+        stateDAO.delete(id);
     }
 }
