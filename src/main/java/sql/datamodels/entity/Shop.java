@@ -9,7 +9,7 @@ public class Shop extends Zipcode {
     }
 
     public Shop(int id, int zipcode) {
-        super(zipcode);
+        super(id, zipcode);
     }
 
     public Shop(Object[] arr) {

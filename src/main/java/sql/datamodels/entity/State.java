@@ -8,6 +8,10 @@ public class State extends Entity {
         super(0, name);
     }
 
+    public State(int id, String name) {
+        super(id, name);
+    }
+
     public State(Object[] arr) {
         super(0, arr[0] + "");
     }
