@@ -17,7 +17,7 @@ import java.util.Objects;
 @XmlType(propOrder = {"startDate", "endDate"})
 public class Order extends BaseDataModel {
     @JsonSerialize(using = TimestampSerializer.class)
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     Timestamp startDate, endDate;
 
     public Order() {

@@ -10,8 +10,8 @@ import java.io.Reader;
 public class MyBatisSqlFactory {
     private static SqlSessionFactory sqlSessionFactory;
 
-    static{
-        try{
+    static {
+        try {
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (IOException e) {
@@ -19,7 +19,7 @@ public class MyBatisSqlFactory {
         }
     }
 
-    public static SqlSessionFactory getSqlSessionFactory(){
+    public static SqlSessionFactory getSqlSessionFactory() {
         return sqlSessionFactory;
     }
 }

@@ -9,14 +9,12 @@ import sql.datamodels.person.Customer;
 import sql.datamodels.person.Employee;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class MyBatisDriver {
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         executeCity();
         executeCountry();
         executeManufacturer();
@@ -26,10 +24,10 @@ public class MyBatisDriver {
 
     }
 
-    public static void executeCustomer(){
-        ICustomerDAO customerDAO =  new CustomerDAO();
+    public static void executeCustomer() {
+        ICustomerDAO customerDAO = new CustomerDAO();
 
-        Customer customer1 = new Customer(15,"FRANCIS", "TRAN", "ADDRESS", "WORK", "7777777", 123);
+        Customer customer1 = new Customer(15, "FRANCIS", "TRAN", "ADDRESS", "WORK", "7777777", 123);
         customerDAO.save(customer1);
         customerDAO.savePhone(customer1);
         LOGGER.info("GET NEW CREATED CUSTOMER: " + customerDAO.get(customer1.getId()));
@@ -50,10 +48,10 @@ public class MyBatisDriver {
         LOGGER.info("CUSTOMER QUERY DONE\n");
     }
 
-    public static void executeEmployee(){
-        IEmployeeDAO employeeDAO =  new EmployeeDAO();
+    public static void executeEmployee() {
+        IEmployeeDAO employeeDAO = new EmployeeDAO();
 
-        Employee employee1 = new Employee(15,"FRANCIS", "TRAN", "ADDRESS", "WORK", "7777777", 123);
+        Employee employee1 = new Employee(15, "FRANCIS", "TRAN", "ADDRESS", "WORK", "7777777", 123);
         employeeDAO.save(employee1);
         employeeDAO.savePhone(employee1);
         LOGGER.info("GET NEW CREATED EMPLOYEE: " + employeeDAO.get(employee1.getId()));
@@ -74,10 +72,10 @@ public class MyBatisDriver {
         LOGGER.info("EMPLOYEE QUERY DONE\n");
     }
 
-    public static void executeCity(){
-        ICityDAO cityDAO =  new CityDAO();
+    public static void executeCity() {
+        ICityDAO cityDAO = new CityDAO();
 
-        City city1 = new City(1,"Los Angeles");
+        City city1 = new City(1, "Los Angeles");
         cityDAO.save(city1);
         LOGGER.info("GET NEW CREATED CITY: " + cityDAO.get(city1.getId()));
 
@@ -94,10 +92,10 @@ public class MyBatisDriver {
         LOGGER.info("CITY QUERY DONE\n");
     }
 
-    public static void executeCountry(){
-        ICountryDAO countryDAO =  new CountryDAO();
+    public static void executeCountry() {
+        ICountryDAO countryDAO = new CountryDAO();
 
-        Country country1 = new Country(1,"USA");
+        Country country1 = new Country(1, "USA");
         countryDAO.save(country1);
         LOGGER.info("GET NEW CREATED COUNTRY: " + countryDAO.get(country1.getId()));
 
@@ -114,10 +112,10 @@ public class MyBatisDriver {
         LOGGER.info("COUNTRY QUERY DONE\n");
     }
 
-    public static void executeManufacturer(){
-        IManufacturerDAO manufacturerDAO =  new ManufacturerDAO();
+    public static void executeManufacturer() {
+        IManufacturerDAO manufacturerDAO = new ManufacturerDAO();
 
-        Manufacturer manufacturer1 = new Manufacturer(1, "Nike",1988);
+        Manufacturer manufacturer1 = new Manufacturer(1, "Nike", 1988);
         manufacturerDAO.save(manufacturer1);
         LOGGER.info("GET NEW CREATED MANUFACTURER: " + manufacturerDAO.get(manufacturer1.getId()));
 
@@ -134,10 +132,10 @@ public class MyBatisDriver {
         LOGGER.info("MANUFACTURER QUERY DONE\n");
     }
 
-    public static void executeOrder(){
-        IOrderDAO orderDAO =  new OrderDAO();
+    public static void executeOrder() {
+        IOrderDAO orderDAO = new OrderDAO();
 
-        Order order1 = new Order(1, new Timestamp(12345),new Timestamp(12345));
+        Order order1 = new Order(1, new Timestamp(12345), new Timestamp(12345));
         orderDAO.save(order1);
         LOGGER.info("GET NEW CREATED ORDER: " + orderDAO.get(order1.getId()));
 
@@ -154,8 +152,8 @@ public class MyBatisDriver {
         LOGGER.info("ORDER QUERY DONE\n");
     }
 
-    public static void executeProduct(){
-        IProductDAO productDAO =  new ProductDAO();
+    public static void executeProduct() {
+        IProductDAO productDAO = new ProductDAO();
 
         Product product1 = new Product(1, "shoes", 5, 10);
         productDAO.save(product1);

@@ -1,18 +1,5 @@
 package sql.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import sql.dao.mysql.CityDAO;
-import sql.dao.ICityDAO;
-import sql.dao.mysql.CountryDAO;
-import sql.dao.ICountryDAO;
-import sql.dao.IManufacturerDAO;
-import sql.dao.mysql.ManufacturerDAO;
-import sql.datamodels.entity.City;
-import sql.datamodels.entity.Country;
-import sql.datamodels.entity.Manufacturer;
-
-import java.util.List;
 /*
 public class ServiceMySQL implements IService {
     private static final ICityDAO cityDao = new CityDAO();

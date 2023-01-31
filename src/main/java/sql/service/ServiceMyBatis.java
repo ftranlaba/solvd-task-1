@@ -21,7 +21,7 @@ public class ServiceMyBatis implements IService {
 
     @Override
     public void createCity(City o) {
-       cityDao.save(o);
+        cityDao.save(o);
     }
 
     @Override

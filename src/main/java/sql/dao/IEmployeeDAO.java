@@ -1,7 +1,5 @@
 package sql.dao;
 
-import sql.dao.IBaseDAO;
-import sql.datamodels.person.Customer;
 import sql.datamodels.person.Employee;
 
 import java.util.List;

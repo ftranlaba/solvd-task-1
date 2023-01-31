@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 import sql.datamodels.entity.City;
 import sql.service.IService;
 import sql.service.ServiceMyBatis;
-//import sql.service.ServiceMySQL;
 
 import java.util.List;
 
