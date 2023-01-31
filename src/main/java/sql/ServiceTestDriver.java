@@ -22,6 +22,4 @@ public class ServiceTestDriver {
             LOGGER.info(o.getName());
         }
     }
-
-
 }
