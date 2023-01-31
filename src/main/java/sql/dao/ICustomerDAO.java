@@ -6,7 +6,7 @@ import sql.datamodels.person.Customer;
 import java.util.List;
 import java.util.Optional;
 
-public interface ICustomerDAO extends IBaseDAO<Customer> {
+public interface ICustomerDAO extends IPersonDAO<Customer> {
 
     @Override
     Optional get(int id);
@@ -22,4 +22,13 @@ public interface ICustomerDAO extends IBaseDAO<Customer> {
 
     @Override
     void delete(int id);
+
+    @Override
+    void deletePhone(int id);
+
+    @Override
+    void updatePhone(Customer o, int id);
+
+    @Override
+    void savePhone(Customer o);
 }

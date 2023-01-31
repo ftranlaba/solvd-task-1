@@ -13,20 +13,20 @@ import sql.datamodels.entity.Country;
 import sql.datamodels.entity.Manufacturer;
 
 import java.util.List;
-
-public class ServiceMySQL implements IService { // String url, String user, String pass, int size
+/*
+public class ServiceMySQL implements IService {
     private static final ICityDAO cityDao = new CityDAO();
     private static final ICountryDAO countryDao = new CountryDAO();
     private static final IManufacturerDAO manufacturerDao = new ManufacturerDAO();
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
     @Override
-    public City findCity(int id) {
+    public City readCity(int id) {
         return cityDao.get(id).orElse(null);
     }
 
     @Override
-    public List<City> findAllCities() {
+    public List<City> readAllCities() {
         return cityDao.getAll();
     }
 
@@ -36,22 +36,23 @@ public class ServiceMySQL implements IService { // String url, String user, Stri
     }
 
     @Override
-    public Country findCountry(int id) {
+    public Country readCountry(int id) {
         return countryDao.get(id).orElse(null);
     }
 
     @Override
-    public List<Country> findAllCountries() {
+    public List<Country> readAllCountries() {
         return countryDao.getAll();
     }
 
     @Override
-    public Manufacturer findManufacturer(int id) {
+    public Manufacturer readManufacturer(int id) {
         return manufacturerDao.get(id).orElse(null);
     }
 
     @Override
-    public List<Manufacturer> findAllManufacturers() {
+    public List<Manufacturer> readAllManufacturers() {
         return manufacturerDao.getAll();
     }
 }
+*/

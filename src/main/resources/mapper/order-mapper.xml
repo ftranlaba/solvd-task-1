@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.IOrderDAO">
+    <resultMap type="Order" id="OrderResultMap" autoMapping="false">
+        <result property="id" column="id_order"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_order">
+        INSERT INTO orders (start_date, end_date)
+        VALUES (#{startDate}, #{endDate});
+    </insert>
+    <update id="update">
+        UPDATE orders SET
+        start_date = #{param1.startDate},
+        end_date = #{param1.endDate}
+        WHERE id_order = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM orders WHERE id_order = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "OrderResultMap">
+        SELECT start_date, end_date FROM orders
+        WHERE id_order = #{id};
+    </select>
+    <select id = "getAll" resultMap = "OrderResultMap">
+        SELECT start_date, end_date FROM orders
+    </select>
+</mapper>

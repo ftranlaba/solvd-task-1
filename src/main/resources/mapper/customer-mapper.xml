@@ -17,26 +17,30 @@
     <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_customer">
         INSERT INTO customers (first_name, last_name, street, zipcode)
         VALUES (#{firstName}, #{lastName}, #{address}, #{zipcode});
-
+    </insert>
+    <insert id="savePhone">
         INSERT INTO customer_phonenumbers(id_customer, phone_type, phone_number)
         VALUES (#{id}, #{phoneType}, #{phoneNumber});
-
     </insert>
-    <update id="update" parameterType = "Customer">
+    <update id="update">
         UPDATE customers SET
-        first_name = #{firstName},
-        last_name = #{lastName},
-        street = #{address},
-        zipcode = #{zipcode},
-        WHERE id_customer = #{id};
-
+        first_name = #{param1.firstName},
+        last_name = #{param1.lastName},
+        street = #{param1.address},
+        zipcode = #{param1.zipcode}
+        WHERE id_customer = #{param1.id};
+    </update>
+    <update id="updatePhone">
         UPDATE customer_phonenumbers SET
-        phoneType = #{phoneType},
-        phoneNumber = #{phoneNumber}
-        WHERE id_customer = #{id};
+        phone_type = #{param1.phoneType},
+        phone_number = #{param1.phoneNumber}
+        WHERE id_customer = #{param1.id};
     </update>
     <delete id = "delete" parameterType = "int">
         DELETE FROM customers WHERE id_customer = #{id};
+    </delete>
+    <delete id = "deletePhone" parameterType = "int">
+        DELETE FROM customer_phonenumbers WHERE id_customer = #{id};
     </delete>
     <select id = "get" parameterType = "int" resultMap = "CustomerResultMap">
         SELECT first_name, last_name, street, phone_type, phone_number, zipcode FROM customers

@@ -1,5 +1,6 @@
 package sql.dao.mybatis;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import sql.dao.ICustomerDAO;
 import sql.dao.mysql.MySQLDAO;
@@ -51,6 +52,19 @@ public class CustomerDAO extends MyBatisDAO implements ICustomerDAO {
     }
 
     @Override
+    public void savePhone(Customer o) {
+        try(SqlSession sqlSession = sqlSessionFactory.openSession()){
+            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAO.class);
+            customerDAO.savePhone(o);
+            sqlSession.commit();
+        }
+        catch(Exception e){
+            LOGGER.error(e);
+        }
+    }
+
+
+    @Override
     public void update(Customer o, int id) {
         try(SqlSession sqlSession = sqlSessionFactory.openSession()){
             ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAO.class);
@@ -63,10 +77,34 @@ public class CustomerDAO extends MyBatisDAO implements ICustomerDAO {
     }
 
     @Override
+    public void updatePhone(Customer o, int id) {
+        try(SqlSession sqlSession = sqlSessionFactory.openSession()){
+            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAO.class);
+            customerDAO.updatePhone(o, id);
+            sqlSession.commit();
+        }
+        catch(Exception e){
+            LOGGER.error(e);
+        }
+    }
+
+    @Override
     public void delete(int id) {
         try(SqlSession sqlSession = sqlSessionFactory.openSession()){
             ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAO.class);
             customerDAO.delete(id);
+            sqlSession.commit();
+        }
+        catch(Exception e){
+            LOGGER.error(e);
+        }
+    }
+
+    @Override
+    public void deletePhone(int id) {
+        try(SqlSession sqlSession = sqlSessionFactory.openSession()){
+            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAO.class);
+            customerDAO.deletePhone(id);
             sqlSession.commit();
         }
         catch(Exception e){

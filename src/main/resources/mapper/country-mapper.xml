@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.ICountryDAO">
+    <resultMap type="Country" id="CountryResultMap" autoMapping="false">
+        <result property="id" column="id_country"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_country">
+        INSERT INTO countries (name)
+        VALUES (#{name});
+    </insert>
+    <update id="update">
+        UPDATE countries SET
+        name = #{param1.name}
+        WHERE id_country = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM countries WHERE id_country = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "CountryResultMap">
+        SELECT name FROM countries
+        WHERE id_country = #{id};
+    </select>
+    <select id = "getAll" resultMap = "CountryResultMap">
+        SELECT name FROM countries
+    </select>
+</mapper>
