@@ -1,7 +1,6 @@
 package sql.datamodels.util;
 
 import sql.datamodels.person.Customer;
-import sql.datamodels.person.Person;
 
 public class PersonDirector {
     private IPersonBuilder builder;
@@ -10,10 +9,6 @@ public class PersonDirector {
     }
 
     public PersonDirector(IPersonBuilder o){
-        builder = o;
-    }
-
-    public void changeBuilder(IPersonBuilder o){
         builder = o;
     }
 
@@ -33,6 +28,4 @@ public class PersonDirector {
         builder.reset();
         return output;
     }
-
-
 }

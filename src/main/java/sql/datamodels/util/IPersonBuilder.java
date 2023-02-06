@@ -1,8 +1,6 @@
 package sql.datamodels.util;
 
 public interface IPersonBuilder<Person> extends IBuilder {
-    void reset();
-
     void buildFirstName(String s);
 
     void buildLastName(String s);
