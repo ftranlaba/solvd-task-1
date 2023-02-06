@@ -1,18 +1,35 @@
 package sql.datamodels.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
+@XmlRootElement(name = "Product")
+@XmlType(propOrder = {"price", "amount"})
 public class Product extends Entity {
+    @JsonProperty
     int price, amount;
 
+    public Product() {
+    }
+
     public Product(String name, int price, int amount) {
-        super(name);
+        super(0, name);
+        this.price = price;
+        this.amount = amount;
+    }
+
+    public Product(int id, String name, int price, int amount) {
+        super(id, name);
         this.price = price;
         this.amount = amount;
     }
 
     public Product(Object[] arr) {
-        super(arr[0] + "");
+        super(0, arr[0] + "");
         this.price = Integer.parseInt(arr[1] + "");
         this.amount = Integer.parseInt(arr[2] + "");
     }
@@ -26,6 +43,7 @@ public class Product extends Entity {
         return price;
     }
 
+    @XmlElement(name = "price")
     public void setPrice(int price) {
         this.price = price;
     }
@@ -34,6 +52,7 @@ public class Product extends Entity {
         return amount;
     }
 
+    @XmlElement(name = "amount")
     public void setAmount(int amount) {
         this.amount = amount;
     }

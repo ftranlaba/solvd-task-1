@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.IProductDAO">
+    <resultMap type="Product" id="ProductResultMap" autoMapping="false">
+        <result property="id" column="id_product"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="amount" column="amount"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_product">
+        INSERT INTO products (name, price, amount)
+        VALUES (#{name}, #{price}, #{amount});
+    </insert>
+    <update id="update">
+        UPDATE products SET
+        name = #{param1.name},
+        price = #{param1.price},
+        amount = #{param1.amount}
+        WHERE id_product = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM products WHERE id_product = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "ProductResultMap">
+        SELECT name, price, amount FROM products
+        WHERE id_product = #{id};
+    </select>
+    <select id = "getAll" resultMap = "ProductResultMap">
+        SELECT name, price, amount FROM products
+    </select>
+</mapper>

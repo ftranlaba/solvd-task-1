@@ -94,7 +94,7 @@ public class GenericXMLParser implements IXMLParser, AutoCloseable {
         return null;
     }
 
-    public String toClassName(String s){
+    public String toClassName(String s) {
         return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 

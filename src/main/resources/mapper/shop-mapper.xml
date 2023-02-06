@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.IShopDAO">
+    <resultMap type="Shop" id="ShopResultMap" autoMapping="false">
+        <result property="id" column="id_shop"/>
+        <result property="zipcode" column="zipcode"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_shop">
+        INSERT INTO shops (zipcode)
+        VALUES (#{zipcode});
+    </insert>
+    <update id="update">
+        UPDATE shops SET
+        zipcode = #{param1.zipcode}
+        WHERE id_shop = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM shops WHERE id_shop = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "ShopResultMap">
+        SELECT zipcode FROM shops
+        WHERE id_shop = #{id};
+    </select>
+    <select id = "getAll" resultMap = "ShopResultMap">
+        SELECT zipcode FROM shops
+    </select>
+</mapper>

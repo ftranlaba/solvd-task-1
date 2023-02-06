@@ -1,17 +1,31 @@
 package sql.datamodels.person;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import sql.datamodels.entity.Zipcode;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
+@XmlType(propOrder = {"firstName", "lastName", "address", "phoneType", "phoneNumber"})
 public abstract class Person extends Zipcode {
+    @JsonProperty
     String firstName, lastName, address, phoneType, phoneNumber;
 
     public Person() {
         super();
     }
 
-    public Person(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode) {
+    public Person(int id, String firstName, String address, String phoneType, String lastName, int zipcode, String phoneNumber) {
+        super(zipcode);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneType = phoneType;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Person(String firstName, String address, String phoneType, String lastName, int zipcode, String phoneNumber) {
         super(zipcode);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,6 +38,7 @@ public abstract class Person extends Zipcode {
         return firstName;
     }
 
+    @XmlElement(name = "firstName")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -32,6 +47,7 @@ public abstract class Person extends Zipcode {
         return lastName;
     }
 
+    @XmlElement(name = "lastName")
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -40,6 +56,7 @@ public abstract class Person extends Zipcode {
         return address;
     }
 
+    @XmlElement(name = "address")
     public void setAddress(String address) {
         this.address = address;
     }
@@ -48,6 +65,7 @@ public abstract class Person extends Zipcode {
         return phoneType;
     }
 
+    @XmlElement(name = "phoneType")
     public void setPhoneType(String phoneType) {
         this.phoneType = phoneType;
     }
@@ -56,6 +74,7 @@ public abstract class Person extends Zipcode {
         return phoneNumber;
     }
 
+    @XmlElement(name = "phoneNumber")
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -64,13 +83,14 @@ public abstract class Person extends Zipcode {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Person person = (Person) o;
         return Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(phoneType, person.phoneType) && Objects.equals(phoneNumber, person.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, address, phoneType, phoneNumber);
+        return Objects.hash(super.hashCode(), firstName, lastName, address, phoneType, phoneNumber);
     }
 
     @Override

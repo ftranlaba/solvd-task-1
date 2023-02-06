@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`customers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`customers` (
-  `id_customer` INT NOT NULL,
+  `id_customer` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(25) NULL,
   `last_name` VARCHAR(25) NULL,
   `street` VARCHAR(45) NULL,

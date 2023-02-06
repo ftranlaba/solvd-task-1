@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.ICityDAO">
+    <resultMap type="City" id="CityResultMap" autoMapping="false">
+        <result property="id" column="id_city"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_city">
+        INSERT INTO cities (name)
+        VALUES (#{name});
+    </insert>
+    <update id="update">
+        UPDATE cities SET
+        name = #{param1.name}
+        WHERE id_city = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM cities WHERE id_city = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "CityResultMap">
+        SELECT name FROM cities
+        WHERE id_city = #{id};
+    </select>
+    <select id = "getAll" resultMap = "CityResultMap">
+        SELECT name FROM cities
+    </select>
+</mapper>

@@ -1,17 +1,43 @@
 package sql.datamodels.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import sql.datamodels.BaseDataModel;
+import sql.json.TimestampSerializer;
+import sql.xml.JAXB.JAXBTimestampAdapter;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class Order {
+@XmlRootElement(name = "Order")
+@XmlType(propOrder = {"startDate", "endDate"})
+public class Order extends BaseDataModel {
+    @JsonSerialize(using = TimestampSerializer.class)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     Timestamp startDate, endDate;
 
+    public Order() {
+        super(0);
+    }
+
     public Order(Timestamp startDate, Timestamp endDate) {
+        super(0);
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Order(int id, Timestamp startDate, Timestamp endDate) {
+        super(id);
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
     public Order(Object[] arr) {
+        super(0);
         this.startDate = (Timestamp) arr[0];
         this.endDate = (Timestamp) arr[1];
     }
@@ -20,6 +46,8 @@ public class Order {
         return startDate;
     }
 
+    @XmlElement(name = "startDate")
+    @XmlJavaTypeAdapter(JAXBTimestampAdapter.class)
     public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
@@ -28,6 +56,8 @@ public class Order {
         return endDate;
     }
 
+    @XmlElement(name = "endDate")
+    @XmlJavaTypeAdapter(JAXBTimestampAdapter.class)
     public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }

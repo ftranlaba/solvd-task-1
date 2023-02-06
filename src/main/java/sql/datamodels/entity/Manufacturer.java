@@ -1,17 +1,30 @@
 package sql.datamodels.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
+@XmlRootElement(name = "Manufacturer")
+@XmlType(propOrder = {"year"})
 public class Manufacturer extends Entity {
+    @JsonProperty
     private int year;
 
     public Manufacturer(String name, int year) {
-        super(name);
+        super(0, name);
+        this.year = year;
+    }
+
+    public Manufacturer(int id, String name, int year) {
+        super(id, name);
         this.year = year;
     }
 
     public Manufacturer(Object[] arr) {
-        super(arr[0] + "");
+        super(0, arr[0] + "");
         year = Integer.parseInt(arr[1] + "");
     }
 
@@ -24,6 +37,7 @@ public class Manufacturer extends Entity {
         return year;
     }
 
+    @XmlElement(name = "year")
     public void setYear(int year) {
         this.year = year;
     }

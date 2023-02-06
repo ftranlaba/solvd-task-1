@@ -27,8 +27,8 @@ public final class Test {
 
     final static Level STATICLOG = Level.forName("STATICLOG", 699);
     final static Level MENULOG = Level.forName("MENULOG", 700);
-    private static boolean dataLoaded = false;
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
+    private static boolean dataLoaded = false;
     private static int personMapIndex = 0;
 
     static {
@@ -142,21 +142,21 @@ public final class Test {
     public final static void viewParkingFees() {
         LOGGER.log(MENULOG, "Here are the parking fees");
         for (ParkingLots o : ParkingLots.values()) {
-            LOGGER.log(MENULOG,o + " $" + o.getFee());
+            LOGGER.log(MENULOG, o + " $" + o.getFee());
         }
     }
 
     public final static void viewAllowedExamMaterials() {
         LOGGER.log(MENULOG, "Here are the allowed Exam Materials");
         for (AllowedMaterials o : AllowedMaterials.values()) {
-            LOGGER.log(MENULOG,o + " " + o.isAllowed());
+            LOGGER.log(MENULOG, o + " " + o.isAllowed());
         }
     }
 
     public final static void viewAlgorithms() {
         LOGGER.log(MENULOG, "Here are some algorithms and their O(n)");
         for (Algorithms o : Algorithms.values()) {
-            LOGGER.log(MENULOG,o + " " + o.getRunTime());
+            LOGGER.log(MENULOG, o + " " + o.getRunTime());
         }
     }
 

@@ -19,7 +19,7 @@ import java.util.List;
 public class ReflectionTest {
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
-    public final static void main(String[] args){
+    public final static void main(String[] args) {
         List<Object> list = new ArrayList<>();
         list.add(new University());
         list.add(new Course());
@@ -49,7 +49,7 @@ public class ReflectionTest {
                             .forEach((methodObj) -> {
                                 String methodHeader = Modifier.toString(methodObj.getModifiers()) + " " + methodObj.getReturnType() + " " + methodObj.getName();
                                 String s = "(";
-                                for(Parameter param : methodObj.getParameters()){
+                                for (Parameter param : methodObj.getParameters()) {
                                     s += param.toString() + ",";
                                 }
                                 s += ")";
