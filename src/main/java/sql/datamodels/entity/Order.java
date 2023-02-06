@@ -2,6 +2,7 @@ package sql.datamodels.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import sql.datamodels.BaseDataModel;
 import sql.json.TimestampSerializer;
 import sql.xml.JAXB.JAXBTimestampAdapter;
 
@@ -14,20 +15,29 @@ import java.util.Objects;
 
 @XmlRootElement(name = "Order")
 @XmlType(propOrder = {"startDate", "endDate"})
-public class Order {
+public class Order extends BaseDataModel {
     @JsonSerialize(using = TimestampSerializer.class)
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     Timestamp startDate, endDate;
 
     public Order() {
+        super(0);
     }
 
     public Order(Timestamp startDate, Timestamp endDate) {
+        super(0);
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Order(int id, Timestamp startDate, Timestamp endDate) {
+        super(id);
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
     public Order(Object[] arr) {
+        super(0);
         this.startDate = (Timestamp) arr[0];
         this.endDate = (Timestamp) arr[1];
     }

@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.IManufacturerDAO">
+    <resultMap type="Manufacturer" id="ManufacturerResultMap" autoMapping="false">
+        <result property="id" column="id_manufacturer"/>
+        <result property="name" column="name"/>
+        <result property="year" column="year"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_manufacturer">
+        INSERT INTO manufacturers (name, year)
+        VALUES (#{name}, #{year});
+    </insert>
+    <update id="update">
+        UPDATE manufacturers SET
+        name = #{param1.name},
+        year = #{param1.year}
+        WHERE id_manufacturer = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM manufacturers WHERE id_manufacturer = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "ManufacturerResultMap">
+        SELECT name, year FROM manufacturers
+        WHERE id_manufacturer = #{id};
+    </select>
+    <select id = "getAll" resultMap = "ManufacturerResultMap">
+        SELECT name, year FROM manufacturers
+    </select>
+</mapper>

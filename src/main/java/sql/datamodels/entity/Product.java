@@ -17,13 +17,19 @@ public class Product extends Entity {
     }
 
     public Product(String name, int price, int amount) {
-        super(name);
+        super(0, name);
+        this.price = price;
+        this.amount = amount;
+    }
+
+    public Product(int id, String name, int price, int amount) {
+        super(id, name);
         this.price = price;
         this.amount = amount;
     }
 
     public Product(Object[] arr) {
-        super(arr[0] + "");
+        super(0, arr[0] + "");
         this.price = Integer.parseInt(arr[1] + "");
         this.amount = Integer.parseInt(arr[2] + "");
     }

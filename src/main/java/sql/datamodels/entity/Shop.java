@@ -8,6 +8,10 @@ public class Shop extends Zipcode {
         super(zipcode);
     }
 
+    public Shop(int id, int zipcode) {
+        super(id, zipcode);
+    }
+
     public Shop(Object[] arr) {
         super(Integer.parseInt(arr[0] + ""));
     }

@@ -5,11 +5,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "City")
 public class City extends Entity {
     public City(String name) {
-        super(name);
+        super(0, name);
+    }
+
+    public City(int id, String name) {
+        super(id, name);
     }
 
     public City(Object[] arr) {
-        super(arr[0] + "");
+        super(0, arr[0] + "");
     }
 
     public City() {

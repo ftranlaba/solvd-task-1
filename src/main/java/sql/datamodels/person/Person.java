@@ -16,7 +16,16 @@ public abstract class Person extends Zipcode {
         super();
     }
 
-    public Person(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode) {
+    public Person(int id, String firstName, String address, String phoneType, String lastName, int zipcode, String phoneNumber) {
+        super(zipcode);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneType = phoneType;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Person(String firstName, String address, String phoneType, String lastName, int zipcode, String phoneNumber) {
         super(zipcode);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -74,13 +83,14 @@ public abstract class Person extends Zipcode {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Person person = (Person) o;
         return Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(phoneType, person.phoneType) && Objects.equals(phoneNumber, person.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, address, phoneType, phoneNumber);
+        return Objects.hash(super.hashCode(), firstName, lastName, address, phoneType, phoneNumber);
     }
 
     @Override

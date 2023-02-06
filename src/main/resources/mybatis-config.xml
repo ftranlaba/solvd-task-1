@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <typeAliases>
+        <typeAlias alias="Customer" type="sql.datamodels.person.Customer"/>
+        <typeAlias alias="Employee" type="sql.datamodels.person.Employee"/>
+        <typeAlias alias="City" type="sql.datamodels.entity.City"/>
+        <typeAlias alias="Country" type="sql.datamodels.entity.Country"/>
+        <typeAlias alias="Manufacturer" type="sql.datamodels.entity.Manufacturer"/>
+        <typeAlias alias="Order" type="sql.datamodels.entity.Order"/>
+        <typeAlias alias="Product" type="sql.datamodels.entity.Product"/>
+        <typeAlias alias="Shop" type="sql.datamodels.entity.Shop"/>
+        <typeAlias alias="State" type="sql.datamodels.entity.State"/>
+    </typeAliases>
+    <environments default = "development">
+        <environment id = "development">
+            <transactionManager type = "JDBC"/>
+
+            <dataSource type = "POOLED">
+                <property name = "driver" value = "${driver}"/>
+                <property name = "url" value = "${db.url}"/>
+                <property name = "username" value = "${db.user}"/>
+                <property name = "password" value = "${db.password}"/>
+            </dataSource>
+
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper/customer-mapper.xml"/>
+        <mapper resource="mapper/employee-mapper.xml"/>
+        <mapper resource="mapper/city-mapper.xml"/>
+        <mapper resource="mapper/country-mapper.xml"/>
+        <mapper resource="mapper/manufacturer-mapper.xml"/>
+        <mapper resource="mapper/order-mapper.xml"/>
+        <mapper resource="mapper/product-mapper.xml"/>
+    </mappers>
+
+</configuration>

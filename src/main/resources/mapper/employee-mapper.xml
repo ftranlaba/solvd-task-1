@@ -1,0 +1,54 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.dao.mybatis.IEmployeeDAOMyBatis">
+    <resultMap type="Employee" id="EmployeeResultMap" autoMapping="false">
+        <result property="id" column="id_employee"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="address" column="address"/>
+        <result property="zipcode" column="zipcode"/>
+        <result property="phoneType" column="phone_type"/>
+        <result property="phoneNumber" column="phone_number"/>
+    </resultMap>
+    <insert id="save" keyProperty="id" useGeneratedKeys="true" keyColumn="id_employee">
+        INSERT INTO employees (first_name, last_name, address, zipcode)
+        VALUES (#{firstName}, #{lastName}, #{address}, #{zipcode});
+    </insert>
+    <insert id="savePhone">
+        INSERT INTO employee_phonenumbers(id_employee, phone_type, phone_number)
+        VALUES (#{id}, #{phoneType}, #{phoneNumber});
+    </insert>
+    <update id="update">
+        UPDATE employees SET
+        first_name = #{param1.firstName},
+        last_name = #{param1.lastName},
+        address = #{param1.address},
+        zipcode = #{param1.zipcode}
+        WHERE id_employee = #{param1.id};
+    </update>
+    <update id="updatePhone">
+        UPDATE employee_phonenumbers SET
+        phone_type = #{param1.phoneType},
+        phone_number = #{param1.phoneNumber}
+        WHERE id_employee = #{param1.id};
+    </update>
+    <delete id = "delete" parameterType = "int">
+        DELETE FROM employees WHERE id_employee = #{id};
+    </delete>
+    <delete id = "deletePhone" parameterType = "int">
+        DELETE FROM employee_phonenumbers WHERE id_employee = #{id};
+    </delete>
+    <select id = "get" parameterType = "int" resultMap = "EmployeeResultMap">
+        SELECT first_name, last_name, address, phone_type, phone_number, zipcode FROM employees
+        INNER JOIN employee_phonenumbers ON employee_phonenumbers.id_employee = employees.id_employee
+        WHERE employees.id_employee = #{id};
+    </select>
+    <select id = "getAll" resultMap = "EmployeeResultMap">
+        SELECT first_name, last_name, address, phone_type, phone_number, zipcode FROM employees
+        INNER JOIN employee_phonenumbers ON employees.id_employee = employee_phonenumbers.id_employee;
+    </select>
+</mapper>
