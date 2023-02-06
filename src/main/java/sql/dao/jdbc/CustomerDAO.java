@@ -12,7 +12,7 @@ public class CustomerDAO extends JDBCDAO implements ICustomerDAO {
     @Override
     public Optional get(int id) {
         //public Customer(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode)
-        String sql = "SELECT first_name, last_name, street, phone_type, phone_number, zipcode " +
+        String sql = "SELECT first_name, last_name, address, phone_type, phone_number, zipcode " +
                 "FROM customers INNER JOIN customer_phonenumbers ON customers.id_customer = customer_phonenumbers.id_customer WHERE id_customers = ?";
         return Optional.ofNullable(new Customer(getWithTryCatch(sql, id)));
     }
@@ -20,7 +20,7 @@ public class CustomerDAO extends JDBCDAO implements ICustomerDAO {
     @Override
     public List getAll() {
         //public Customer(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode)
-        String sql = "SELECT first_name, last_name, street, phone_type, phone_number, zipcode " +
+        String sql = "SELECT first_name, last_name, address, phone_type, phone_number, zipcode " +
                 "FROM customers INNER JOIN customer_phonenumbers ON customers.id_customer = customer_phonenumbers.id_customer";
         List<Object[]> list = getWithTryCatch(sql);
         List<Customer> output = new ArrayList<>();
