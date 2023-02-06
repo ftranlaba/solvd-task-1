@@ -1,6 +1,5 @@
 package sql.dao;
 
-import sql.dao.IBaseDAO;
 import sql.datamodels.entity.City;
 
 import java.util.List;

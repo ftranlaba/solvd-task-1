@@ -1,6 +1,5 @@
 package sql.dao;
 
-import sql.dao.IBaseDAO;
 import sql.datamodels.person.Employee;
 
 import java.util.List;
@@ -21,4 +20,5 @@ public interface IEmployeeDAO extends IBaseDAO<Employee> {
 
     @Override
     void delete(int id);
+
 }

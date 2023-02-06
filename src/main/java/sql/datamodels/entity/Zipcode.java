@@ -1,20 +1,28 @@
 package sql.datamodels.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import sql.datamodels.BaseDataModel;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 @XmlType(propOrder = {"zipcode"})
-public abstract class Zipcode {
+public abstract class Zipcode extends BaseDataModel {
     @JsonProperty
     int zipcode;
 
     public Zipcode() {
+        super(0);
     }
 
     public Zipcode(int zipcode) {
+        super(0);
+        this.zipcode = zipcode;
+    }
+
+    public Zipcode(int id, int zipcode) {
+        super(id);
         this.zipcode = zipcode;
     }
 

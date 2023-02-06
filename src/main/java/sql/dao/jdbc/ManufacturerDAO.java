@@ -1,4 +1,4 @@
-package sql.dao.mysql;
+package sql.dao.jdbc;
 
 import sql.dao.IManufacturerDAO;
 import sql.datamodels.entity.Manufacturer;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ManufacturerDaoMySQL extends MySQLDAO implements IManufacturerDAO {
+public class ManufacturerDAO extends JDBCDAO implements IManufacturerDAO {
 
     @Override
     public Optional get(int id) {
@@ -35,9 +35,9 @@ public class ManufacturerDaoMySQL extends MySQLDAO implements IManufacturerDAO {
         valueList.add(o.getName());
         valueList.add(o.getYear());
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }
@@ -50,10 +50,10 @@ public class ManufacturerDaoMySQL extends MySQLDAO implements IManufacturerDAO {
         valueList.add(o.getYear());
         valueList.add(id);
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
-        typeList.add(MySQLType.INT);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
     }

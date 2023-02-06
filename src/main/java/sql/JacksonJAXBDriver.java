@@ -51,7 +51,7 @@ public class JacksonJAXBDriver {
             mar.marshal(data, new File("src/main/resources/jaxb_data.xml"));
             Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
             DataModelContainer jaxbInput = (DataModelContainer) jaxbUnmarshaller.unmarshal(new File("src/main/resources/jaxb_data.xml"));
-            for(Customer c : jaxbInput.getCustomerList()){
+            for (Customer c : jaxbInput.getCustomerList()) {
                 LOGGER.info(c.getFirstName());
             }
         } catch (JAXBException e) {

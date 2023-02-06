@@ -1,4 +1,4 @@
-package sql.dao.mysql;
+package sql.dao.jdbc;
 
 import sql.dao.ICustomerDAO;
 import sql.datamodels.person.Customer;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerDaoMySQL extends MySQLDAO implements ICustomerDAO {
+public class CustomerDAO extends JDBCDAO implements ICustomerDAO {
 
     @Override
     public Optional get(int id) {
@@ -40,11 +40,11 @@ public class CustomerDaoMySQL extends MySQLDAO implements ICustomerDAO {
         valueList.add(o.getAddress());
         valueList.add(o.getZipcode());
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
 
@@ -53,8 +53,8 @@ public class CustomerDaoMySQL extends MySQLDAO implements ICustomerDAO {
         valueList.add(o.getPhoneNumber());
 
         typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.STRING);
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.STRING);
 
         saveWithTryCatch(phonesql, valueList, typeList);
     }
@@ -71,12 +71,12 @@ public class CustomerDaoMySQL extends MySQLDAO implements ICustomerDAO {
         valueList.add(o.getZipcode());
         valueList.add(id);
 
-        List<MySQLType> typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
-        typeList.add(MySQLType.INT);
+        List<JDBCType> typeList = new ArrayList<>();
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(sql, valueList, typeList);
 
@@ -86,9 +86,9 @@ public class CustomerDaoMySQL extends MySQLDAO implements ICustomerDAO {
         valueList.add(id);
 
         typeList = new ArrayList<>();
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.STRING);
-        typeList.add(MySQLType.INT);
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.STRING);
+        typeList.add(JDBCType.INT);
 
         saveWithTryCatch(phonesql, valueList, typeList);
 

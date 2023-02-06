@@ -14,12 +14,17 @@ public class Manufacturer extends Entity {
     private int year;
 
     public Manufacturer(String name, int year) {
-        super(name);
+        super(0, name);
+        this.year = year;
+    }
+
+    public Manufacturer(int id, String name, int year) {
+        super(id, name);
         this.year = year;
     }
 
     public Manufacturer(Object[] arr) {
-        super(arr[0] + "");
+        super(0, arr[0] + "");
         year = Integer.parseInt(arr[1] + "");
     }
 

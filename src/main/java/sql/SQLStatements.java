@@ -28,21 +28,21 @@ public class SQLStatements {
     public static List<String> getSqlStatements() {
         List<String> list = new ArrayList<>();
         list.addAll(getInsertStatements());
-        list.addAll(getUpdateStatements());
-        list.addAll(getDeleteStatements());
-        list.addAll(getAlterStatements());
-        list.addAll(getJoinStatements());
-        list.addAll(getAggregateWithoutHaving());
-        list.addAll(getAggregateWithHaving());
+        //list.addAll(getUpdateStatements());
+        //list.addAll(getDeleteStatements());
+        //list.addAll(getAlterStatements());
+        //list.addAll(getJoinStatements());
+        //list.addAll(getAggregateWithoutHaving());
+        //list.addAll(getAggregateWithHaving());
 
         return list;
     }
 
     public static List<String> getInsertStatements() {
         List<String> list = new ArrayList<>();
+        list.add("INSERT INTO ziplocations VALUES (12345, 1, 1)");
         list.add("INSERT INTO cities(name) VALUES ('Pomona')");
         list.add("INSERT INTO states(name) VALUES ('California')");
-        list.add("INSERT INTO ziplocations VALUES (12345, 1, 1)");
         list.add("INSERT INTO customers(first_name, last_name, street, zipcode) VALUES ('francis', 'tran', 'streetExample', 12345)");
         list.add("INSERT INTO countries(name) VALUES ('USA')");
         list.add("INSERT INTO manufacturers(name, year) VALUES ('NIKE', 1960)");
