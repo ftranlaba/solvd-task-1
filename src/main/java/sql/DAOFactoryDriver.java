@@ -6,7 +6,7 @@ import sql.dao.IBaseDAO;
 import sql.dao.util.DBFactoryGenerator;
 import sql.dao.util.enums.DBConnectionType;
 
-public class DAOUtilDriver {
+public class DAOFactoryDriver {
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
     public static void main(String[] args){
         IBaseDAO cityDAO = DBFactoryGenerator.getFactory(DBConnectionType.JDBC).getDAO("city");
