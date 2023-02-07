@@ -8,40 +8,21 @@ import java.util.List;
 import java.util.Optional;
 
 public class EmployeeDAO extends MyBatisDAO implements IEmployeeDAOMyBatis {
+    private static final Class classReference = IEmployeeDAOMyBatis.class;
 
     @Override
     public Optional get(int id) {
-        Optional output = null;
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IEmployeeDAO employeeDAO = sqlSession.getMapper(IEmployeeDAOMyBatis.class);
-            output = employeeDAO.get(id);
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        return output;
+        return get(id, classReference);
     }
 
     @Override
     public List getAll() {
-        List<Employee> output = null;
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IEmployeeDAO employeeDAO = sqlSession.getMapper(IEmployeeDAOMyBatis.class);
-            output = employeeDAO.getAll();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        return output;
+        return getAll(classReference);
     }
 
     @Override
     public void save(Employee o) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IEmployeeDAO employeeDAO = sqlSession.getMapper(IEmployeeDAOMyBatis.class);
-            employeeDAO.save(o);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        save(o, classReference);
     }
 
     @Override
@@ -55,16 +36,9 @@ public class EmployeeDAO extends MyBatisDAO implements IEmployeeDAOMyBatis {
         }
     }
 
-
     @Override
     public void update(Employee o, int id) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IEmployeeDAO employeeDAO = sqlSession.getMapper(IEmployeeDAOMyBatis.class);
-            employeeDAO.update(o, id);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        update(o, id, classReference);
     }
 
     @Override
@@ -80,13 +54,7 @@ public class EmployeeDAO extends MyBatisDAO implements IEmployeeDAOMyBatis {
 
     @Override
     public void delete(int id) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IEmployeeDAO employeeDAO = sqlSession.getMapper(IEmployeeDAOMyBatis.class);
-            employeeDAO.delete(id);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        delete(id, classReference);
     }
 
     @Override
