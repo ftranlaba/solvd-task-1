@@ -14,14 +14,14 @@ public class StateDAO extends JDBCDAO implements IStateDAO {
     public Optional get(int id) {
         //public State(String name)
         String sql = "SELECT name FROM states WHERE id_state = ?";
-        return Optional.ofNullable(new State(getWithTryCatch(sql, id)));
+        return Optional.ofNullable(new State(getById(sql, id)));
     }
 
     @Override
     public List getAll() {
         //public State(String name)
         String sql = "SELECT name FROM states";
-        List<Object[]> list = getWithTryCatch(sql);
+        List<Object[]> list = getAll(sql);
         List<State> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new State(o));
@@ -38,7 +38,7 @@ public class StateDAO extends JDBCDAO implements IStateDAO {
         List<JDBCType> typeList = new ArrayList<>();
         typeList.add(JDBCType.STRING);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
@@ -52,12 +52,12 @@ public class StateDAO extends JDBCDAO implements IStateDAO {
         typeList.add(JDBCType.STRING);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM states WHERE id_state = ?";
-        deleteWithTryCatch(sql, id);
+        deleteById(sql, id);
     }
 }

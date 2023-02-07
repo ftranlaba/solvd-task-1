@@ -11,14 +11,14 @@ public abstract class JDBCDAO {
     private static final JDBCConnectionPool pool = JDBCConnectionPool.getInstance();
     private static final Logger LOGGER = LogManager.getLogger("TESTLOGGER");
 
-    public JDBCConnectionPool getPool() {
+    private JDBCConnectionPool getPool() {
         return pool;
     }
 
     public Map<String, List<Object>> resultSetToMap(ResultSet rs) throws SQLException {
         ResultSetMetaData meta = rs.getMetaData();
         int columnCount = meta.getColumnCount();
-        Map<String, List<Object>> map = new HashMap<>();
+        Map<String, List<Object>> map = new LinkedHashMap<>();
         for (int i = 1; i <= columnCount; i++) {
             map.put(meta.getColumnName(i), new ArrayList<>());
         }
@@ -27,9 +27,7 @@ public abstract class JDBCDAO {
                 map.get(meta.getColumnName(i)).add(rs.getObject(i));
             }
         }
-
         return map;
-
     }
 
     public Map<String, List<Object>> boilerPlateGet(Connection conn, String sql, int id) throws SQLException {
@@ -53,10 +51,10 @@ public abstract class JDBCDAO {
         return map;
     }
 
-    public Object[] genericGet(Connection conn, String sql, int id) throws SQLException {
+    public Object[] getRowDataById(Connection conn, String sql, int id) throws SQLException {
         // each key in the map represents a column
         // each Object inside the List represents a row value of the column
-        Map<String, List<Object>> map = boilerPlateGet(conn, sql);
+        Map<String, List<Object>> map = boilerPlateGet(conn, sql, id);
         Object[] rowData = null;
         if (map != null) {
             rowData = new Object[map.size()];
@@ -71,7 +69,7 @@ public abstract class JDBCDAO {
         return rowData;
     }
 
-    public List<Object[]> genericGet(Connection conn, String sql) throws SQLException {
+    public List<Object[]> getRowData(Connection conn, String sql) throws SQLException {
         // each key in the map represents a column
         // each object inside the List represents a row value of the column
         Map<String, List<Object>> map = boilerPlateGet(conn, sql);
@@ -93,11 +91,11 @@ public abstract class JDBCDAO {
         return output;
     }
 
-    public Object[] getWithTryCatch(String sql, int id) {
+    public Object[] getById(String sql, int id) {
         Connection conn = pool.getConnection();
         Object[] row = null;
         try {
-            row = genericGet(conn, sql, id);
+            row = getRowDataById(conn, sql, id);
         } catch (SQLException e) {
             LOGGER.error(e);
         } finally {
@@ -108,11 +106,11 @@ public abstract class JDBCDAO {
         return row;
     }
 
-    public List<Object[]> getWithTryCatch(String sql) {
+    public List<Object[]> getAll(String sql) {
         Connection conn = pool.getConnection();
         List<Object[]> list = new ArrayList<>();
         try {
-            list = genericGet(conn, sql);
+            list = getRowData(conn, sql);
         } catch (SQLException e) {
             LOGGER.error(e);
         } finally {
@@ -123,7 +121,7 @@ public abstract class JDBCDAO {
         return list;
     }
 
-    public void saveWithTryCatch(String sql, List<Object> valueList, List<JDBCType> typeList) {
+    public void save(String sql, List<Object> valueList, List<JDBCType> typeList) {
         Connection conn = pool.getConnection();
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             setStatementValue(stmt, valueList, typeList);
@@ -157,7 +155,7 @@ public abstract class JDBCDAO {
         }
     }
 
-    public void deleteWithTryCatch(String sql, int id) {
+    public void deleteById(String sql, int id) {
         Connection conn = pool.getConnection();
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);

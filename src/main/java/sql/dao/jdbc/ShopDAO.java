@@ -13,14 +13,14 @@ public class ShopDAO extends JDBCDAO implements IShopDAO {
     public Optional get(int id) {
         //public Shop(int zipcode)
         String sql = "SELECT zipcode FROM shops WHERE id_shop = ?";
-        return Optional.ofNullable(new Shop(getWithTryCatch(sql, id)));
+        return Optional.ofNullable(new Shop(getById(sql, id)));
     }
 
     @Override
     public List getAll() {
         //public Shop(int zipcode)
         String sql = "SELECT zipcode FROM shops";
-        List<Object[]> list = getWithTryCatch(sql);
+        List<Object[]> list = getAll(sql);
         List<Shop> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Shop(o));
@@ -37,7 +37,7 @@ public class ShopDAO extends JDBCDAO implements IShopDAO {
         List<JDBCType> typeList = new ArrayList<>();
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
@@ -51,12 +51,12 @@ public class ShopDAO extends JDBCDAO implements IShopDAO {
         typeList.add(JDBCType.INT);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM shops WHERE id_shop = ?";
-        deleteWithTryCatch(sql, id);
+        deleteById(sql, id);
     }
 }
