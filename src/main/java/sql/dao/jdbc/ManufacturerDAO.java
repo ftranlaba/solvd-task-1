@@ -13,14 +13,14 @@ public class ManufacturerDAO extends JDBCDAO implements IManufacturerDAO {
     public Optional get(int id) {
         //public Manufacturer(String name, int year)
         String sql = "SELECT name, year FROM manufacturers WHERE id_manufacturer = ?";
-        return Optional.ofNullable(new Manufacturer(getWithTryCatch(sql, id)));
+        return Optional.ofNullable(new Manufacturer(getById(sql, id)));
     }
 
     @Override
     public List getAll() {
         //public Manufacturer(String name, int year)
         String sql = "SELECT name, year FROM manufacturers";
-        List<Object[]> list = getWithTryCatch(sql);
+        List<Object[]> list = getAll(sql);
         List<Manufacturer> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Manufacturer(o));
@@ -39,7 +39,7 @@ public class ManufacturerDAO extends JDBCDAO implements IManufacturerDAO {
         typeList.add(JDBCType.STRING);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
@@ -55,12 +55,12 @@ public class ManufacturerDAO extends JDBCDAO implements IManufacturerDAO {
         typeList.add(JDBCType.INT);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM manufacturers WHERE id_manufacturer = ?";
-        deleteWithTryCatch(sql, id);
+        deleteById(sql, id);
     }
 }

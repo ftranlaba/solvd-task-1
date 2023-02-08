@@ -13,14 +13,14 @@ public class CountryDAO extends JDBCDAO implements ICountryDAO {
     public Optional get(int id) {
         //public Country(String name)
         String sql = "SELECT name FROM countries WHERE id_country = ?";
-        return Optional.ofNullable(new Country(getWithTryCatch(sql, id)));
+        return Optional.ofNullable(new Country(getById(sql, id)));
     }
 
     @Override
     public List getAll() {
         //public Country(String name)
         String sql = "SELECT name FROM countries";
-        List<Object[]> list = getWithTryCatch(sql);
+        List<Object[]> list = getAll(sql);
         List<Country> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Country(o));
@@ -37,7 +37,7 @@ public class CountryDAO extends JDBCDAO implements ICountryDAO {
         List<JDBCType> typeList = new ArrayList<>();
         typeList.add(JDBCType.STRING);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
@@ -51,12 +51,12 @@ public class CountryDAO extends JDBCDAO implements ICountryDAO {
         typeList.add(JDBCType.STRING);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM countries WHERE id_country = ?";
-        deleteWithTryCatch(sql, id);
+        deleteById(sql, id);
     }
 }

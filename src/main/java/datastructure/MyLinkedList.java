@@ -37,14 +37,14 @@ public class MyLinkedList<T> {
             return;
         }
         Node<T> tempNode = head;
-        int c = 0;
+        int index = 0;
         while (true) {
-            if (c == k - 1 && tempNode.next != null) {
+            if (index == k - 1 && tempNode.next != null) {
                 Node newNode = new Node<T>(o, tempNode.next);
                 tempNode.next = newNode;
                 size++;
                 break;
-            } else if (c == k - 1 && tempNode.next == null) {
+            } else if (index == k - 1 && tempNode.next == null) {
                 Node newNode = new Node<T>(o, null);
                 tempNode.next = newNode;
                 size++;
@@ -52,7 +52,7 @@ public class MyLinkedList<T> {
             } else {
                 tempNode = tempNode.next;
             }
-            c++;
+            index++;
         }
     }
 
@@ -61,24 +61,26 @@ public class MyLinkedList<T> {
             return;
         }
         Node<T> tempNode = head;
-        int c = 0;
-        if (c == k) {
+        int index = 0;
+        if (index == k) {
             head = head.next;
             return;
         }
         // k represents the kth node to be removed
         // k - 1 represents the node before the kth node that needs to be removed
         while (true) {
-            if (c == k - 1 && tempNode.next.next != null) {
+            if (index == k - 1 && tempNode.next.next != null) {
                 tempNode.next = tempNode.next.next;
+                size--;
                 break;
-            } else if (c == k - 1) {
+            } else if (index == k - 1) {
                 tempNode.next = null;
+                size--;
                 break;
             } else {
                 tempNode = tempNode.next;
             }
-            c++;
+            index++;
         }
     }
 
@@ -86,9 +88,11 @@ public class MyLinkedList<T> {
         Node<T> tempNode = head;
         while (true) {
             if (tempNode.next.someData.equals(o) && tempNode.next.next != null) {
+                size--;
                 tempNode.next = tempNode.next.next;
                 break;
             } else if (tempNode.next.someData.equals(o)) {
+                size--;
                 tempNode.next = null;
                 break;
             } else {

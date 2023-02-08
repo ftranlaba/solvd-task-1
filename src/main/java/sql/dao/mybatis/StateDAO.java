@@ -1,6 +1,5 @@
 package sql.dao.mybatis;
 
-import org.apache.ibatis.session.SqlSession;
 import sql.dao.IStateDAO;
 import sql.datamodels.entity.State;
 
@@ -8,61 +7,30 @@ import java.util.List;
 import java.util.Optional;
 
 public class StateDAO extends MyBatisDAO implements IStateDAO {
+    private static final Class classReference = IStateDAO.class;
 
     @Override
     public Optional get(int id) {
-        Optional output = null;
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IStateDAO stateDAO = sqlSession.getMapper(IStateDAO.class);
-            output = stateDAO.get(id);
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        return output;
+        return get(id, classReference);
     }
 
     @Override
     public List getAll() {
-        List<State> output = null;
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IStateDAO stateDAO = sqlSession.getMapper(IStateDAO.class);
-            output = stateDAO.getAll();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        return output;
+        return getAll(classReference);
     }
 
     @Override
     public void save(State o) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IStateDAO stateDAO = sqlSession.getMapper(IStateDAO.class);
-            stateDAO.save(o);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        save(o, classReference);
     }
 
     @Override
     public void update(State o, int id) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IStateDAO stateDAO = sqlSession.getMapper(IStateDAO.class);
-            stateDAO.update(o, id);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        update(o, id, classReference);
     }
 
     @Override
     public void delete(int id) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            IStateDAO stateDAO = sqlSession.getMapper(IStateDAO.class);
-            stateDAO.delete(id);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        delete(id, classReference);
     }
 }

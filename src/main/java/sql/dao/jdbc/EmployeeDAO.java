@@ -14,7 +14,7 @@ public class EmployeeDAO extends JDBCDAO implements IEmployeeDAO {
         //public Employee(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode)
         String sql = "SELECT first_name, last_name, address, phone_type, phone_number, zipcode " +
                 "FROM employees INNER JOIN employee_phonenumbers ON employees.id_employee = employee_phonenumbers.id_employee WHERE id_employee = ?";
-        return Optional.ofNullable(new Employee(getWithTryCatch(sql, id)));
+        return Optional.ofNullable(new Employee(getById(sql, id)));
     }
 
     @Override
@@ -22,7 +22,7 @@ public class EmployeeDAO extends JDBCDAO implements IEmployeeDAO {
         //public Customer(String firstName, String lastName, String address, String phoneType, String phoneNumber, int zipcode)
         String sql = "SELECT first_name, last_name, address, phone_type, phone_number, zipcode " +
                 "FROM employees INNER JOIN employee_phonenumbers ON employees.id_employee = employee_phonenumbers.id_employee";
-        List<Object[]> list = getWithTryCatch(sql);
+        List<Object[]> list = getAll(sql);
         List<Employee> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Employee(o));
@@ -46,7 +46,7 @@ public class EmployeeDAO extends JDBCDAO implements IEmployeeDAO {
         typeList.add(JDBCType.STRING);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
 
         valueList = new ArrayList<>();
         valueList.add(o.getPhoneType());
@@ -56,7 +56,7 @@ public class EmployeeDAO extends JDBCDAO implements IEmployeeDAO {
         typeList.add(JDBCType.STRING);
         typeList.add(JDBCType.STRING);
 
-        saveWithTryCatch(phonesql, valueList, typeList);
+        save(phonesql, valueList, typeList);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class EmployeeDAO extends JDBCDAO implements IEmployeeDAO {
         typeList.add(JDBCType.INT);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
 
         valueList = new ArrayList<>();
         valueList.add(o.getPhoneType());
@@ -90,7 +90,7 @@ public class EmployeeDAO extends JDBCDAO implements IEmployeeDAO {
         typeList.add(JDBCType.STRING);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(phonesql, valueList, typeList);
+        save(phonesql, valueList, typeList);
 
     }
 
@@ -99,8 +99,8 @@ public class EmployeeDAO extends JDBCDAO implements IEmployeeDAO {
         String sql = "DELETE FROM employees WHERE id_employee = ?";
         String phonesql = "DELETE FROM employee_phonenumbers WHERE id_employee = ?";
 
-        deleteWithTryCatch(phonesql, id);
-        deleteWithTryCatch(sql, id);
+        deleteById(phonesql, id);
+        deleteById(sql, id);
 
     }
 }

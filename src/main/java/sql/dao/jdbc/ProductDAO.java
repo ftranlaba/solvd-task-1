@@ -13,14 +13,14 @@ public class ProductDAO extends JDBCDAO implements IProductDAO {
     public Optional get(int id) {
         //public Product(String name, int price, int amount)
         String sql = "SELECT name, price, amount FROM products WHERE id_product = ?";
-        return Optional.ofNullable(new Product(getWithTryCatch(sql, id)));
+        return Optional.ofNullable(new Product(getById(sql, id)));
     }
 
     @Override
     public List getAll() {
         //public Product(String name, int price, int amount)
         String sql = "SELECT name, price, amount FROM products";
-        List<Object[]> list = getWithTryCatch(sql);
+        List<Object[]> list = getAll(sql);
         List<Product> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new Product(o));
@@ -42,7 +42,7 @@ public class ProductDAO extends JDBCDAO implements IProductDAO {
         typeList.add(JDBCType.INT);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
@@ -60,12 +60,12 @@ public class ProductDAO extends JDBCDAO implements IProductDAO {
         typeList.add(JDBCType.INT);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM products WHERE id_product = ?";
-        deleteWithTryCatch(sql, id);
+        deleteById(sql, id);
     }
 }

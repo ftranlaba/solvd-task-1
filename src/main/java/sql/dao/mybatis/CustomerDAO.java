@@ -8,40 +8,21 @@ import java.util.List;
 import java.util.Optional;
 
 public class CustomerDAO extends MyBatisDAO implements ICustomerDAOMyBatis {
+    private static final Class classReference = ICustomerDAOMyBatis.class;
 
     @Override
     public Optional get(int id) {
-        Optional output = null;
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAOMyBatis.class);
-            output = customerDAO.get(id);
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        return output;
+        return get(id, classReference);
     }
 
     @Override
     public List getAll() {
-        List<Customer> output = null;
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAOMyBatis.class);
-            output = customerDAO.getAll();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
-        return output;
+        return getAll(classReference);
     }
 
     @Override
     public void save(Customer o) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAOMyBatis.class);
-            customerDAO.save(o);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        save(o, classReference);
     }
 
     @Override
@@ -58,13 +39,7 @@ public class CustomerDAO extends MyBatisDAO implements ICustomerDAOMyBatis {
 
     @Override
     public void update(Customer o, int id) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAOMyBatis.class);
-            customerDAO.update(o, id);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        update(o, id, classReference);
     }
 
     @Override
@@ -80,13 +55,7 @@ public class CustomerDAO extends MyBatisDAO implements ICustomerDAOMyBatis {
 
     @Override
     public void delete(int id) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            ICustomerDAO customerDAO = sqlSession.getMapper(ICustomerDAOMyBatis.class);
-            customerDAO.delete(id);
-            sqlSession.commit();
-        } catch (Exception e) {
-            LOGGER.error(e);
-        }
+        delete(id, classReference);
     }
 
     @Override

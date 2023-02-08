@@ -13,14 +13,14 @@ public class CityDAO extends JDBCDAO implements ICityDAO {
     public Optional get(int id) {
         //public City(String name)
         String sql = "SELECT name FROM cities WHERE id_city = ?";
-        return Optional.ofNullable(new City(getWithTryCatch(sql, id)));
+        return Optional.ofNullable(new City(getById(sql, id)));
     }
 
     @Override
     public List getAll() {
         //public City(String name)
         String sql = "SELECT name FROM cities";
-        List<Object[]> list = getWithTryCatch(sql);
+        List<Object[]> list = getAll(sql);
         List<City> output = new ArrayList<>();
         for (Object[] o : list) {
             output.add(new City(o));
@@ -37,7 +37,7 @@ public class CityDAO extends JDBCDAO implements ICityDAO {
         List<JDBCType> typeList = new ArrayList<>();
         typeList.add(JDBCType.STRING);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
@@ -51,12 +51,12 @@ public class CityDAO extends JDBCDAO implements ICityDAO {
         typeList.add(JDBCType.STRING);
         typeList.add(JDBCType.INT);
 
-        saveWithTryCatch(sql, valueList, typeList);
+        save(sql, valueList, typeList);
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM cities WHERE id_city = ?";
-        deleteWithTryCatch(sql, id);
+        deleteById(sql, id);
     }
 }
